@@ -1,0 +1,1 @@
+@include('pages.user_config.form')

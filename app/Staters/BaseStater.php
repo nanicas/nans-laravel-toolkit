@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Staters;
+
+abstract class BaseStater
+{
+    protected static $instance = null;
+    protected static $data     = array();
+
+    /** protected to prevent cloning */
+    protected function __clone()
+    {
+
+    }
+
+    /** protected to prevent instantiation from outside of the class */
+    protected function __construct()
+    {
+
+    }
+
+    public static function setItem(string $key, $value)
+    {
+        static::$data[$key] = $value;
+    }
+
+    public static function setData(array $data)
+    {
+        static::$data = $data;
+    }
+
+    public static function all()
+    {
+        return static::$data;
+    }
+
+    public static function exists(string $key)
+    {
+        return (isset(static::$data[$key]));
+    }
+
+    public static function getItem(string $key)
+    {
+        return static::$data[$key] ?? null;
+    }
+}
