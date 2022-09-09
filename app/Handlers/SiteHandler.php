@@ -8,7 +8,7 @@ use App\Hydrators\SlugHydrator;
 
 class SiteHandler extends AbstractHandler
 {
-    public function afterGetIndexData()
+    public function aftergGetIndexConfigData()
     {
         $data = & $this->data;
 

@@ -8,18 +8,22 @@ use App\Helpers\Helper;
 use App\Validators\ConfigUserValidator;
 use App\Handlers\ConfigUserHandler;
 use App\Exceptions\CrudException;
+use App\Repositories\PainelRepository;
 
 class ConfigUserService extends AbstractService
 {
     public function __construct(
         ConfigUserRepository $repository,
         ConfigUserValidator $validator,
-        ConfigUserHandler $handler
+        ConfigUserHandler $handler,
+        PainelRepository $painel
     )
     {
         parent::setRepository($repository);
         parent::setValidator($validator);
         parent::setHandler($handler);
+        
+        $this->setDependencie('painel_repository', $painel);
     }
 
     public function getDataToShow(int $userId)
@@ -29,10 +33,13 @@ class ConfigUserService extends AbstractService
         }
         
         $row = $this->getConfig($userId);
+        $rules = $this->getDependencie('painel_repository')->getRulesByApplication(
+            Helper::getAppId()
+        );
 
         $isMaster = Helper::isMaster();
 
-        return compact('row', 'isMaster');
+        return compact('row', 'isMaster', 'rules');
     }
 
     public function store(array $data)
@@ -40,6 +47,7 @@ class ConfigUserService extends AbstractService
         $storeData = [
             'name' => $data['name'],
             'admin' => $data['admin'],
+            'rule_id' => $data['rule_id'],
             'slug' => Helper::getSlug(),
             'user_id' => Helper::getUserId(),
         ];
@@ -77,8 +85,10 @@ class ConfigUserService extends AbstractService
         }
 
         $updateData = [
-            'name' => $data['name']
+            'name' => $data['name'],
+            'rule_id' => $data['rule_id'],
         ];
+
         if (Helper::isMaster()) {
             $updateData['admin'] = $data['admin'];
         }

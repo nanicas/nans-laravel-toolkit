@@ -1,4 +1,4 @@
-var FORM_CRUD = (function () {
+var CRUD_FORM = (function () {
 
     var state = {};
 
@@ -6,10 +6,10 @@ var FORM_CRUD = (function () {
 
         DASHBOARD.load();
 
-        state.formCrud = $('#crud-form');
+        state.crudForm = $('#crud-form');
         state.formResultBox = $('#form-result-box');
 
-        state.formCrud.submit(function (e) {
+        state.crudForm.submit(function (e) {
             e.stopPropagation();
             e.preventDefault();
 

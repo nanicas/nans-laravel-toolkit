@@ -18,21 +18,26 @@ abstract class AbstractCrudRepository extends DatabaseRepository
         return $this->model::COLUMN_DELETED_AT;
     }
 
-    public function getRows()
-    {
-        return $this->getModel()->all();
-    }
-
     public function store(array $data)
     {
         return $this->getModel()->create($data);
+    }
+    
+    public function deleteByCondition(array $condition)
+    {
+        return $this->getModel()->where($condition)->delete();
+    }
+    
+    public function insert(array $data)
+    {
+        return $this->getModel()->insert($data);
     }
 
     public function update(AbstractModel $model)
     {
         return $model->save();
     }
-
+    
     public function getAllBySlug(int $slug)
     {
         $rows = $this->getModel()->where([
@@ -40,6 +45,15 @@ abstract class AbstractCrudRepository extends DatabaseRepository
         ]);
 
         return $rows->get();
+    }
+    
+    public function getBySlug(int $slug)
+    {
+        $row = $this->getModel()->where([
+            'slug' => $slug
+        ]);
+
+        return ($row->count() > 0) ? $row->first() : null;
     }
 
     public function getByIdAndSlug(int $id, int $slug)

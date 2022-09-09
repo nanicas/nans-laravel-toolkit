@@ -7,7 +7,8 @@ use App\Validators\AbstractValidator;
 class ConfigUserValidator extends AbstractValidator
 {
     protected $messages = [
-        'name_empty' => 'O apelido não foi preenchido'
+        'name_empty' => 'O apelido não foi preenchido',
+        'rule_empty' => 'Um perfil válido deve ser selecionado',
     ];
 
     public function store()
@@ -21,6 +22,10 @@ class ConfigUserValidator extends AbstractValidator
 
         if (empty($data['name'])) {
             $this->addError('name_empty');
+        }
+
+        if (empty(intval($data['rule_id']))) {
+            $this->addError('rule_empty');
         }
     }
 

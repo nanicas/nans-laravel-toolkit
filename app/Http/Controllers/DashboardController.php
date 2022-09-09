@@ -32,13 +32,14 @@ abstract class DashboardController extends AbstractController
     {
         return Helper::notAllowedResponse($request);
     }
-
+    
     public function beforeView()
     {
         $sessionData = Helper::getSessionData();
 
         View::share('session_data', $sessionData);
         View::share('is_admin', Helper::isAdmin());
+        View::share('is_master', Helper::isMaster());
 
         parent::beforeView();
     }

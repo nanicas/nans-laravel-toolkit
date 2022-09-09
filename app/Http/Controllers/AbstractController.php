@@ -12,8 +12,6 @@ abstract class AbstractController extends Controller
 
     public function __construct()
     {
-        //parent::__construct();
-
         $this->configure([
             'assets' => [
                 'css' => [],
@@ -24,8 +22,6 @@ abstract class AbstractController extends Controller
 
     public function beforeView()
     {
-        //$slug = request('slug');
-
         View::share('assets', $this->getConfig()['assets']);
         View::share('screen', $this->getScreen());
     }
@@ -34,6 +30,21 @@ abstract class AbstractController extends Controller
     {
         list($main) = explode('.', \Request::route()->getName());
         return $main;
+    }
+
+    public function addJsAssets(string $path)
+    {
+        $this->config['assets']['js'][] = $path;
+    }
+
+    public function addCssAssets(string $path)
+    {
+        $this->config['assets']['css'][] = $path;
+    }
+    
+    public function definePathAssets()
+    {
+        return (method_exists($this, 'getAssetsPath')) ? $this->getAssetsPath() : $this->getScreen();
     }
 
     public function getControllerName()
@@ -46,8 +57,10 @@ abstract class AbstractController extends Controller
 
     public function addIndexAssets()
     {
-        $this->config['assets']['js'][]  = 'resources/pages/'.$this->getControllerName().'/index.js';
-        $this->config['assets']['css'][] = 'resources/pages/'.$this->getControllerName().'/index.css';
+        $path = $this->definePathAssets();
+        
+        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/index.js';
+        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/index.css';
     }
 
     public function addShowAssets()
@@ -55,9 +68,11 @@ abstract class AbstractController extends Controller
         if (method_exists($this, 'addFormAssets')) {
             $this->addFormAssets();
         }
+        
+        $path = $this->definePathAssets();
 
-        $this->config['assets']['js'][]  = 'resources/pages/'.$this->getControllerName().'/show.js';
-        $this->config['assets']['css'][] = 'resources/pages/'.$this->getControllerName().'/show.css';
+        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/show.js';
+        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/show.css';
     }
 
     public function addCreateAssets()
@@ -65,14 +80,19 @@ abstract class AbstractController extends Controller
         if (method_exists($this, 'addFormAssets')) {
             $this->addFormAssets();
         }
+        
+        $path = $this->definePathAssets();
 
-        $this->config['assets']['js'][]  = 'resources/pages/'.$this->getControllerName().'/create.js';
-        $this->config['assets']['css'][] = 'resources/pages/'.$this->getControllerName().'/create.css';
+        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/create.js';
+        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/create.css';
     }
 
     public function addListAssets()
     {
-        $this->config['assets']['js'][]  = 'resources/pages/'.$this->getControllerName().'/list.js';
-        $this->config['assets']['css'][] = 'resources/pages/'.$this->getControllerName().'/list.css';
+        $path = $this->definePathAssets();
+        
+        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/list.js';
+        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/list.css';
     }
+
 }

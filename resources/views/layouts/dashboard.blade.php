@@ -146,7 +146,6 @@
         </li>
     </ul>
 </nav>
-
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -159,13 +158,45 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($screen == 'home') ? 'active' : '' }}" href="{{ route('home') }}">
-                            <span data-feather="command"></span>
+                        <a class="nav-link {{ ($screen == 'home') ? 'active' : '' }}" href="{{ route('home.index') }}">
+                            <span data-feather="layout"></span>
                             Dashboard <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ ($screen == 'user_config') ? 'active' : '' }}" href="{{ route('user_config.index') }}">
+                        <a class="nav-link {{ ($screen == 'scheduling') ? 'active' : '' }}" href="{{ route('scheduling.index') }}">
+                            <span data-feather="calendar"></span>
+                            Agendamentos
+                        </a>
+                    </li>
+                    @if($is_admin)
+                    <li class="nav-item">
+                        <a class="nav-link {{ ($screen == 'student') ? 'active' : '' }}" href="{{ route('student.index') }}">
+                            <span data-feather="user"></span>
+                            Alunos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ ($screen == 'plan') ? 'active' : '' }}" href="{{ route('plan.index') }}">
+                            <span data-feather="package"></span>
+                            Planos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ ($screen == 'modality') ? 'active' : '' }}" href="{{ route('modality.index') }}">
+                            <span data-feather="grid"></span>
+                            Modalidades
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ ($screen == 'historic') ? 'active' : '' }}" href="{{ route('historic.index') }}">
+                            <span data-feather="save"></span>
+                            Históricos
+                        </a>
+                    </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link {{ (strpos($screen, '_config') !== false) ? 'active' : '' }}" href="{{ route('user_config.index') }}">
                             <span data-feather="settings"></span>
                             Configuração
                         </a>
@@ -211,7 +242,7 @@
             <br>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                  <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Dashboard</a></li>
 
                   @php
                   $routeInstance = \Request::route();

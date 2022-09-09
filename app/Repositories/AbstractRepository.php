@@ -2,9 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Contracts\RepositoryContract;
-
-//abstract class AbstractRepository implements RepositoryContract
 abstract class AbstractRepository
 {
     protected $model;

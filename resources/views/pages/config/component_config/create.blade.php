@@ -1,0 +1,1 @@
+@include('pages.config.component_config.form')

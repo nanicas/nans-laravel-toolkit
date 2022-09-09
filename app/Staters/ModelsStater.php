@@ -2,8 +2,8 @@
 
 namespace App\Staters;
 
-use App\Staters\BaseStater;
+use Zevitagem\LegoAuth\Staters\BaseStater as BaseStaterVendor;
 
-class ModelsStater extends BaseStater
+class ModelsStater extends BaseStaterVendor
 {
 }

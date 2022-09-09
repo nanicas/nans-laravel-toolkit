@@ -36,7 +36,7 @@
             @endforeach
         @endif
     </head>
-    <body data-base-url="{{ \URL::to('/') }}">
+    <body data-base-url="{{ \URL::to('/') }}" class="black-bg">
         <div id="app">
             <div id="top-message"></div>
             @yield('content')

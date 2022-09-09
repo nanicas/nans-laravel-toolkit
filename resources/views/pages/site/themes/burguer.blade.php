@@ -1,4 +1,4 @@
-@extends('layouts.site-theme', compact('data'))
+@extends('layouts.site-theme')
 
 @section('css')
 <!-- bootstrap core css 
@@ -39,13 +39,10 @@
             <nav class="navbar navbar-expand-lg custom_nav-container ">
                 <a class="navbar-brand" href="#">
                     <span>
-                        @if(!empty($data['slug']))
-                        {{ $data['slug']->getName() }}
-                        @else
-                        {{ config('app.name', 'Laravel') }}
-                        @endif
+                        @php $slugName = $config['slug']->getName() @endphp
+                        {{ $slugName }}
                     </span>
-                    @if($data['logged'])
+                    @if($config['logged'])
                         <p class='theme-color-yellow'>{{ App\Helpers\Helper::getSessionData()['user']['name'] }}</p>
                     @endif
                 </a>
@@ -59,27 +56,27 @@
                             <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                         </li>-->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                            <a class="nav-link" href="{{ route('home.index') }}">Dashboard</a>
                         </li>
-                        @if (Route::has('register') && !empty($data['slug']))
-                        <li class="nav-item">
+                        @if (Route::has('register') && !empty($config['slug']))
+                            <li class="nav-item">
 
-                            @php
-                                $registerUrl = env('FALLBACK_APP_URL');
-                                $registerUrl .= '/register?' .\Zevitagem\LegoAuth\Helpers\Helper::createBuildQueryToOutLogin([
-                                'slug' => $data['slug']->getId()
-                                ]);
-                            @endphp
+                                @php
+                                    $registerUrl = env('FALLBACK_APP_URL');
+                                    $registerUrl .= '/register?' .\Zevitagem\LegoAuth\Helpers\Helper::createBuildQueryToOutLogin([
+                                        'slug' => $config['slug']->getId()
+                                    ]);
+                                @endphp
 
-                            <a class="nav-link" href="{{ $registerUrl }}">
-                                {{ __('Cadastro') }}
-                            </a>
-                        </li>
+                                <a class="nav-link" href="{{ $registerUrl }}">
+                                    {{ __('Cadastro') }}
+                                </a>
+                            </li>
                         @endif
                         @if (Route::has('login'))
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
                         @endif 
                     </ul>
                     <!--
@@ -385,28 +382,28 @@
     </div>
 </section>
 
-@if(!empty($data['plans']))
+@if(!empty($entities['plans']))
 <!-- end offer section -->
 <section class="offer_section layout_padding-bottom">
     <div class="container">
         <div class="card-deck mb-3 text-center">
-            @foreach($data['plans'] as $plan)
-            <div class="card mb-4 shadow-sm">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">{{ $plan->getName() }}</h4>
+            @foreach($entities['plans'] as $plan)
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ $plan->getName() }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">R$ {{ $plan->getCost() }} <small class="text-muted">/ mo</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            @forelse($plan->modalities as $modality)
+                                <li>- {{ $modality->getName() }}</li>
+                            @empty
+                                <li>Nenhuma modalidade ou benefício cadastrado</li>
+                            @endforelse
+                        </ul>
+                        <button type="button" class="theme-bg-yellow btn btn-lg btn-block btn-warning">Escolher</button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">R$ {{ $plan->getCost() }} <small class="text-muted">/ mo</small></h1>
-                    <ul class="list-unstyled mt-3 mb-4">
-                        @forelse($plan->modalities as $modality)
-                        <li>- {{ $modality->getName() }}</li>
-                        @empty
-                        <li>Nenhuma modalidade ou benefício cadastrado</li>
-                        @endforelse
-                    </ul>
-                    <button type="button" class="theme-bg-yellow btn btn-lg btn-block btn-warning">Escolher</button>
-                </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -1352,8 +1349,7 @@
 <!-- bootstrap js 
 <script src="{{ asset('resources/layouts/site/themes/burguer/js/bootstrap.js') }}"></script>-->
 <!-- owl slider -->
-<script defer src="{{ asset('resources/layouts/site/themes/burguer/js/owl-carousel.min.js') }}">
-</script>
+<script defer src="{{ asset('resources/layouts/site/themes/burguer/js/owl-carousel.min.js') }}"></script>
 <!-- isotope js -->
 <script defer src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
 <!-- nice select 

@@ -14,6 +14,8 @@ use Zevitagem\LegoAuth\Helpers\Helper;
   |
  */
 
+$middlewares = Helper::defineLaravelWebMiddlewares(['web'], $legoConfig);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,47 +24,41 @@ Auth::routes();
 
 Route::get('/site/{slug?}', [App\Http\Controllers\Pages\SiteController::class, 'index'])->name('site');
 
-$middlewares = Helper::defineLaravelWebMiddlewares(['web']);
-
 Route::group(['middleware' => $middlewares],
-    function () {
+        function () use ($legoConfig) {
 
-        Route::get('/home',
-            [App\Http\Controllers\Pages\HomeController::class, 'index'])->name('home');
+            Route::get('/home',
+                    [App\Http\Controllers\Pages\HomeController::class, 'index'])->name('home.index');
 
-        Route::prefix('/scheduling')->group(function () {
-            Route::get('/',
-                [App\Libraries\Scheduling\SchedulingController::class, 'index'])->name('scheduling');
+            Route::middleware(['admin'])->group(function () {
+                Route::resource('historic', App\Http\Controllers\Pages\HistoricController::class);
+            });
 
-            Route::post('/filter',
-                [App\Libraries\Scheduling\SchedulingController::class, 'filter'])->name('scheduling.filter');
+            Route::prefix('/config')->group(function () use ($legoConfig) {
+                Route::get('/', function () {
+                    return redirect()->route('dashboard_config.index');
+                });
+                
+                //modality
+                Route::resource('category_config', App\Http\Controllers\Pages\Config\CategoryConfigController::class);
+                Route::resource('component_config', App\Http\Controllers\Pages\Config\ComponentConfigController::class);
+                Route::get('/entity_config/dynamic_form',
+                        [App\Http\Controllers\Pages\Config\EntityConfigController::class, 'dynamicFormByComponent'])->name('entity_config.dynamic_form');
+                Route::resource('entity_config', App\Http\Controllers\Pages\Config\EntityConfigController::class);
 
-            Route::get('/show/{id}',
-                [App\Libraries\Scheduling\SchedulingController::class, 'show'])->name('scheduling.show');
-        });
+                Route::get('/dashboard',
+                        [App\Http\Controllers\Pages\Config\DashboardConfigController::class, 'index'])->name('dashboard_config.index');
+                Route::get('/data',
+                        [App\Http\Controllers\Pages\Config\DataConfigController::class, 'index'])->name('data_config.index');
+                
+                Route::resource('data_config', App\Http\Controllers\Pages\Config\DataConfigController::class)->only([
+                    'index', 'show', 'update', 'store'
+                ]);
 
-        Route::middleware(['admin'])->group(function () {
-
-            //student
-            Route::post('/{id}/turn_student', [App\Libraries\Scheduling\SchedulingController::class, 'turnStudent'])->name('scheduling.turn');
-            Route::resource('student', App\Http\Controllers\Pages\StudentController::class)->only([
-                'index', 'show', 'update'
-            ]);
-
-            //plan
-            Route::get('/plan/modalities', [App\Http\Controllers\Pages\PlanController::class, 'modalities'])->name('plan.modalities');
-            Route::resource('plan', App\Http\Controllers\Pages\PlanController::class);
-
-            //modality
-            Route::resource('modality', App\Http\Controllers\Pages\ModalityController::class);
-        });
-
-        Route::resource('user_config',
-            App\Http\Controllers\Pages\UserConfigController::class)->only([
-            'index', 'show', 'update', 'store'
-        ]);
-
-        Route::post('/application/generateLinkWithTempAuth',
-            [App\Http\Controllers\Pages\ApplicationController::class, 'generateLinkWithTempAuth'])->name('generateLinkWithTempAuth');
-    }
+                Route::resource('user_config',
+                        App\Http\Controllers\Pages\Config\UserConfigController::class)->only([
+                    'index', 'show', 'update', 'store'
+                ])->withoutMiddleware([(isset($legoConfig['middlewares'])) ? $legoConfig['middlewares']['force_configured'] : null]);
+            });
+        }
 );

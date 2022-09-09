@@ -14,17 +14,22 @@ class Helper
         return config('app.app_id');
     }
 
+    public static function generateCleanSnakeText(string $text = '')
+    {
+        return str_replace(' ', '_', strtolower($text));
+    }
+
     public static function extractJsonFromRequester(ResponseInterface $requester)
     {
         $content = $requester->getBody()->getContents();
-        $json    = json_decode($content, true);
+        $json = json_decode($content, true);
 
         return $json ?? self::createDefaultJsonToResponse(false,
-                ['message' => $content]);
+                        ['message' => $content]);
     }
 
     public static function createDefaultJsonToResponse(
-        bool $status, $content = null
+            bool $status, $content = null
     )
     {
         return ['response' => $content, 'status' => $status];
@@ -65,6 +70,11 @@ class Helper
         return Auth::id();
     }
 
+    public static function readConfig()
+    {
+        return HelperVendor::readConfig();
+    }
+
     public static function isMaster()
     {
         return HelperVendor::isMaster();
@@ -84,8 +94,24 @@ class Helper
         }
 
         return response()->json([
-            'status' => 'false',
-            'content' => $view,
-        ], 405);
+                    'status' => 'false',
+                    'content' => $view,
+                        ], 405);
     }
+
+    public static function groupArrayByKeys(array $data, array $keys)
+    {
+        $firstKey = $keys[0];
+        $len = count($data[$firstKey]);
+
+        $result = [];
+        foreach ($keys as $key) {
+            for ($i = 0; $i < $len; $i++) {
+                $result[$i][$key] = $data[$key][$i];
+            }
+        }
+
+        return $result;
+    }
+
 }

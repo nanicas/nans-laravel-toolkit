@@ -19,12 +19,6 @@ return [
     'authorization_external_app_url' => env('AUTHORIZATION_EXTERNAL_APP_URL'),
     'app_id' => env('APP_ID'),
 
-    'libraries' => [
-        'scheduling' => [
-            'url' => env('SCHEDULING_LIBRARY_URL') .'/routes/api.php'
-        ]
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -17,7 +17,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Dashboard</a>
+                        <a class="nav-link" href="{{ route('home.index') }}">Dashboard</a>
                     </li>
 
                     @if (Route::has('login'))

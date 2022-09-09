@@ -43,7 +43,7 @@ abstract class AbstractService
     public function handle(array &$data, string $method)
     {
         $handler = $this->getHandler();
-        
+
         $handler->setData($data);
         $handler->run($method);
     }
@@ -60,7 +60,6 @@ abstract class AbstractService
         return true;
     }
 
-    //public function setRepository(RepositoryContract $repository)
     public function setRepository($repository)
     {
         $this->repository = $repository;
@@ -69,5 +68,19 @@ abstract class AbstractService
     public function getTable()
     {
         return $this->repository->getTable();
+    }
+
+    public function getColumnsObject()
+    {
+        return $this->repository->getColumnsObject();
+    }
+
+    public function showColumns(string $table = '')
+    {
+        $data = $this->repository->showColumns($table);
+
+        return array_map(function ($item) {
+            return $item['Field'];
+        }, $data);
     }
 }

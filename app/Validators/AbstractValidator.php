@@ -6,10 +6,10 @@ class AbstractValidator
 {
     private $data;
     private $method;
-    private $withHTML      = true;
-    private $errors        = [];
+    private $withHTML = true;
+    private $errors = [];
     private $textSeparator = PHP_EOL;
-    protected $messages    = [];
+    protected $messages = [];
 
     public function setData(array $data)
     {
@@ -74,8 +74,6 @@ class AbstractValidator
             return implode($this->getTextSeparator(), $this->errors);
         }
 
-        return view(
-            'components.validator-messages', ['messages' => $this->errors]
-        )->render();
+        return view('components.validator-messages', ['messages' => $this->errors])->render();
     }
 }

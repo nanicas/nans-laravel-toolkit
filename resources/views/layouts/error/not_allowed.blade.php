@@ -39,7 +39,7 @@
 
 
     <div class="error-actions">
-        <a href="{{ route('home') }}" class="btn btn-primary btn-lg">
+        <a href="{{ route('home.index') }}" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-home"></span>
             Voltar para à página inicial
         </a>

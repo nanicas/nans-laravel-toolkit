@@ -1,4 +1,4 @@
-@extends('layouts.site', compact('data'))
+@extends('layouts.site')
 @section('site-content')
 
 <div>

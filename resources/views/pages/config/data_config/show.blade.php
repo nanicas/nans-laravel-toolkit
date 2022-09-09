@@ -1,0 +1,1 @@
+@include('pages.config.data_config.form')

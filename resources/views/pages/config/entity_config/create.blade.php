@@ -1,0 +1,1 @@
+@include('pages.config.entity_config.form')
