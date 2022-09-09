@@ -1,7 +1,22 @@
 {
-    "name": "laravel/laravel",
-    "type": "template project",
-    "description": "The SAAS template core",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT"
+    "name": "zevitagem/laravel-saas-template-core",
+    "type": "library",
+    "version": "1.0.0",
+    "description": "Abstraction of all common logic in creating a simple saas with laravel",
+    "keywords": ["saas", "laravel", "core"],
+    "homepage": "https://github.com/nanicas/nans-template-core-saas",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "José Victor da Silva",
+            "email": "josevictor.jvds@gmail.com",
+            "homepage": "https://www.linkedin.com/in/jos%C3%A9-victor-da-silva-b008a176/",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Zevitagem\\LaravelSaasTemplateCore\\": "app/"
+        }
+    }
 }
