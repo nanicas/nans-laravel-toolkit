@@ -1,0 +1,7 @@
+{
+    "name": "laravel/laravel",
+    "type": "template project",
+    "description": "The SAAS template core",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT"
+}
