@@ -30,7 +30,7 @@ class PackageServiceProvider extends ServiceProvider
         
         Blade::component('package-dynamic-entity-component', DynamicEntityComponent::class);
         
-        $src = __DIR__ . '/../../vendor/zevitagem/laravel-saas-template-core';
+        $src = __DIR__ . '/../..';
         
         $this->publishes([
             $src.'/resources/css' => resource_path('template/css'),
