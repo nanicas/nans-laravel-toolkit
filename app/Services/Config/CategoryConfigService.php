@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Services\Config;
 
-use App\Services\AbstractCrudService;
-use App\Repositories\Config\CategoryConfigRepository;
-use App\Validators\Config\CategoryConfigValidator;
-use App\Handlers\Config\CategoryConfigHandler;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\CategoryConfigRepository;
+use Zevitagem\LaravelSaasTemplateCore\Validators\Config\CategoryConfigValidator;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\Config\CategoryConfigHandler;
 
 class CategoryConfigService extends AbstractCrudService
 {

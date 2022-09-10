@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
 
 use Zevitagem\LegoAuth\Repositories\PainelRepository as BasePainelRepository;
-use App\Handlers\PainelHandler;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\PainelHandler;
 
 class PainelRepository extends BasePainelRepository
 {

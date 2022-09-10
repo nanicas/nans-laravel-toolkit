@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
 
-use App\Repositories\AbstractRepository;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractRepository;
 
 abstract class DatabaseRepository extends AbstractRepository
 {

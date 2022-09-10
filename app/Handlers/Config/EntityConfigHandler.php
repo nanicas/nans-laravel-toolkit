@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Handlers\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Handlers\Config;
 
-use App\Handlers\AbstractHandler;
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Http\Request;
-use App\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class EntityConfigHandler extends AbstractHandler

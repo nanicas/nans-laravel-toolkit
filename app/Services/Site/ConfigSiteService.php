@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Site;
+namespace Zevitagem\LaravelSaasTemplateCore\Services\Site;
 
-use App\Services\AbstractService;
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Zevitagem\LegoAuth\Services\SessionService;
 use Zevitagem\LegoAuth\Exceptions\NotAuthenticatedException;
-use App\Repositories\PainelRepository;
-use App\Handlers\SiteHandler;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\PainelRepository;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\SiteHandler;
 
 class ConfigSiteService extends AbstractService
 {

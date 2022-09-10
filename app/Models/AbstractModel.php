@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace Zevitagem\LaravelSaasTemplateCore\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\AttributesResourceModel;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AttributesResourceModel;
 
 class AbstractModel extends Model
 {

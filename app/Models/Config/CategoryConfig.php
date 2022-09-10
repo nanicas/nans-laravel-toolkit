@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Models\Config;
 
-use App\Models\AbstractModel;
+use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategoryConfig extends AbstractModel

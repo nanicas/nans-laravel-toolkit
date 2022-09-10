@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
 
-use App\Repositories\AbstractCrudRepository;
-use App\Models\User;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractCrudRepository;
+use Zevitagem\LaravelSaasTemplateCore\Models\User;
 
 class UserRepository extends AbstractCrudRepository
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Services\Config;
 
-use App\Services\AbstractCrudService;
-use App\Repositories\Config\DataConfigRepository;
-use App\Validators\Config\DataConfigValidator;
-use App\Handlers\Config\DataConfigHandler;
-use App\Services\Config\AddressConfigService;
-use App\Helpers\Helper;
-use App\Exceptions\InvalidArgumentOnCrudException as InvalidArgumentException;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\DataConfigRepository;
+use Zevitagem\LaravelSaasTemplateCore\Validators\Config\DataConfigValidator;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\Config\DataConfigHandler;
+use Zevitagem\LaravelSaasTemplateCore\Services\Config\AddressConfigService;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Exceptions\InvalidArgumentOnCrudException as InvalidArgumentException;
 
 class DataConfigService extends AbstractCrudService
 {

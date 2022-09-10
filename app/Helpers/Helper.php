@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Helpers;
+namespace Zevitagem\LaravelSaasTemplateCore\Helpers;
 
 use Psr\Http\Message\ResponseInterface;
 use Zevitagem\LegoAuth\Helpers\Helper as HelperVendor;

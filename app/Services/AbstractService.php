@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace Zevitagem\LaravelSaasTemplateCore\Services;
 
-use App\Handlers\AbstractHandler;
-use app\validators\AbstractValidator;
-use App\Exceptions\ValidatorException;
-use App\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
+use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
 
 abstract class AbstractService
 {

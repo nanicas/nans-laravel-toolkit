@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Handlers\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Handlers\Config;
 
-use App\Handlers\AbstractHandler;
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class DataConfigHandler extends AbstractHandler
 {

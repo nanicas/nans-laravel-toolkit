@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Staters;
+namespace Zevitagem\LaravelSaasTemplateCore\Staters;
 
 use Zevitagem\LegoAuth\Staters\BaseStater as BaseStaterVendor;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Traits;
+namespace Zevitagem\LaravelSaasTemplateCore\Traits;
 
-use App\Services\AbstractService;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
 
 trait AvailabilityWithService
 {

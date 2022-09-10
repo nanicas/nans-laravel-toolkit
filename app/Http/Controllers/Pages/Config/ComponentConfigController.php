@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Pages\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
 
-use App\Services\Config\ComponentConfigService;
-use App\Http\Controllers\Pages\CrudController;
-use App\Traits\IsConfigurationPageSection;
+use Zevitagem\LaravelSaasTemplateCore\Services\Config\ComponentConfigService;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
+use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
 
 class ComponentConfigController extends CrudController
 {

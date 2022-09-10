@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
-use App\Services\Historic\HistoricService;
-use App\Http\Controllers\Pages\CrudController;
+use Zevitagem\LaravelSaasTemplateCore\Services\Historic\HistoricService;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
 
 class HistoricController extends CrudController
 {

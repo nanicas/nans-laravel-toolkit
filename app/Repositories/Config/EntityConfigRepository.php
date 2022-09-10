@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories\Config;
 
-use App\Repositories\AbstractCrudRepository;
-use App\Models\Config\EntityConfig;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractCrudRepository;
+use Zevitagem\LaravelSaasTemplateCore\Models\Config\EntityConfig;
 
 class EntityConfigRepository extends AbstractCrudRepository
 {

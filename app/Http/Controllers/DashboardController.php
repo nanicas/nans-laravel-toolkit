@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
-use App\Http\Controllers\AbstractController;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\AbstractController;
 use Illuminate\Support\Facades\View;
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Http\Request;
 
 abstract class DashboardController extends AbstractController

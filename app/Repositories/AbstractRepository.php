@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
 
 abstract class AbstractRepository
 {

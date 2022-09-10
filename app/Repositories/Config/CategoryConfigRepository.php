@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories\Config;
 
-use App\Repositories\AbstractCrudRepository;
-use App\Models\Config\CategoryConfig;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractCrudRepository;
+use Zevitagem\LaravelSaasTemplateCore\Models\Config\CategoryConfig;
 
 class CategoryConfigRepository extends AbstractCrudRepository
 {

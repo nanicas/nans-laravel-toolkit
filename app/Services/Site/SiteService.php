@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services\Site;
+namespace Zevitagem\LaravelSaasTemplateCore\Services\Site;
 
-use App\Services\AbstractService;
-use App\Services\Site\ConfigSiteService;
-use App\Services\Site\DataSiteService;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
+use Zevitagem\LaravelSaasTemplateCore\Services\Site\ConfigSiteService;
+use Zevitagem\LaravelSaasTemplateCore\Services\Site\DataSiteService;
 
 class SiteService extends AbstractService
 {

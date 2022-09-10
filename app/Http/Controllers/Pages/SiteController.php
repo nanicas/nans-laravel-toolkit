@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
-use App\Http\Controllers\SiteController as SiteBase;
-use App\Services\Site\SiteService;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\SiteController as SiteBase;
+use Zevitagem\LaravelSaasTemplateCore\Services\Site\SiteService;
 use Illuminate\Http\Request;
 
 class SiteController extends SiteBase

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Validators\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Validators\Config;
 
-use App\Validators\AbstractValidator;
+use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
 
 class AddressConfigValidator extends AbstractValidator
 {

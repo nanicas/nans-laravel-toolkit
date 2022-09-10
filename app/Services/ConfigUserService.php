@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services;
+namespace Zevitagem\LaravelSaasTemplateCore\Services;
 
-use App\Services\AbstractService;
-use App\Repositories\ConfigUserRepository;
-use App\Helpers\Helper;
-use App\Validators\ConfigUserValidator;
-use App\Handlers\ConfigUserHandler;
-use App\Exceptions\CrudException;
-use App\Repositories\PainelRepository;
+use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\ConfigUserRepository;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Validators\ConfigUserValidator;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\ConfigUserHandler;
+use Zevitagem\LaravelSaasTemplateCore\Exceptions\CrudException;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\PainelRepository;
 
 class ConfigUserService extends AbstractService
 {

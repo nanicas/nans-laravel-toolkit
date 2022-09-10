@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
 
 use Zevitagem\LegoAuth\Repositories\ConfigUserRepository as BaseConfigUserRepository;
 

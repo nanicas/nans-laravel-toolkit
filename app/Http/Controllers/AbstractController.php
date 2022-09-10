@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
-use App\Http\Controllers\Controller;
-use App\Traits\Configurable;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Controller;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
 
 abstract class AbstractController extends Controller
 {

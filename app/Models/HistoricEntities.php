@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace Zevitagem\LaravelSaasTemplateCore\Models;
 
-use App\Models\AbstractModel;
+use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
 
 class HistoricEntities extends AbstractModel
 {

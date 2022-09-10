@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
-use App\Http\Controllers\DashboardController;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
-use App\Traits\AvailabilityWithService;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LegoAuth\Helpers\Helper;
 use Exception;

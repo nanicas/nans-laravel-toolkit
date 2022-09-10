@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Handlers;
+namespace Zevitagem\LaravelSaasTemplateCore\Handlers;
 
-use App\Handlers\AbstractHandler;
-use App\Helpers\Helper;
-use App\Models\Rule;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Models\Rule;
 
 class PainelHandler extends AbstractHandler
 {

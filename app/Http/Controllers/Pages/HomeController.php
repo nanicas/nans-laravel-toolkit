@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
-use App\Services\HomeService;
-use App\Traits\AvailabilityWithService;
-use App\Http\Controllers\DashboardController;
+use Zevitagem\LaravelSaasTemplateCore\Services\HomeService;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 
 class HomeController extends DashboardController
 {

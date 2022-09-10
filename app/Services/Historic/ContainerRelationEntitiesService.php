@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services\Historic;
+namespace Zevitagem\LaravelSaasTemplateCore\Services\Historic;
 
-use App\Repositories\PlanRepository;
-use App\Repositories\ModalityRepository;
-use App\Repositories\Config\CategoryConfigRepository;
-use App\Repositories\StudentRepository;
-use App\Repositories\HistoricEntitiesRepository;
-use App\Traits\AvailabilityWithDependencie;
-use App\Models\Historic;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\PlanRepository;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\ModalityRepository;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\CategoryConfigRepository;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\StudentRepository;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\HistoricEntitiesRepository;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Models\Historic;
 
 class ContainerRelationEntitiesService
 {

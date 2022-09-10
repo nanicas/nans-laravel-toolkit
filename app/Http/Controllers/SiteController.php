@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
-use App\Http\Controllers\AbstractController;
-use App\Traits\AvailabilityWithService;
+use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\AbstractController;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 
 abstract class SiteController extends AbstractController
 {

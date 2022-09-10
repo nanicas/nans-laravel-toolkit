@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Validators;
+namespace Zevitagem\LaravelSaasTemplateCore\Validators;
 
 class AbstractValidator
 {

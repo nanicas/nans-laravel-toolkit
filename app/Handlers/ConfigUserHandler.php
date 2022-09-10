@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Handlers;
+namespace Zevitagem\LaravelSaasTemplateCore\Handlers;
 
-use App\Handlers\AbstractHandler;
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class ConfigUserHandler extends AbstractHandler
 {

@@ -43,7 +43,7 @@
                         {{ $slugName }}
                     </span>
                     @if($config['logged'])
-                        <p class='theme-color-yellow'>{{ App\Helpers\Helper::getSessionData()['user']['name'] }}</p>
+                        <p class='theme-color-yellow'>{{ \Zevitagem\LaravelSaasTemplateCore\Helpers\Helper::getSessionData()['user']['name'] }}</p>
                     @endif
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

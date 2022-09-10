@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Models\Config;
 
-use App\Models\AbstractModel;
+use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Config\ComponentConfig;
+use Zevitagem\LaravelSaasTemplateCore\Models\Config\ComponentConfig;
 
 class EntityConfig extends AbstractModel
 {

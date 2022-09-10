@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Models\Config;
 
-use App\Models\AbstractModel;
-use App\Models\Config\DataAddressConfig;
+use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
+use Zevitagem\LaravelSaasTemplateCore\Models\Config\DataAddressConfig;
 
 class DataConfig extends AbstractModel
 {

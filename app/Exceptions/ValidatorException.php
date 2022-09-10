@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace Zevitagem\LaravelSaasTemplateCore\Exceptions;
 
 class ValidatorException extends \Exception
 {

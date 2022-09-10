@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Validators\Config;
+namespace Zevitagem\LaravelSaasTemplateCore\Validators\Config;
 
-use App\Validators\AbstractValidator;
-use App\Repositories\Config\ComponentConfigRepository;
-use App\Helpers\Helper;
-use App\Staters\ModelsStater;
-use App\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
+use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\ComponentConfigRepository;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Staters\ModelsStater;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
 
 class EntityConfigValidator extends AbstractValidator
 {

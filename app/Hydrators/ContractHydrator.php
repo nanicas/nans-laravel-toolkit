@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Hydrators;
+namespace Zevitagem\LaravelSaasTemplateCore\Hydrators;
 
 use Zevitagem\LegoAuth\Hydrators\ContractHydrator as BaseContractHydrator;
 
