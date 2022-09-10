@@ -34,19 +34,23 @@ class PackageServiceProvider extends ServiceProvider
         
         $this->publishes([
             $src.'/resources/css' => resource_path('template/css'),
-        ], 'template_core');
+        ], 'template_core:resources');
         
         $this->publishes([
             $src.'/resources/js' => resource_path('template/js'),
-        ], 'template_core');
+        ], 'template_core:resources');
         
         $this->publishes([
             $src.'/resources/sass' => resource_path('template/sass'),
-        ], 'template_core');
+        ], 'template_core:resources');
         
         $this->publishes([
             $src . '/public' => public_path('template')
-        ], 'template_core');
+        ], 'template_core:public');
+        
+        $this->publishes([
+            $src.'/routes' => base_path('routes'),
+        ], 'template_core:routes');
         
         $this->loadViewsFrom($src.'/resources/views', 'template_core');
     }
