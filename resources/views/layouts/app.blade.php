@@ -24,9 +24,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('vendor/ladda/ladda.min.css') }}" rel="stylesheet">
+        <link href="{{ asset($assets_prefix . '/vendor/ladda/ladda.min.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app_framework.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset($assets_prefix . '/css/app.css') }}" rel="stylesheet">
 
         @yield('css')
 
@@ -46,9 +46,9 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/app_framework.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('vendor/ladda/spin.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('vendor/ladda/ladda.min.js') }}" defer></script>
-    <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset($assets_prefix . '/vendor/ladda/spin.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset($assets_prefix . '/vendor/ladda/ladda.min.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset($assets_prefix . '/js/app.js') }}" defer></script>
 
     @yield('js')
 

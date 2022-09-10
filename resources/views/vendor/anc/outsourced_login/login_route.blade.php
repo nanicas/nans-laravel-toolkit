@@ -1,1 +1,0 @@
-{!! $route.'?'.\Zevitagem\LegoAuth\Helpers\Helper::createBuildQueryToOutLogin($data) !!}

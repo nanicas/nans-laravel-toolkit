@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends($view_prefix . 'layouts.dashboard')
 @section('dashboard-content')
     @if(!empty($applications))
         <div id="applications-box" class="container" data-route-temp-link="{{ route('generateTempAuthInSourcer') }}">

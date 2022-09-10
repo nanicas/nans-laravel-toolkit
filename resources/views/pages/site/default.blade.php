@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends($view_prefix . 'layouts.site')
 @section('site-content')
 
 <div>

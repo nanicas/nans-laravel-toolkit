@@ -5,6 +5,7 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Controller;
 use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 abstract class AbstractController extends Controller
 {
@@ -23,6 +24,8 @@ abstract class AbstractController extends Controller
     public function beforeView()
     {
         View::share('assets', $this->getConfig()['assets']);
+        View::share('view_prefix', Helper::getViewPrefix());
+        View::share('assets_prefix', Helper::getRootFolderNameOfAssets());
         View::share('screen', $this->getScreen());
     }
 
@@ -58,9 +61,10 @@ abstract class AbstractController extends Controller
     public function addIndexAssets()
     {
         $path = $this->definePathAssets();
+        $root = Helper::getRootFolderNameOfAssets();
         
-        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/index.js';
-        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/index.css';
+        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/index.js';
+        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/index.css';
     }
 
     public function addShowAssets()
@@ -70,9 +74,10 @@ abstract class AbstractController extends Controller
         }
         
         $path = $this->definePathAssets();
+        $root = Helper::getRootFolderNameOfAssets();
 
-        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/show.js';
-        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/show.css';
+        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/show.js';
+        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/show.css';
     }
 
     public function addCreateAssets()
@@ -82,17 +87,18 @@ abstract class AbstractController extends Controller
         }
         
         $path = $this->definePathAssets();
+        $root = Helper::getRootFolderNameOfAssets();
 
-        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/create.js';
-        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/create.css';
+        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/create.js';
+        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/create.css';
     }
 
     public function addListAssets()
     {
         $path = $this->definePathAssets();
+        $root = Helper::getRootFolderNameOfAssets();
         
-        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/list.js';
-        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/list.css';
+        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/list.js';
+        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/list.css';
     }
-
 }

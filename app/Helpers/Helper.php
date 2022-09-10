@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 
 class Helper
 {
+    const VIEW_PREFIX = 'template_core::';
+    
+    public static function getViewPrefix()
+    {
+        return self::VIEW_PREFIX;
+    }
+    
+    public static function getRootFolderNameOfAssets()
+    {
+        return 'template';
+    }
+
     public static function getAppId()
     {
         return config('app.app_id');
@@ -97,6 +109,12 @@ class Helper
                     'status' => 'false',
                     'content' => $view,
                         ], 405);
+    }
+    
+    public static function view(string $path, array $data = [], bool $packaged = false)
+    {
+        $path = ($packaged) ?: Helper::getViewPrefix() . $path;
+        return view($path, $data);
     }
 
     public static function groupArrayByKeys(array $data, array $keys)

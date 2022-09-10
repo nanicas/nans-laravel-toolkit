@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($view_prefix . 'layouts.app')
 
 @section('css')
 <style>
@@ -293,7 +293,7 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('vendor/bootstrap-theme/feather.min.js') }}"></script>
+<script src="{{ asset($assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
 <script>
     (function () {
     'use strict'

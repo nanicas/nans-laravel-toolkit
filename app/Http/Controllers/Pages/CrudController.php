@@ -32,16 +32,19 @@ abstract class CrudController extends DashboardController
     public function addFormAssets()
     {
         $path = $this->definePathAssets();
+        $root = Helper::getRootFolderNameOfAssets();
 
-        $this->config['assets']['js'][] = 'resources/layouts/crud/form.js';
-        $this->config['assets']['css'][] = 'resources/layouts/crud/form.css';
-        $this->config['assets']['js'][] = 'resources/pages/' . $path . '/form.js';
-        $this->config['assets']['css'][] = 'resources/pages/' . $path . '/form.css';
+        $this->config['assets']['js'][] = $root . '/resources/layouts/crud/form.js';
+        $this->config['assets']['css'][] = $root . '/resources/layouts/crud/form.css';
+        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/form.js';
+        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/form.css';
     }
 
     public function addListAssets()
     {
-        parent::addJsAssets('resources/layouts/crud/list.js');
+        $root = Helper::getRootFolderNameOfAssets();
+        
+        parent::addJsAssets($root . '/resources/layouts/crud/list.js');
         parent::addListAssets();
     }
 

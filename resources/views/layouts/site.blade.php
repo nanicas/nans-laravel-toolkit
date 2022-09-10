@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends($view_prefix . 'layouts.app')
 @section('content')
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">

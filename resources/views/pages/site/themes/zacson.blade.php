@@ -1,4 +1,4 @@
-@extends('layouts.site-theme')
+@extends($view_prefix . 'layouts.site-theme')
 
 @section('css')
     <!--<link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/bootstrap.min.css') }}">

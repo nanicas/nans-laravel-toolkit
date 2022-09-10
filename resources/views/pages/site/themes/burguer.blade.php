@@ -1,4 +1,4 @@
-@extends('layouts.site-theme')
+@extends($view_prefix . 'layouts.site-theme')
 
 @section('css')
 <!-- bootstrap core css 

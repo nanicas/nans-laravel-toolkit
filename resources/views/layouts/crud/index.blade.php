@@ -1,4 +1,4 @@
-@extends('layouts.dashboard', compact('screen'))
+@extends($view_prefix . 'layouts.dashboard', compact('screen'))
 @section('dashboard-content')
 
 <div class="card">

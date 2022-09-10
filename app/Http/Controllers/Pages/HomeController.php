@@ -5,6 +5,7 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 use Zevitagem\LaravelSaasTemplateCore\Services\HomeService;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class HomeController extends DashboardController
 {
@@ -24,7 +25,7 @@ class HomeController extends DashboardController
 
         $data = $this->service->getIndexData();
 
-        return view('pages.home.index', $data);
+        return Helper::view('pages.home.index', $data);
     }
 
 }
