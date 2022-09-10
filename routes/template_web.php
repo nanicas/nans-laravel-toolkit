@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LegoAuth\Helpers\Helper;
 
 $middlewares = Helper::defineLaravelWebMiddlewares(['web'], $legoConfig);
 
