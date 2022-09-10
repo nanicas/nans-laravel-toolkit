@@ -25,7 +25,8 @@ class SiteController extends SiteBase
 
         $this->addIndexAssets();
         $this->beforeView();
+        $packaged = $this->isPackagedView();
 
-        return Helper::view($view, $data);
+        return Helper::view($view, $data, $packaged);
     }
 }

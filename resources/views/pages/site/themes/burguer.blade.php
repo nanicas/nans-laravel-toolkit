@@ -2,19 +2,19 @@
 
 @section('css')
 <!-- bootstrap core css 
- <link rel="stylesheet" type="text/css" href="{{ asset('resources/layouts/site/themes/burguer/css/bootstrap.css') }}" />-->
+ <link rel="stylesheet" type="text/css" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/css/bootstrap.css') }}" />-->
 
 <!--owl slider stylesheet -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 <!-- nice select  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
 <!-- font awesome style 
-<link href="{{ asset('resources/layouts/site/themes/burguer/css/font-awesome.min.css') }}" rel="stylesheet" />-->
+<link href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/css/font-awesome.min.css') }}" rel="stylesheet" />-->
 
 <!-- Custom styles for this template -->
-<link href="{{ asset('resources/layouts/site/themes/burguer/css/style.css') }}" rel="stylesheet" />
+<link href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/css/style.css') }}" rel="stylesheet" />
 <!-- responsive style -->
-<link href="{{ asset('resources/layouts/site/themes/burguer/css/responsive.css') }}" rel="stylesheet" />
+<link href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/css/responsive.css') }}" rel="stylesheet" />
 
 <style>
     .theme-color-yellow {
@@ -31,7 +31,7 @@
 
 <div class="hero_area">
     <div class="bg-box">
-        <img src="{{ asset('resources/layouts/site/themes/burguer/images/hero-bg.jpg') }}" alt="">
+        <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/hero-bg.jpg') }}" alt="">
     </div>
     <!-- header section strats -->
     <header class="header_section">
@@ -242,7 +242,7 @@
                 <div class="col-md-6  ">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="{{ asset('resources/layouts/site/themes/burguer/images/o1.jpg') }}" alt="">
+                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/o1.jpg') }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>
@@ -311,7 +311,7 @@
                 <div class="col-md-6  ">
                     <div class="box ">
                         <div class="img-box">
-                            <img src="{{ asset('resources/layouts/site/themes/burguer/images/o2.jpg') }}" alt="">
+                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/o2.jpg') }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>
@@ -433,7 +433,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f1.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f1.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -509,7 +509,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f2.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f2.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -585,7 +585,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f3.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f3.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -661,7 +661,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f4.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f4.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -737,7 +737,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f5.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f5.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -813,7 +813,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f6.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f6.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -889,7 +889,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f7.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f7.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -965,7 +965,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f8.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f8.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -1041,7 +1041,7 @@
                     <div class="box">
                         <div>
                             <div class="img-box">
-                                <img src="{{ asset('resources/layouts/site/themes/burguer/images/f9.png') }}" alt="">
+                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/f9.png') }}" alt="">
                             </div>
                             <div class="detail-box">
                                 <h5>
@@ -1133,7 +1133,7 @@
         <div class="row">
             <div class="col-md-6 ">
                 <div class="img-box">
-                    <img src="{{ asset('resources/layouts/site/themes/burguer/images/about-img.png') }}" alt="">
+                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/about-img.png') }}" alt="">
                 </div>
             </div>
             <div class="col-md-6">
@@ -1230,7 +1230,7 @@
                             </p>
                         </div>
                         <div class="img-box">
-                            <img src="{{ asset('resources/layouts/site/themes/burguer/images/client1.jpg') }}" alt="" class="box-img">
+                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/client1.jpg') }}" alt="" class="box-img">
                         </div>
                     </div>
                 </div>
@@ -1248,7 +1248,7 @@
                             </p>
                         </div>
                         <div class="img-box">
-                            <img src="{{ asset('resources/layouts/site/themes/burguer/images/client2.jpg') }}" alt="" class="box-img">
+                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/images/client2.jpg') }}" alt="" class="box-img">
                         </div>
                     </div>
                 </div>
@@ -1340,22 +1340,22 @@
 @endsection
 
 @section('js')
-<script src="{{ asset('vendor/bootstrap-theme/feather.min.js') }}"></script>
+<script src="{{ asset($packaged_assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
 <!-- jQery
   <script src="js/jquery-3.4.1.min.js"></script>-->
 <!-- popper js
 <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
 <!-- bootstrap js 
-<script src="{{ asset('resources/layouts/site/themes/burguer/js/bootstrap.js') }}"></script>-->
+<script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/js/bootstrap.js') }}"></script>-->
 <!-- owl slider -->
-<script defer src="{{ asset('resources/layouts/site/themes/burguer/js/owl-carousel.min.js') }}"></script>
+<script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/js/owl-carousel.min.js') }}"></script>
 <!-- isotope js -->
 <script defer src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
 <!-- nice select 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
 <!-- custom js -->
-<script defer src="{{ asset('resources/layouts/site/themes/burguer/js/custom.js') }}"></script>
+<script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/burguer/js/custom.js') }}"></script>
 <!-- Google Map -->
 <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
 </script>

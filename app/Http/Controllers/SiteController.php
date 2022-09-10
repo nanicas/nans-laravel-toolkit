@@ -11,6 +11,8 @@ abstract class SiteController extends AbstractController
     
     public function __construct()
     {
+        parent::__construct();
+        
         $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
         
         $this->config['assets']['js'][] = $packagedRoot . '/js/site.js';

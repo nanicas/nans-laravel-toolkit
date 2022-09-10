@@ -6,11 +6,9 @@ use Zevitagem\LaravelSaasTemplateCore\Services\Config\EntityConfigService;
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
 use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
 use Illuminate\Http\Request;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class EntityConfigController extends CrudController
 {
-
     use IsConfigurationPageSection;
 
     public function __construct(EntityConfigService $service)
@@ -34,7 +32,6 @@ class EntityConfigController extends CrudController
             $message = $ex->getMessage();
         }
 
-        return Helper::view('pages.config.entity_config.form-by-component', compact('data', 'message'));
+        return $this->createView('', 'entity_config.form-by-component', compact('data', 'message'));
     }
-
 }

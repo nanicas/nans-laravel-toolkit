@@ -1,19 +1,19 @@
 @extends($view_prefix . 'layouts.site-theme')
 
 @section('css')
-    <!--<link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/owl.carousel.min.css') }}">-->
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/slicknav.css') }}">
-    <!--<link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/gijgo.css') }}">-->
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/animated-headline.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/magnific-popup.css') }}">
-    <!--<link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/themify-icons.css') }}">-->
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/slick.css') }}">
-    <!--<link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/nice-select.css') }}">-->
-    <link rel="stylesheet" href="{{ asset('resources/layouts/site/themes/zacson/css/style.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/owl.carousel.min.css') }}">-->
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/slicknav.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/gijgo.css') }}">-->
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/animated-headline.css') }}">
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/magnific-popup.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/themify-icons.css') }}">-->
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/slick.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/nice-select.css') }}">-->
+    <link rel="stylesheet" href="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/css/style.css') }}">
 
     <style>
         .team-area .single-cat .cat-icon img {
@@ -62,7 +62,7 @@
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
                     <a href="#">Carregando ...</a>
-    <!--                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/logo/loder.png') }}" alt="">-->
+    <!--                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/logo/loder.png') }}" alt="">-->
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
                         <div class="logo">
                             @php $slugName = $config['slug']->getName() @endphp
                             <a href="#">{{ $slugName }}</a>
-    <!--                            <a href="index.html"><img src="{{ asset('resources/layouts/site/themes/zacson/img/logo/logo.png') }}" alt=""></a>-->
+    <!--                            <a href="index.html"><img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/logo/logo.png') }}" alt=""></a>-->
                         </div>
                         <!-- Main-menu -->
                         <div class="main-menu f-right d-none d-lg-block">
@@ -170,7 +170,7 @@
                         <div class="col-xl-6 col-lg-6">
                             <div class="single-topic text-center mb-30">
                                 <div class="topic-img">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/cat1.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/cat1.png') }}" alt="">
                                     <div class="topic-content-box">
                                         <div class="topic-content">
                                             <h3>Personal traning</h3>
@@ -184,7 +184,7 @@
                         <div class="col-xl-6 col-lg-6">
                             <div class="single-topic text-center mb-30">
                                 <div class="topic-img">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/cat2.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/cat2.png') }}" alt="">
                                     <div class="topic-content-box">
                                         <div class="topic-content">
                                             <h3>Group traning</h3>
@@ -227,7 +227,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s" >
                                 <div class="cat-icon">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/team1.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/team1.png') }}" alt="">
                                 </div>
                                 <div class="cat-cap">
                                     <h5><a href="#">Body Building</a></h5>
@@ -238,7 +238,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                                 <div class="cat-icon">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/team2.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/team2.png') }}" alt="">
                                 </div>
                                 <div class="cat-cap">
                                     <h5><a href="#">Muscle Gain</a></h5>
@@ -249,7 +249,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-cat text-center mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
                                 <div class="cat-icon">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/team3.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/team3.png') }}" alt="">
                                 </div>
                                 <div class="cat-cap">
                                     <h5><a href="#">Weight Loss</a></h5>
@@ -282,7 +282,7 @@
                     @else
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery1.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery1.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -293,7 +293,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery2.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery2.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -304,7 +304,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery3.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery3.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -315,7 +315,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery4.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery4.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -326,7 +326,7 @@
                         </div>
                         <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery5.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery5.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -337,7 +337,7 @@
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
                             <div class="box snake mb-30">
-                                <div class="gallery-img big-img" style="background-image: url('{{ asset('resources/layouts/site/themes/zacson/img/gallery/gallery6.png') }}')"></div>
+                                <div class="gallery-img big-img" style="background-image: url('{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/gallery6.png') }}')"></div>
                                 <div class="overlay">
                                     <div class="overlay-content">
                                         <h3>Muscle gaining </h3>
@@ -369,7 +369,7 @@
                                 <div class="properties mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                                     <div class="properties__card">
                                         <div class="about-icon">
-                                            <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
+                                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
                                         </div>
                                         <div class="properties__caption">
                                             <span class="month">{{ $plan->getName() }}</span>
@@ -379,7 +379,7 @@
                                                 <div class="single-features">
                                                     <div class="features-icon">
                                                         <i data-feather="check-square"></i>
-                <!--                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">-->
+                <!--                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">-->
                                                     </div>
                                                     <div class="features-caption">
                                                         <p>{{ $modality->getName() }}</p>
@@ -389,7 +389,7 @@
                                                 <div class="single-features">
                                                     <div class="features-icon">
                                                         <i data-feather="alert-triangle"></i>
-                <!--                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">-->
+                <!--                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">-->
                                                     </div>
                                                     <div class="features-caption">
                                                         <p>Nenhuma modalidade ou benefício cadastrado</p>
@@ -408,14 +408,14 @@
                             <div class="properties mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
                                 <div class="properties__card">
                                     <div class="about-icon">
-                                        <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
+                                        <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
                                     </div>
                                     <div class="properties__caption">
                                         <span class="month">6 month</span>
                                         <p class="mb-25">$30/m  <span>(Single class)</span></p>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Free riding </p>
@@ -423,7 +423,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Unlimited equipments</p>
@@ -431,7 +431,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Personal trainer</p>
@@ -439,7 +439,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Weight losing classes</p>
@@ -447,7 +447,7 @@
                                         </div>
                                         <div class="single-features mb-20">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Month to mouth</p>
@@ -462,14 +462,14 @@
                             <div class="properties mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                                 <div class="properties__card">
                                     <div class="about-icon">
-                                        <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
+                                        <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
                                     </div>
                                     <div class="properties__caption">
                                         <span class="month">6 month</span>
                                         <p class="mb-25">$30/m  <span>(Single class)</span></p>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Free riding </p>
@@ -477,7 +477,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Unlimited equipments</p>
@@ -485,7 +485,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Personal trainer</p>
@@ -493,7 +493,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Weight losing classes</p>
@@ -501,7 +501,7 @@
                                         </div>
                                         <div class="single-features mb-20">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Month to mouth</p>
@@ -516,14 +516,14 @@
                             <div class="properties mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".6s">
                                 <div class="properties__card">
                                     <div class="about-icon">
-                                        <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
+                                        <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/price.svg') }}" alt="">
                                     </div>
                                     <div class="properties__caption">
                                         <span class="month">6 month</span>
                                         <p class="mb-25">$30/m  <span>(Single class)</span></p>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Free riding </p>
@@ -531,7 +531,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Unlimited equipments</p>
@@ -539,7 +539,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Personal trainer</p>
@@ -547,7 +547,7 @@
                                         </div>
                                         <div class="single-features">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Weight losing classes</p>
@@ -555,7 +555,7 @@
                                         </div>
                                         <div class="single-features mb-20">
                                             <div class="features-icon">
-                                                <img src="{{ asset('resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
+                                                <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/icon/check.svg') }}" alt="">
                                             </div>
                                             <div class="features-caption">
                                                 <p>Month to mouth</p>
@@ -588,7 +588,7 @@
                     <div class="right-content2">
                         <!-- img -->
                         <div class="right-img wow fadeInUp" data-wow-duration="1s" data-wow-delay=".1s">
-                            <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/about.png') }}" alt="">
+                            <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/about.png') }}" alt="">
                         </div>
                     </div>
                     <div class="left-content2">
@@ -625,7 +625,7 @@
                         <div class="home-blog-single mb-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".4s">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/blog1.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/blog1.png') }}" alt="">
                                 </div>
                                 <div class="blog-cap">
                                     <span>Gym & Fitness</span>
@@ -638,7 +638,7 @@
                         <div class="home-blog-single mb-30 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".6s">
                             <div class="blog-img-cap">
                                 <div class="blog-img">
-                                    <img src="{{ asset('resources/layouts/site/themes/zacson/img/gallery/blog2.png') }}" alt="">
+                                    <img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/blog2.png') }}" alt="">
                                 </div>
                                 <div class="blog-cap">
                                     <span>Gym & Fitness</span>
@@ -652,7 +652,7 @@
         </section>
         <!-- Blog Area End -->
         <!--? video_start -->
-        <div class="video-area section-bg2 d-flex align-items-center" data-background="{{ asset('resources/layouts/site/themes/zacson/img/gallery/video-bg.png') }}">
+        <div class="video-area section-bg2 d-flex align-items-center" data-background="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/gallery/video-bg.png') }}">
             <div class="container">
                 <div class="video-wrap position-relative">
                     <div class="video-icon" >
@@ -758,7 +758,7 @@
                             <div class="single-footer-caption mb-50 text-center">
                                 <!-- logo -->
                                 <div class="footer-logo wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">
-    <!--                                <a href="index.html"><img src="{{ asset('resources/layouts/site/themes/zacson/img/logo/logo2_footer.png') }}" alt=""></a>-->
+    <!--                                <a href="index.html"><img src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/img/logo/logo2_footer.png') }}" alt=""></a>-->
                                     <h1>{{ $slugName }}</h1>
                                 </div>
                                 <!-- Menu -->
@@ -835,46 +835,46 @@
 @section('js')
 
     <!-- Jquery, Popper, Bootstrap 
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/vendor/modernizr-3.5.0.min.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/vendor/jquery-1.12.4.min.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/popper.min.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/bootstrap.min.js') }}"></script>-->
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/vendor/modernizr-3.5.0.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/vendor/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/popper.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/bootstrap.min.js') }}"></script>-->
     <!-- Jquery Mobile Menu -->
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.slicknav.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.slicknav.min.js') }}"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins 
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/owl.carousel.min.js') }}"></script>-->
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/slick.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/owl.carousel.min.js') }}"></script>-->
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/slick.min.js') }}"></script>
     <!-- One Page, Animated-HeadLin -->
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/wow.min.js') }}"></script>
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/animated.headline.js') }}"></script>
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.magnific-popup.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/wow.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/animated.headline.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.magnific-popup.js') }}"></script>
 
     <!-- Date Picker 
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/gijgo.min.js') }}"></script>-->
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/gijgo.min.js') }}"></script>-->
     <!-- Nice-select, sticky 
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.sticky.js') }}"></script>-->
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.sticky.js') }}"></script>-->
 
     <!-- counter, waypoint, Hover Direction 
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.counterup.min.js') }}"></script>
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/waypoints.min.js') }}"></script>
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.countdown.min.js') }}"></script>-->
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/hover-direction-snake.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.counterup.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/waypoints.min.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.countdown.min.js') }}"></script>-->
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/hover-direction-snake.min.js') }}"></script>
 
     <!-- contact js 
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/contact.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.form.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.validate.min.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/mail-script.js') }}"></script>
-    <script src="{{ asset('resources/layouts/site/themes/zacson/js/jquery.ajaxchimp.min.js') }}"></script>-->
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/contact.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.form.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/mail-script.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/jquery.ajaxchimp.min.js') }}"></script>-->
 
     <!-- Icons -->
-    <script src="{{ asset('vendor/bootstrap-theme/feather.min.js') }}"></script>
+    <script src="{{ asset($packaged_assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
 
     <!-- Jquery Plugins, main Jquery -->	
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/plugins.js') }}"></script>
-    <script defer src="{{ asset('resources/layouts/site/themes/zacson/js/main.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/plugins.js') }}"></script>
+    <script defer src="{{ asset($packaged_assets_prefix . '/resources/layouts/site/themes/zacson/js/main.js') }}"></script>
     
     <!-- Map -->
     <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=initMap"></script>

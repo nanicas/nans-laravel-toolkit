@@ -11,7 +11,7 @@ class CrudException extends \Exception
     )
     {
         $message = Helper::view(
-            'components.validator-messages', ['messages' => [$message]]
+            'components.validator-messages', ['messages' => [$message]], true
         )->render();
 
         parent::__construct($message, $code, $previous);

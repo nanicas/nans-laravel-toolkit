@@ -76,6 +76,6 @@ class AbstractValidator
             return implode($this->getTextSeparator(), $this->errors);
         }
 
-        return Helper::view('components.validator-messages', ['messages' => $this->errors])->render();
+        return Helper::view('components.validator-messages', ['messages' => $this->errors], true)->render();
     }
 }

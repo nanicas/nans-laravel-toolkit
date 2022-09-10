@@ -3,46 +3,42 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Services\Site;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\PlanRepository;
 use Zevitagem\LaravelSaasTemplateCore\Repositories\SiteEntityRepository;
 use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\DataConfigRepository;
 
 class DataSiteService extends AbstractService
 {
     public function __construct(
-        PlanRepository $planRepository,
         SiteEntityRepository $siteEntityRepository,
         DataConfigRepository $dataConfigRepository
     )
     {
-        $this->setDependencie('plan_repository', $planRepository);
         $this->setDependencie('site_entity_repository', $siteEntityRepository);
         $this->setDependencie('data_config_repository', $dataConfigRepository);
+    }
+    
+    protected function extractSlugIdFromConfig(array $config)
+    {
+        return (is_object($config['slug'])) ? $config['slug']->getPrimaryValue() : null;
     }
 
     public function getIndexData(array $config)
     {
         $data = [];
-        $slugId = (is_object($config['slug'])) ? $config['slug']->getPrimaryValue() : null;
+        $slugId = $this->extractSlugIdFromConfig($config);
 
-        $data['plans'] = $this->getPlans($slugId);
         $data['categories'] = $this->getContents($slugId)['categories'];
         $data['slug_data'] = $this->getSlugConfigData($slugId);
 
         return $data;
     }
 
-    private function getPlans(?int $slugId)
-    {
-        return (!empty($slugId)) ? $this->getDependencie('plan_repository')->getBySlug($slugId) : [];
-    }
-
-    private function getSlugConfigData(?int $slugId)
+    protected function getSlugConfigData(?int $slugId)
     {
         return (!empty($slugId)) ? $this->getDependencie('data_config_repository')->getBySlug($slugId) : [];
     }
 
-    private function getContents(?int $slugId)
+    protected function getContents(?int $slugId)
     {
         $entities = (!empty($slugId)) ? $this->getDependencie('site_entity_repository')->getEntitiesBySlug($slugId) : [];
         $cache = [
