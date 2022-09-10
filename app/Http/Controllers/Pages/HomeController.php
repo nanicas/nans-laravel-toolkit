@@ -24,8 +24,9 @@ class HomeController extends DashboardController
         $this->beforeView();
 
         $data = $this->service->getIndexData();
+        $packaged = $this->isPackagedView();
 
-        return Helper::view('pages.home.index', $data);
+        return Helper::view('pages.home.index', $data, $packaged);
     }
 
 }

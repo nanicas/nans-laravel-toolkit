@@ -1,5 +1,5 @@
 @if(isset($state))
-    @include('layouts.crud.messages-state', ['state' => $state])
+    @include($view_prefix . 'layouts.crud.messages-state', ['state' => $state])
 @endif
 
 @php $hasRows = ($rows->count() > 0); @endphp

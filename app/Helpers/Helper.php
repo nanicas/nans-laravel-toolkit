@@ -99,7 +99,7 @@ class Helper
 
     public static function notAllowedResponse(Request $request)
     {
-        $view = view('layouts.error.not_allowed')->render();
+        $view = self::view('layouts.error.not_allowed')->render();
 
         if (!$request->ajax()) {
             return response($view);
@@ -113,7 +113,7 @@ class Helper
     
     public static function view(string $path, array $data = [], bool $packaged = false)
     {
-        $path = ($packaged) ?: Helper::getViewPrefix() . $path;
+        $path = (!$packaged) ? $path : self::getViewPrefix() . $path;
         return view($path, $data);
     }
 

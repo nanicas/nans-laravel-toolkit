@@ -4,6 +4,7 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\SiteController as SiteBase;
 use Zevitagem\LaravelSaasTemplateCore\Services\Site\SiteService;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Http\Request;
 
 class SiteController extends SiteBase
@@ -25,6 +26,6 @@ class SiteController extends SiteBase
         $this->addIndexAssets();
         $this->beforeView();
 
-        return view($view, $data);
+        return Helper::view($view, $data);
     }
 }

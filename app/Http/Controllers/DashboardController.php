@@ -15,8 +15,8 @@ abstract class DashboardController extends AbstractController
     {
         parent::__construct();
 
-        $root = Helper::getRootFolderNameOfAssets();
-        
+        $root = $this->getRootFolderNameOfAssetsPackaged();
+
         $this->config['assets']['js'][] = $root . '/js/dashboard.js';
     }
 

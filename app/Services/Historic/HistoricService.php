@@ -5,7 +5,6 @@ namespace Zevitagem\LaravelSaasTemplateCore\Services\Historic;
 use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
 use Zevitagem\LaravelSaasTemplateCore\Repositories\HistoricRepository;
 use Zevitagem\LegoAuth\Helpers\Helper;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\ModalityRepository;
 use Zevitagem\LaravelSaasTemplateCore\Validators\HistoricValidator;
 use Zevitagem\LaravelSaasTemplateCore\Handlers\HistoricHandler;
 use Zevitagem\LaravelSaasTemplateCore\Services\Historic\ContainerRelationEntitiesService;
@@ -14,7 +13,6 @@ class HistoricService extends AbstractCrudService
 {
     public function __construct(
         HistoricRepository $repository,
-        ModalityRepository $planRepository,
         HistoricValidator $validator,
         HistoricHandler $handler,
         ContainerRelationEntitiesService $containerRelationEntitiesService
@@ -24,7 +22,6 @@ class HistoricService extends AbstractCrudService
         parent::setValidator($validator);
         parent::setHandler($handler);
 
-        $this->setDependencie('modality_repository', $planRepository);
         $this->setDependencie('container_relation_entities_service', $containerRelationEntitiesService);
     }
 

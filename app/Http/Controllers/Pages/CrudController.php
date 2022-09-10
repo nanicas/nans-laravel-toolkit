@@ -6,7 +6,7 @@ use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 use Illuminate\Support\Facades\View;
-use Zevitagem\LegoAuth\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Exception;
 
 abstract class CrudController extends DashboardController
@@ -32,25 +32,28 @@ abstract class CrudController extends DashboardController
     public function addFormAssets()
     {
         $path = $this->definePathAssets();
-        $root = Helper::getRootFolderNameOfAssets();
+        $root = $this->getRootFolderNameOfAssets();
+        $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
 
-        $this->config['assets']['js'][] = $root . '/resources/layouts/crud/form.js';
-        $this->config['assets']['css'][] = $root . '/resources/layouts/crud/form.css';
-        $this->config['assets']['js'][] = $root . '/resources/pages/' . $path . '/form.js';
-        $this->config['assets']['css'][] = $root . '/resources/pages/' . $path . '/form.css';
+        $this->config['assets']['js'][] = $packagedRoot . '/resources/layouts/crud/form.js';
+        $this->config['assets']['css'][] = $packagedRoot . '/resources/layouts/crud/form.css';
+        $this->config['assets']['js'][] = $root . 'resources/pages/' . $path . '/form.js';
+        $this->config['assets']['css'][] = $root . 'resources/pages/' . $path . '/form.css';
     }
 
     public function addListAssets()
     {
-        $root = Helper::getRootFolderNameOfAssets();
+        $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
         
-        parent::addJsAssets($root . '/resources/layouts/crud/list.js');
+        parent::addJsAssets($packagedRoot . '/resources/layouts/crud/list.js');
         parent::addListAssets();
     }
 
     protected function createView(string $screen, string $view, array $data)
     {
-        return view("pages.$screen.$view", $data)->render();
+        $packaged = $this->isPackagedView();
+
+        return Helper::view("pages.$screen.$view", $data, $packaged)->render();
     }
     
     public function beforeView()

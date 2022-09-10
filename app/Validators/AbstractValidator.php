@@ -2,6 +2,8 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Validators;
 
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+
 class AbstractValidator
 {
     private $data;
@@ -74,6 +76,6 @@ class AbstractValidator
             return implode($this->getTextSeparator(), $this->errors);
         }
 
-        return view('components.validator-messages', ['messages' => $this->errors])->render();
+        return Helper::view('components.validator-messages', ['messages' => $this->errors])->render();
     }
 }

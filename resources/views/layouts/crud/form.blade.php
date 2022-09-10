@@ -1,6 +1,6 @@
 @extends($view_prefix . 'layouts.dashboard')
 @section('dashboard-content')
 
-    @include('components.form', compact('data', 'status', 'message', 'screen'))
+    @include($view_prefix . 'components.form', compact('data', 'status', 'message', 'screen'))
 
 @endsection

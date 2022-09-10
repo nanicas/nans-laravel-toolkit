@@ -9,10 +9,10 @@
 <div id="accordion">
     @if($isUpdate)
         @foreach($data['row']->addresses as $address)
-            @include('pages.config.data_config.address-form', ['data' => $address, 'isUpdate' => $isUpdate])
+            @include($view_prefix . 'pages.config.data_config.address-form', ['data' => $address, 'isUpdate' => $isUpdate])
         @endforeach
     @else
-        @include('pages.config.data_config.address-form', ['isUpdate' => $isUpdate])
+        @include($view_prefix . 'pages.config.data_config.address-form', ['isUpdate' => $isUpdate])
     @endif
 </div>
 <br>

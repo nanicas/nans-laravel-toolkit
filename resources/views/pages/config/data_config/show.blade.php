@@ -1,1 +1,1 @@
-@include('pages.config.data_config.form')
+@include($view_prefix . 'pages.config.data_config.form')

@@ -4,7 +4,6 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\Historic\HistoricService;
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class HistoricController extends CrudController
 {
@@ -19,9 +18,9 @@ class HistoricController extends CrudController
     {
         parent::addFormAssets();
         
-        $root = Helper::getRootFolderNameOfAssets();
+        $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
 
-        $this->config['assets']['js'][]  = $root . '/vendor/select2/js/select2.min.js';
-        $this->config['assets']['css'][] = $root . '/vendor/select2/css/select2.min.css';
+        $this->config['assets']['js'][]  = $packagedRoot . '/vendor/select2/js/select2.min.js';
+        $this->config['assets']['css'][] = $packagedRoot . '/vendor/select2/css/select2.min.css';
     }
 }

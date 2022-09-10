@@ -32,8 +32,10 @@ trait IsConfigurationPageSection
 
     protected function onConstructSection()
     {
-        $this->addJsAssets('resources/layouts/config/index.js');
-        $this->addCssAssets('resources/layouts/config/index.css');
+        $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
+        
+        $this->addJsAssets($packagedRoot . '/resources/layouts/config/index.js');
+        $this->addCssAssets($packagedRoot . '/resources/layouts/config/index.css');
 
         $this->setSectionName($this->getScreen());
     }

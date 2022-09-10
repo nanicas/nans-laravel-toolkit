@@ -293,7 +293,7 @@
 @endsection
 
 @section('js')
-<script src="{{ asset($assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
+<script src="{{ asset($packaged_assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
 <script>
     (function () {
     'use strict'

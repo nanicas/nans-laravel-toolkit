@@ -4,7 +4,6 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\AbstractController;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 abstract class SiteController extends AbstractController
 {
@@ -12,9 +11,9 @@ abstract class SiteController extends AbstractController
     
     public function __construct()
     {
-        $root = Helper::getRootFolderNameOfAssets();
+        $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
         
-        $this->config['assets']['js'][] = $root . '/js/site.js';
+        $this->config['assets']['js'][] = $packagedRoot . '/js/site.js';
     }
 
     public function addIndexAssets()
