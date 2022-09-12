@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
 use Zevitagem\LaravelSaasTemplateCore\View\Components\DynamicEntityComponent;
 
-class PackageServiceProvider extends ServiceProvider
+class BootstrapServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
