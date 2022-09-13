@@ -2,11 +2,14 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as VendorServiceProvider;
 use Illuminate\Support\Facades\Route;
+use App\Providers\RouteServiceProvider as MainRouteServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider
+class RouteServiceProvider extends VendorServiceProvider
 {
+    public const HOME = MainRouteServiceProvider::HOME;
+    
     public function boot()
     {
         Route::namespace($this->namespace)
