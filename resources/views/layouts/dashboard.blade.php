@@ -163,25 +163,7 @@
                             Dashboard <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ ($screen == 'scheduling') ? 'active' : '' }}" href="{{ route('scheduling.index') }}">
-                            <span data-feather="calendar"></span>
-                            Agendamentos
-                        </a>
-                    </li>
                     @if($is_admin)
-                    <li class="nav-item">
-                        <a class="nav-link {{ ($screen == 'student') ? 'active' : '' }}" href="{{ route('student.index') }}">
-                            <span data-feather="user"></span>
-                            Alunos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ ($screen == 'plan') ? 'active' : '' }}" href="{{ route('plan.index') }}">
-                            <span data-feather="package"></span>
-                            Planos
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link {{ ($screen == 'modality') ? 'active' : '' }}" href="{{ route('modality.index') }}">
                             <span data-feather="grid"></span>
@@ -245,12 +227,12 @@
                   <li class="breadcrumb-item"><a href="{{ route('home.index') }}">Dashboard</a></li>
 
                   @php
-                  $routeInstance = \Request::route();
-                  $routeName = $routeInstance->getName();
-                  $routeParameters = $routeInstance->parameters();
-                  $routePaths = explode('.', $routeName);
-                  $totalRoutePaths = count($routePaths);
-                  $isListPage = ($totalRoutePaths == 2 && $routePaths[1] == 'index');
+                    $routeInstance = \Request::route();
+                    $routeName = $routeInstance->getName();
+                    $routeParameters = $routeInstance->parameters();
+                    $routePaths = explode('.', $routeName);
+                    $totalRoutePaths = count($routePaths);
+                    $isListPage = ($totalRoutePaths == 2 && $routePaths[1] == 'index');
                   @endphp
 
                   @if($totalRoutePaths == 1)

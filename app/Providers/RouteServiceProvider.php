@@ -9,7 +9,11 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Route::namespace($this->namespace)
-                ->group(base_path('routes/template_web.php'));
+        $file = base_path('routes/template_web.php');
+
+        if (file_exists($file)) {
+            Route::namespace($this->namespace)
+                    ->group($file);
+        }
     }
 }
