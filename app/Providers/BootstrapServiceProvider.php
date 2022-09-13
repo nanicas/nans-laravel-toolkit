@@ -45,6 +45,10 @@ class BootstrapServiceProvider extends ServiceProvider
         ], 'template_core:resources');
         
         $this->publishes([
+            $src.'/resources/views' => resource_path('views/vendor/template'),
+        ], 'template_core:views');
+        
+        $this->publishes([
             $src . '/public' => public_path('template')
         ], 'template_core:public');
         
@@ -52,6 +56,6 @@ class BootstrapServiceProvider extends ServiceProvider
             $src.'/routes' => base_path('routes'),
         ], 'template_core:routes');
         
-        $this->loadViewsFrom($src.'/resources/views', 'template_core');
+        $this->loadViewsFrom(resource_path('views/vendor/template'), 'template_core');
     }
 }
