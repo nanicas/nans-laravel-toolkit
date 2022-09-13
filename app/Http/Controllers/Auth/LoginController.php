@@ -2,7 +2,7 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Auth;
 
-use Zevitagem\LaravelSaasTemplateCore\Providers\RouteServiceProvider;
+use App\Providers\RouteServiceProvider;
 use Zevitagem\LegoAuth\Controllers\Laravel\LoginLaravelNotSourceController;
 
 class LoginController extends LoginLaravelNotSourceController
