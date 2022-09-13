@@ -1,4 +1,4 @@
-@extends($view_prefix . 'layouts.dashboard')
+@extends('layouts.dashboard')
 @section('dashboard-content')
 <div class="container" id='config-box'>
     <div class="row">
