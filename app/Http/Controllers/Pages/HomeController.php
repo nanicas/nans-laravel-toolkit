@@ -3,14 +3,11 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\HomeService;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 class HomeController extends DashboardController
 {
-    use AvailabilityWithService;
-
     public function __construct(HomeService $homeService)
     {
         parent::__construct();
@@ -23,7 +20,7 @@ class HomeController extends DashboardController
         $this->addIndexAssets();
         $this->beforeView();
 
-        $data = $this->service->getIndexData();
+        $data = $this->getService()->getIndexData();
         $packaged = $this->isPackagedView();
 
         return Helper::view('pages.home.index', $data, $packaged);

@@ -85,10 +85,10 @@ abstract class CrudController extends DashboardController
         $data = $_POST;
 
         try {
-            $this->service->handle($data, __FUNCTION__);
-            $this->service->validate($data, __FUNCTION__);
+            $this->getService()->handle($data, __FUNCTION__);
+            $this->getService()->validate($data, __FUNCTION__);
 
-            $row = $this->service->store($data);
+            $row = $this->getService()->store($data);
             $status = (is_object($row));
             $id = ($status) ? $row->getId() : null;
             $message = '';
@@ -117,10 +117,10 @@ abstract class CrudController extends DashboardController
         $data = $_POST;
 
         try {
-            $this->service->handle($data, __FUNCTION__);
-            $this->service->validate($data, __FUNCTION__);
+            $this->getService()->handle($data, __FUNCTION__);
+            $this->getService()->validate($data, __FUNCTION__);
 
-            $status = $this->service->update($data);
+            $status = $this->getService()->update($data);
             $message = '';
         } catch (Exception $exc) {
             $message = $exc->getMessage();
@@ -144,8 +144,8 @@ abstract class CrudController extends DashboardController
         $data = $_GET;
 
         try {
-            $this->service->validate($data, __FUNCTION__);
-            $status = $this->service->destroy($data['id']);
+            $this->getService()->validate($data, __FUNCTION__);
+            $status = $this->getService()->destroy($data['id']);
 
             $message = 'Os dados foram excluídos com sucesso!';
         } catch (Exception $exc) {
@@ -174,7 +174,7 @@ abstract class CrudController extends DashboardController
         $this->setView(self::SHOW_VIEW);
 
         try {
-            $data = $this->service->getDataToShow($id);
+            $data = $this->getService()->getDataToShow($id);
             $message = 'Dados encontrados com sucesso, segue abaixo a relação das informações.';
             $status = true;
         } catch (Exception $ex) {
@@ -195,7 +195,7 @@ abstract class CrudController extends DashboardController
         $this->addIndexAssets();
         $this->setView(self::LIST_VIEW);
 
-        $data = $this->service->getIndexData();
+        $data = $this->getService()->getIndexData();
 
         return self::view($data);
     }
@@ -218,7 +218,7 @@ abstract class CrudController extends DashboardController
         $message = '';
 
         try {
-            $data = $this->service->getDataToCreate();
+            $data = $this->getService()->getDataToCreate();
             $status = true;
         } catch (Exception $ex) {
             $data = [];
