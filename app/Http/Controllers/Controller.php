@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Routing\Controller as BaseController;
+use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    use Configurable;
+    use Configurable, AvailabilityWithService;
     
     public function __construct()
     {

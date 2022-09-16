@@ -4,15 +4,12 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Exception;
 
 abstract class CrudController extends DashboardController
-{
-    use AvailabilityWithService;
-    
+{   
     const LIST_VIEW = 'list';
     const SHOW_VIEW = 'show';
     const CREATE_VIEW = 'create';
