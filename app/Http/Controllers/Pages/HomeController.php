@@ -5,7 +5,7 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 use Zevitagem\LaravelSaasTemplateCore\Services\HomeService;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-class_alias(Helper::readTemplateConfig()['controllers']['crud'],  __NAMESPACE__ . '\DashboardControllerAlias');
+class_alias(Helper::readTemplateConfig()['controllers']['dashboard'],  __NAMESPACE__ . '\DashboardControllerAlias');
 
 class HomeController extends DashboardControllerAlias
 {
