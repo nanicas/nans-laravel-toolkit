@@ -3,10 +3,12 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\Config\CategoryConfigService;
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
 use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-class CategoryConfigController extends CrudController
+class_alias(Helper::readTemplateConfig()['controllers']['base_config'],  __NAMESPACE__ . '\BaseConfigControllerAlias');
+
+class CategoryConfigController extends BaseConfigControllerAlias
 {
     use IsConfigurationPageSection;
     

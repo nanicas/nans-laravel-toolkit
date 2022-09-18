@@ -56,6 +56,10 @@ class BootstrapServiceProvider extends ServiceProvider
             $src.'/routes' => base_path('routes'),
         ], 'template_core:routes');
         
+        $this->publishes([
+            $src.'/config' => config_path(),
+        ], 'template_core:config');
+        
         $this->loadViewsFrom(resource_path('views/vendor/template'), 'template_core');
     }
 }

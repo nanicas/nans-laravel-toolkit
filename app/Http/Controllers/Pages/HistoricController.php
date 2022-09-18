@@ -3,9 +3,11 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\Historic\HistoricService;
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-class HistoricController extends CrudController
+class_alias(Helper::readTemplateConfig()['controllers']['crud'],  __NAMESPACE__ . '\CrudControllerAlias');
+
+class HistoricController extends CrudControllerAlias
 {
     public function __construct(HistoricService $service)
     {

@@ -3,10 +3,11 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\HomeService;
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-class HomeController extends DashboardController
+class_alias(Helper::readTemplateConfig()['controllers']['crud'],  __NAMESPACE__ . '\DashboardControllerAlias');
+
+class HomeController extends DashboardControllerAlias
 {
     public function __construct(HomeService $homeService)
     {

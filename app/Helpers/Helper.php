@@ -86,6 +86,11 @@ class Helper
     {
         return HelperVendor::readConfig();
     }
+    
+    public static function readTemplateConfig()
+    {
+        return config('template');
+    }
 
     public static function isMaster()
     {

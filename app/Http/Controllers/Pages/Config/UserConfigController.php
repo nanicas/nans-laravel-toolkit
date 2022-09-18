@@ -3,12 +3,13 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\ConfigUserService;
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\CrudController;
 use Illuminate\Http\Request;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-class UserConfigController extends CrudController
+class_alias(Helper::readTemplateConfig()['controllers']['base_config'],  __NAMESPACE__ . '\BaseConfigControllerAlias');
+
+class UserConfigController extends BaseConfigControllerAlias
 {
     use IsConfigurationPageSection;
 

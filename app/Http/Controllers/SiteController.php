@@ -2,10 +2,12 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\AbstractController;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
-abstract class SiteController extends AbstractController
+class_alias(Helper::readTemplateConfig()['controllers']['base'],  __NAMESPACE__ . '\BaseControllerAlias');
+
+abstract class SiteController extends BaseControllerAlias
 {
     use AvailabilityWithService;
     

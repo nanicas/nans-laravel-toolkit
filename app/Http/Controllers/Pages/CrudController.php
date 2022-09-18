@@ -2,13 +2,14 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Exception;
 
-abstract class CrudController extends DashboardController
+class_alias(Helper::readTemplateConfig()['controllers']['dashboard'],  __NAMESPACE__ . '\DashboardControllerAlias');
+
+abstract class CrudController extends DashboardControllerAlias
 {   
     const LIST_VIEW = 'list';
     const SHOW_VIEW = 'show';

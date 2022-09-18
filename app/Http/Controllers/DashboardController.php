@@ -2,12 +2,13 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
 
-use Zevitagem\LaravelSaasTemplateCore\Http\Controllers\AbstractController;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Http\Request;
 
-abstract class DashboardController extends AbstractController
+class_alias(Helper::readTemplateConfig()['controllers']['base'],  __NAMESPACE__ . '\BaseControllerAlias');
+
+abstract class DashboardController extends BaseControllerAlias
 {
     protected bool $allowed = true;
 
