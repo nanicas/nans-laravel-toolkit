@@ -1,4 +1,4 @@
-@extends($view_prefix . 'layouts.app')
+@extends('layouts.app')
 
 @section('css')
 <style>

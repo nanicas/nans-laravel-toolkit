@@ -1,4 +1,4 @@
-@extends($view_prefix . 'layouts.crud.form')
+@extends('layouts.crud.form')
 @section('crud-form-content')
 @php
 $isUpdate = (isset($data['row']) && !empty($data['row']));

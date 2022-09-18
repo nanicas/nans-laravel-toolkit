@@ -1,4 +1,4 @@
-@extends($view_prefix . 'layouts.config.form')
+@extends('layouts.config.form')
 @section('crud-form-content')
 
 @php

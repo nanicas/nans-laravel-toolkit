@@ -1,4 +1,4 @@
-@extends($view_prefix . 'layouts.config.index')
+@extends('layouts.config.index')
 @section('config-content')
 
 <hr>
