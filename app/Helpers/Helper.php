@@ -81,6 +81,11 @@ class Helper
     {
         return Auth::id();
     }
+    
+    public static function getUser()
+    {
+        return Auth::user();
+    }
 
     public static function readConfig()
     {
