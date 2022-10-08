@@ -23,6 +23,11 @@ class AbstractValidator
     {
         $this->withHTML = $value;
     }
+    
+    public function isWithHTML()
+    {
+        return $this->withHTML;
+    }
 
     public function addError(string $key, array $data = [])
     {
@@ -73,7 +78,7 @@ class AbstractValidator
 
     public function translate()
     {
-        if (!$this->withHTML) {
+        if (!$this->isWithHTML()) {
             return implode($this->getTextSeparator(), $this->errors);
         }
         
