@@ -10,6 +10,7 @@ use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Routing\Controller as BaseController;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
+use Zevitagem\LaravelSaasTemplateCore\Staters\AppStater;
 
 class Controller extends BaseController
 {
@@ -28,6 +29,8 @@ class Controller extends BaseController
         if (!$this->existsConfigIndex('packaged')) {
             $this->configureIndex('packaged', true);
         }
+        
+        AppStater::setItem('packaged', $this->getConfigIndex('packaged'));
     }
 
     public function beforeView()

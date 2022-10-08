@@ -3,14 +3,15 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Validators;
 
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+//use Zevitagem\LaravelSaasTemplateCore\Staters\AppStater;
 
 class AbstractValidator
 {
     private $data;
     private $method;
     private $withHTML = true;
-    private $errors = [];
     private $textSeparator = PHP_EOL;
+    protected $errors = [];
     protected $messages = [];
 
     public function setData(array $data)
@@ -75,7 +76,9 @@ class AbstractValidator
         if (!$this->withHTML) {
             return implode($this->getTextSeparator(), $this->errors);
         }
+        
+        $packaged = true;//(bool) AppStater::getItem('packaged');
 
-        return Helper::view('components.validator-messages', ['messages' => $this->errors], true)->render();
+        return Helper::view('components.validator-messages', ['messages' => $this->errors], $packaged)->render();
     }
 }
