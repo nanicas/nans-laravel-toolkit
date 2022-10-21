@@ -55,6 +55,18 @@ abstract class AbstractCrudRepository extends DatabaseRepository
 
         return ($row->count() > 0) ? $row->first() : null;
     }
+    
+    public function getAllActive()
+    {
+        return $this->getModel()->where([
+            'active' => 1
+        ])->get();
+    }
+    
+    public function getAll()
+    {
+        return $this->getModel()->get();
+    }
 
     public function getByIdAndSlug(int $id, int $slug)
     {
