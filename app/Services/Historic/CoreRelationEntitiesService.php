@@ -14,7 +14,7 @@ class CoreRelationEntitiesService
     private array $repositories;
 
     public function __construct(
-        HistoricEntitiesRepository $historicEntitiesRepository
+        HistoricEntitiesRepository $historicEntitiesRepository,
     )
     {
         $this->setDependencie('historic_entities_repository', $historicEntitiesRepository);

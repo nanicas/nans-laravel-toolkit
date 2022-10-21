@@ -23,6 +23,11 @@ class AbstractCrudService extends AbstractService
         return $this->getRepository()->getByIdAndSlug($id, $slug);
     }
     
+    public function getById(int $id)
+    {
+        return $this->getRepository()->getById($id);
+    }
+    
     public function getBySlug(int $slug = 0)
     {
         if (empty($slug)) {

@@ -46,6 +46,11 @@ class Helper
     {
         return ['response' => $content, 'status' => $status];
     }
+    
+    public static function hydrateUnique(string $class, array $data)
+    {
+        return $class::hydrate([$data])->first();
+    }
 
     public static function getToken()
     {
@@ -105,6 +110,11 @@ class Helper
     public static function isAdmin()
     {
         return HelperVendor::isAdmin();
+    }
+    
+    public static function loadMessage(string $message, bool $status = true)
+    {
+        return self::view('components.messages.' . (($status) ? 'success' : 'danger'), compact('message'))->render();
     }
 
     public static function notAllowedResponse(Request $request)

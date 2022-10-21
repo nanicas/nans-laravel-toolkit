@@ -5,12 +5,14 @@ namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
-use Exception;
+use Throwable;
+use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
+use Zevitagem\LaravelSaasTemplateCore\Exceptions\CustomValidatorException;
 
-class_alias(Helper::readTemplateConfig()['controllers']['dashboard'],  __NAMESPACE__ . '\DashboardControllerAlias');
+class_alias(Helper::readTemplateConfig()['controllers']['dashboard'], __NAMESPACE__ . '\DashboardControllerAlias');
 
 abstract class CrudController extends DashboardControllerAlias
-{   
+{
     const LIST_VIEW = 'list';
     const SHOW_VIEW = 'show';
     const CREATE_VIEW = 'create';
@@ -25,6 +27,11 @@ abstract class CrudController extends DashboardControllerAlias
     public function getView()
     {
         return $this->view;
+    }
+
+    public function print(array $response)
+    {
+        echo json_encode($response);
     }
 
     public function addFormAssets()
@@ -42,7 +49,7 @@ abstract class CrudController extends DashboardControllerAlias
     public function addListAssets()
     {
         $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
-        
+
         parent::addJsAssets($packagedRoot . '/resources/layouts/crud/list.js');
         parent::addListAssets();
     }
@@ -53,11 +60,11 @@ abstract class CrudController extends DashboardControllerAlias
 
         return Helper::view("pages.$screen.$view", $data, $packaged)->render();
     }
-    
+
     public function beforeView()
     {
         $request = request();
-        
+
         View::share('state', $request->query('state'));
 
         parent::beforeView();
@@ -84,6 +91,8 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         $data = $_POST;
+        $status = false;
+        $id = null;
 
         try {
             $this->getService()->handle($data, __FUNCTION__);
@@ -92,17 +101,17 @@ abstract class CrudController extends DashboardControllerAlias
             $row = $this->getService()->store($data);
             $status = (is_object($row));
             $id = ($status) ? $row->getId() : null;
-            $message = '';
-        } catch (Exception $exc) {
-            $message = $exc->getMessage();
-            $status = false;
-            $id = null;
+            $message = 'As informações foram salvas com sucesso';
+        } catch (ValidatorException | CustomValidatorException $ex) {
+            $message = $ex->getMessage();
+        } catch (Throwable $ex) {
+            $message = Helper::loadMessage($ex->getMessage(), false);
         }
 
         echo json_encode(Helper::createDefaultJsonToResponse($status,
             [
                 'status' => $status,
-                'message' => ($status) ? 'As informações foram salvas com sucesso' : $message,
+                'message' => $message,
                 'id' => $id,
                 'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : ''
             ]
@@ -116,24 +125,34 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         $data = $_POST;
+        $status = false;
+        $resource = null;
 
         try {
             $this->getService()->handle($data, __FUNCTION__);
             $this->getService()->validate($data, __FUNCTION__);
 
-            $status = $this->getService()->update($data);
-            $message = '';
-        } catch (Exception $exc) {
-            $message = $exc->getMessage();
-            $status = false;
+            $status = $this->getService()->update($data, $resource);
+            $message = 'As informações foram salvas com sucesso';
+        } catch (ValidatorException | CustomValidatorException $ex) {
+            $message = $ex->getMessage();
+        } catch (Throwable $ex) {
+            $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
-        echo json_encode(Helper::createDefaultJsonToResponse($status, [
-                'status' => $status,
-                'message' => ($status) ? 'As informações foram salvas com sucesso' : $message,
-                'url_redir' => ($status) ? route($this->getScreen() . '.index',
-                                ['state' => 'success_update']) : ''
-        ]));
+        $canPrint = ($this->existsConfigIndex('response_as_print') && $this->isValidConfig('response_as_print'));
+        $response = Helper::createDefaultJsonToResponse($status, [
+            'status' => $status,
+            'resource' => $resource,
+            'message' => $message,
+            'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_update']) : ''
+        ]);
+
+        if ($canPrint) {
+            return $this->print($response, $status);
+        }
+
+        return $response;
     }
 
     public function destroy(Request $request)
@@ -143,21 +162,23 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         $data = $_GET;
+        $status = false;
 
         try {
             $this->getService()->validate($data, __FUNCTION__);
             $status = $this->getService()->destroy($data['id']);
 
             $message = 'Os dados foram excluídos com sucesso!';
-        } catch (Exception $exc) {
-            $message = $exc->getMessage();
-            $status = false;
+        } catch (ValidatorException | CustomValidatorException $ex) {
+            $message = $ex->getMessage();
+        } catch (Throwable $ex) {
+            $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
-        echo json_encode([
+        echo json_encode(Helper::createDefaultJsonToResponse($status, [
             'status' => $status,
             'message' => $message,
-        ]);
+        ]));
     }
 
     public function index(Request $request)
@@ -170,18 +191,21 @@ abstract class CrudController extends DashboardControllerAlias
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
+        
+        $data = [];
+        $status = false;
 
         $this->addShowAssets();
         $this->setView(self::SHOW_VIEW);
 
         try {
             $data = $this->getService()->getDataToShow($id);
-            $message = 'Dados encontrados com sucesso, segue abaixo a relação das informações.';
             $status = true;
-        } catch (Exception $ex) {
-            $data = [];
+            $message = Helper::loadMessage('Dados encontrados com sucesso, segue abaixo a relação das informações.', $status);
+        } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
-            $status = false;
+        } catch (Throwable $ex) {
+            $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
         return self::view(compact('data', 'message', 'status'));
@@ -217,14 +241,16 @@ abstract class CrudController extends DashboardControllerAlias
         $this->addCreateAssets();
         $this->setView(self::CREATE_VIEW);
         $message = '';
+        $data = [];
+        $status = false;
 
         try {
             $data = $this->getService()->getDataToCreate();
             $status = true;
-        } catch (Exception $ex) {
-            $data = [];
+        } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
-            $status = false;
+        } catch (Throwable $ex) {
+            $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
         return self::view(compact('data', 'message', 'status'));

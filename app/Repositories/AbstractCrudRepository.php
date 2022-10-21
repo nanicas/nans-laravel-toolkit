@@ -38,6 +38,11 @@ abstract class AbstractCrudRepository extends DatabaseRepository
         return $model->save();
     }
     
+    public function delete(AbstractModel $model)
+    {
+        return $model->delete();
+    }
+    
     public function getAllBySlug(int $slug)
     {
         $rows = $this->getModel()->where([
