@@ -47,6 +47,12 @@ class Controller extends BaseController
         list($main) = explode('.', \Request::route()->getName());
         return $main;
     }
+    
+    public function getSectionScreen(): string
+    {
+        list(, $main) = explode('.', \Request::route()->getName());
+        return $main;
+    }
 
     public function addJsAssets(string $path)
     {

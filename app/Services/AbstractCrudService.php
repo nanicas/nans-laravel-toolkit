@@ -7,7 +7,7 @@ use Zevitagem\LegoAuth\Helpers\Helper;
 
 class AbstractCrudService extends AbstractService
 {
-    public function getIndexData()
+    public function getIndexData(array $data = [])
     {
         $rows = $this->getRepository()->getAllBySlug(Helper::getSlug());
 
@@ -35,5 +35,15 @@ class AbstractCrudService extends AbstractService
         }
 
         return $this->getRepository()->getBySlug($slug);
+    }
+    
+    public function getAllActive()
+    {
+        return $this->getRepository()->getAllActive();
+    }
+    
+    public function getAll()
+    {
+        return $this->getRepository()->getAll();
     }
 }

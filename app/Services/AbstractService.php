@@ -6,10 +6,11 @@ use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
 use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
 use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
 
 abstract class AbstractService
 {
-    use AvailabilityWithDependencie;
+    use AvailabilityWithDependencie, Configurable;
     
     protected $handler;
     protected $validator;
