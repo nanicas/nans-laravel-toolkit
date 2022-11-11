@@ -93,10 +93,11 @@ abstract class CrudController extends DashboardControllerAlias
         $data = $_POST;
         $status = false;
         $id = null;
+        $method = __FUNCTION__;
 
         try {
-            $this->getService()->handle($data, __FUNCTION__);
-            $this->getService()->validate($data, __FUNCTION__);
+            $this->getService()->handle($data, $method);
+            $this->getService()->validate($data, $method);
 
             $row = $this->getService()->store($data);
             $status = (is_object($row));
@@ -107,15 +108,28 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (Throwable $ex) {
             $message = Helper::loadMessage($ex->getMessage(), false);
         }
+        
+        $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
+        $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
-        echo json_encode(Helper::createDefaultJsonToResponse($status,
+        $redirUrl = (method_exists($this, 'getRedirUrl')) 
+                ? $this->getRedirUrl($status, $method, [], $data) 
+                : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
+        
+        $response = Helper::createDefaultJsonToResponse($status,
             [
                 'status' => $status,
                 'message' => $message,
                 'id' => $id,
-                'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : ''
+                'url_redir' => $redirUrl
             ]
-        ));
+        );
+
+        if ($canResponseOnEnd) {
+            return $this->print($response, $status);
+        }
+
+        return $response;
     }
 
     public function update(Request $request)
@@ -140,7 +154,9 @@ abstract class CrudController extends DashboardControllerAlias
             $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
-        $canPrint = ($this->existsConfigIndex('response_as_print') && $this->isValidConfig('response_as_print'));
+        $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
+        $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
+
         $response = Helper::createDefaultJsonToResponse($status, [
             'status' => $status,
             'resource' => $resource,
@@ -148,7 +164,7 @@ abstract class CrudController extends DashboardControllerAlias
             'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_update']) : ''
         ]);
 
-        if ($canPrint) {
+        if ($canResponseOnEnd) {
             return $this->print($response, $status);
         }
 
