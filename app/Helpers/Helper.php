@@ -112,9 +112,9 @@ class Helper
         return HelperVendor::isAdmin();
     }
     
-    public static function loadMessage(string $message, bool $status = true)
+    public static function loadMessage(string $message, bool $status = true, bool $packaged = true)
     {
-        return self::view('components.messages.' . (($status) ? 'success' : 'danger'), compact('message'))->render();
+        return self::view('components.messages.' . (($status) ? 'success' : 'danger'), compact('message'), $packaged)->render();
     }
 
     public static function notAllowedResponse(Request $request)
