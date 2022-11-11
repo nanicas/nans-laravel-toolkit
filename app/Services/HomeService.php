@@ -8,7 +8,7 @@ use Zevitagem\LegoAuth\Filters\ApplicationRemoverItself;
 
 class HomeService extends AbstractService
 {
-    public function getIndexData()
+    public function getIndexData(array $data = [])
     {
         $service      = new ApplicationService(new ApplicationRemoverItself());
         $applications = $service->getApplicationsToShareSession();

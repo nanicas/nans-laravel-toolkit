@@ -22,7 +22,7 @@ class DataSiteService extends AbstractService
         return (is_object($config['slug'])) ? $config['slug']->getPrimaryValue() : null;
     }
 
-    public function getIndexData(array $config)
+    public function getIndexData(array $data = [])
     {
         $data = [];
         $slugId = $this->extractSlugIdFromConfig($config);

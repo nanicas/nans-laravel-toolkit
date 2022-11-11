@@ -65,7 +65,7 @@ class HistoricService extends AbstractCrudService
         return $updated;
     }
 
-    public function getIndexData()
+    public function getIndexData(array $data = [])
     {
         $rows = $this->getHistorics();
 

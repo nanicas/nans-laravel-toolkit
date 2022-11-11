@@ -21,7 +21,7 @@ class SiteController extends SiteBaseAlias
     {
         $theme = $request->query('theme') ?? 'zacson';
 
-        $data = $this->getService()->getIndexData($slug);
+        $data = $this->getService()->getIndexData(['slug' => $slug]);
         $view = ($data['config']['page'] == 'contracted') ? 'pages.site.themes.' . $theme : 'pages.site.' . $data['config']['page'];
 
         $this->addIndexAssets();

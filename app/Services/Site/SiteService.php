@@ -18,9 +18,9 @@ class SiteService extends AbstractService
         $this->setDependencie('data_site_service', $dataSiteService);
     }
 
-    public function getIndexData(string $slug)
+    public function getIndexData(array $data = [])
     {
-        $config = $this->getDependencie('config_site_service')->getIndexConfigData($slug);
+        $config = $this->getDependencie('config_site_service')->getIndexConfigData($data['slug']);
         $entities = $this->getDependencie('data_site_service')->getIndexData($config);
 
         return compact('config', 'entities');
