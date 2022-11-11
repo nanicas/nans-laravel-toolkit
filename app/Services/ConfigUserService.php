@@ -32,7 +32,7 @@ class ConfigUserService extends AbstractService
             throw new CrudException('Você não possui privilégios para visualizar as informações do registro selecionado.');
         }
         
-        $row = $this->getConfig($userId);
+        $row = $this->getConfigByUser($userId);
         $rules = $this->getDependencie('painel_repository')->getRulesByApplication(
             Helper::getAppId()
         );
@@ -98,7 +98,7 @@ class ConfigUserService extends AbstractService
         return $this->getRepository()->update($config);
     }
 
-    private function getConfig(int $userId)
+    private function getConfigByUser(int $userId)
     {
         return $this->getRepository()->getByUserAndSlug(
             $userId, Helper::getSlug()
