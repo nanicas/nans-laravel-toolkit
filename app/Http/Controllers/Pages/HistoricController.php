@@ -13,6 +13,7 @@ class HistoricController extends CrudControllerAlias
     {
         parent::__construct();
 
+        $this->configureIndex('packaged', true);
         $this->setService($service);
     }
     
