@@ -1,5 +1,5 @@
 @if(!empty($message))
-    <div class="alert alert-info">{!! $message !!}</div>
+    <div class="">{!! $message !!}</div>
 @endif
 
 @if(isset($state))
