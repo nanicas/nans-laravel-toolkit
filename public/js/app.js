@@ -9,6 +9,10 @@ var APP = (function () {
         }
     }
 
+    function replaceIcons() {
+        feather.replace();
+    }
+
     function getBaseUrl() {
         return state.body.data('base-url');
     }
@@ -16,13 +20,24 @@ var APP = (function () {
     function setTopMessage(message, type) {
         state.topMessage.removeClass('none');
         state.topMessage.html(message);
-
-        if (type == true) {
-            state.topMessage.addClass('alert-success');
-        } else {
-            state.topMessage.addClass('alert-danger');
-        }
     }
 
-    return {load, getBaseUrl, setTopMessage};
+    function convertMessageToAlert(message, type) {
+        var options = [
+            'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'
+        ];
+
+        if ($.inArray(type, options) == -1) {
+            type = 'primary';
+        }
+
+        var alertMessage = $(document.createElement('div'));
+
+        alertMessage.addClass('alert-' + type).addClass('alert');
+        alertMessage.html(message);
+
+        return alertMessage.prop("outerHTML");
+    }
+
+    return {load, getBaseUrl, setTopMessage, replaceIcons, convertMessageToAlert};
 })();

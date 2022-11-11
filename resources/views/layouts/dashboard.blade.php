@@ -273,7 +273,9 @@
                 </ol>
             </nav>
 
+            <div id="top-dashboard-message"></div>
             @yield('dashboard-content')
+            <div id="bottom-dashboard-message"></div>
         </main>
     </div>
 </div>
@@ -281,11 +283,4 @@
 
 @section('js')
 <script src="{{ asset($packaged_assets_prefix . '/vendor/bootstrap-theme/feather.min.js') }}"></script>
-<script>
-    (function () {
-    'use strict'
-
-    feather.replace();
-})();
-</script>
 @endsection
