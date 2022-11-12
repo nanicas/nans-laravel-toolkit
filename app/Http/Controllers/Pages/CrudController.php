@@ -9,6 +9,7 @@ use Throwable;
 use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
 use Zevitagem\LaravelSaasTemplateCore\Exceptions\CustomValidatorException;
 
+class_alias(Helper::readTemplateConfig()['helpers']['global'], __NAMESPACE__ . '\HelperAlias');
 class_alias(Helper::readTemplateConfig()['controllers']['dashboard'], __NAMESPACE__ . '\DashboardControllerAlias');
 
 abstract class CrudController extends DashboardControllerAlias
@@ -58,7 +59,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $packaged = $this->isPackagedView();
 
-        return Helper::view("pages.$screen.$view", $data, $packaged)->render();
+        return HelperAlias::view("pages.$screen.$view", $data, $packaged)->render();
     }
 
     public function beforeView()
@@ -106,7 +107,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), false);
+            $message = HelperAlias::loadMessage($ex->getMessage(), false);
         }
         
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
@@ -116,7 +117,7 @@ abstract class CrudController extends DashboardControllerAlias
                 ? $this->getRedirUrl($status, $method, [], $data) 
                 : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
         
-        $response = Helper::createDefaultJsonToResponse($status,
+        $response = HelperAlias::createDefaultJsonToResponse($status,
             [
                 'status' => $status,
                 'message' => $message,
@@ -151,13 +152,13 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
-        $response = Helper::createDefaultJsonToResponse($status, [
+        $response = HelperAlias::createDefaultJsonToResponse($status, [
             'status' => $status,
             'resource' => $resource,
             'message' => $message,
@@ -188,10 +189,10 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
         }
 
-        echo json_encode(Helper::createDefaultJsonToResponse($status, [
+        echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
             'status' => $status,
             'message' => $message,
         ]));
@@ -217,11 +218,11 @@ abstract class CrudController extends DashboardControllerAlias
         try {
             $data = $this->getService()->getDataToShow($id);
             $status = true;
-            $message = Helper::loadMessage('Dados encontrados com sucesso, segue abaixo a relação das informações.', $status);
+            $message = HelperAlias::loadMessage('Dados encontrados com sucesso, segue abaixo a relação das informações.', $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
         }
 
         return self::view(compact('data', 'message', 'status'));
@@ -266,7 +267,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
         }
 
         return self::view(compact('data', 'message', 'status'));

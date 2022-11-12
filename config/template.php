@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'helpers' => [
+        'global' => App\Helpers\Helper::class,
+    ],
     'controllers' => [
         'dashboard' => App\Http\Controllers\DashboardController::class,
         'crud' => App\Http\Controllers\Pages\CrudController::class,
