@@ -24,11 +24,11 @@ class DataSiteService extends AbstractService
 
     public function getIndexData(array $data = [])
     {
-        $data = [];
-        $slugId = $this->extractSlugIdFromConfig($config);
+        $result = [];
+        $slugId = $this->extractSlugIdFromConfig($data);
 
-        $data['categories'] = $this->getContents($slugId)['categories'];
-        $data['slug_data'] = $this->getSlugConfigData($slugId);
+        $result['categories'] = $this->getContents($slugId)['categories'];
+        $result['slug_data'] = $this->getSlugConfigData($slugId);
 
         return $data;
     }
