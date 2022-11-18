@@ -11,13 +11,16 @@ use Zevitagem\LaravelSaasTemplateCore\Traits\Validators\CrudValidator;
 
 class EntityConfigValidator extends AbstractValidator
 {
-    use CrudValidator;
     use AvailabilityWithDependencie;
+    use CrudValidator {
+        CrudValidator::__construct as crudConstruct;
+    }
 
     public function __construct(
         ComponentConfigRepository $componentConfigRepository
     )
     {
+        $this->crudConstruct();
         $this->setDependencie('component_config_repository', $componentConfigRepository);
     }
 
