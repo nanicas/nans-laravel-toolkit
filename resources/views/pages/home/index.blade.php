@@ -18,4 +18,6 @@
             @endforeach
         </div>
     @endif
+    
+    @yield('home-content')
 @endsection
