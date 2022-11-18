@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'has_slug' => true,
     'helpers' => [
         'global' => App\Helpers\Helper::class,
     ],

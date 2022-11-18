@@ -4,9 +4,12 @@ namespace Zevitagem\LaravelSaasTemplateCore\Handlers;
 
 use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Handlers\CrudHandler;
 
 class HistoricHandler extends AbstractHandler
 {
+    use CrudHandler;
+    
     public function form(&$data)
     {
         $data['description'] = trim($data['description']);

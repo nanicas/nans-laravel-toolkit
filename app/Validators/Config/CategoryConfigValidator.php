@@ -3,9 +3,12 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Validators\Config;
 
 use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Validators\CrudValidator;
 
 class CategoryConfigValidator extends AbstractValidator
 {
+    use CrudValidator;
+    
     protected $messages = [
         'name_empty' => 'O nome da categoria não foi preenchido',
         'key_empty' => 'A chave da categoria não foi preenchida',

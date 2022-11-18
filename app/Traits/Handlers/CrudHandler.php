@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Traits\Handlers;
+namespace Zevitagem\LaravelSaasTemplateCore\Traits\Handlers;
 
-use App\Helpers\Helper;
+use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
 trait CrudHandler
 {
@@ -10,7 +10,14 @@ trait CrudHandler
     {
         $data = & $this->data;
 
+        $config = Helper::readTemplateConfig();
+
         $data['row'] = (isset($data['row'])) ? $data['row'] : null;
-        $data['logged_user'] = Helper::getUser();
+
+        if (!empty($config['has_slug'])) {
+            $data['slug'] = Helper::getSlug();
+        } else {
+            $data['logged_user'] = Helper::getUser();
+        }
     }
 }
