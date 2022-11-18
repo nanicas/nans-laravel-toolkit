@@ -8,23 +8,25 @@
             <th>Componente</th>
             <th>Situação</th>
             <th>Data cadastro</th>
-            <th>Data atualização</th>
+<!--            <th>Data atualização</th>-->
             <th></th>
         <tr>
     </thead>
     <tbody>
         @foreach($rows as $entity)
-        <tr>
-            <td>{{ $entity->getId() }}</td>
+        @php $id = $entity->getId() @endphp
+        <tr data-id="{{ $id }}">
+            <td>{{ $id }}</td>
             <td>{{ $entity->getName() }}</td>
             <td>{{ $entity->component?->name }}</td>
             <td><span class="badge badge-{{ ($entity->isActive()) ? 'success' : 'danger' }}">Ativo</span></td>
             <td>{{ $entity->getCreatedAt() }}</td>
-            <td>{{ $entity->getUpdatedAt() }}</td>
+<!--            <td>{{ $entity->getUpdatedAt() }}</td>-->
             <td class="text-center">
-                <a class="btn btn-info" href="{{ route('entity_config.show', $entity->getId()) }}">
+                <a class="btn btn-info" href="{{ route('entity_config.show', $id) }}">
                     Editar
                 </a>
+                @include($view_prefix . 'components.buttons.delete-button', ['route' => route('entity_config.destroy', $id)])
             </td>
         </tr>
         @endforeach

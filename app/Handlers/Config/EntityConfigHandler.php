@@ -7,10 +7,11 @@ use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Illuminate\Http\Request;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Handlers\CrudHandler;
 
 class EntityConfigHandler extends AbstractHandler
 {
-
+    use CrudHandler;
     use AvailabilityWithDependencie;
 
     public function __construct(Request $request)

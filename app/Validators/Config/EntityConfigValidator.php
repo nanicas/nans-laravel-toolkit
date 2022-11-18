@@ -7,10 +7,11 @@ use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\ComponentConfigReposit
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 use Zevitagem\LaravelSaasTemplateCore\Staters\ModelsStater;
 use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelSaasTemplateCore\Traits\Validators\CrudValidator;
 
 class EntityConfigValidator extends AbstractValidator
 {
-
+    use CrudValidator;
     use AvailabilityWithDependencie;
 
     public function __construct(
