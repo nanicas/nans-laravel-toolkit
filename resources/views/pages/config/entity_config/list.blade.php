@@ -17,7 +17,7 @@
         <tr>
             <td>{{ $entity->getId() }}</td>
             <td>{{ $entity->getName() }}</td>
-            <td>{{ $entity->component->name }}</td>
+            <td>{{ $entity->component?->name }}</td>
             <td><span class="badge badge-{{ ($entity->isActive()) ? 'success' : 'danger' }}">Ativo</span></td>
             <td>{{ $entity->getCreatedAt() }}</td>
             <td>{{ $entity->getUpdatedAt() }}</td>

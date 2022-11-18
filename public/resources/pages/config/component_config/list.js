@@ -1,4 +1,4 @@
-var CATEGORY_CONFIG_LIST = function () {
+var COMPONENT_CONFIG_LIST = function () {
 
     var state = {};
 
@@ -11,5 +11,5 @@ var CATEGORY_CONFIG_LIST = function () {
 };
 
 window.onload = function () {
-    CATEGORY_CONFIG_LIST().load();
+    COMPONENT_CONFIG_LIST().load();
 }
