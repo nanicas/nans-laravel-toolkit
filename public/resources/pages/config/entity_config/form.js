@@ -11,7 +11,7 @@ var ENTITY_CONFIG_FORM = (function () {
             id: $('input[name="id"]')
         }
         
-        FORM_CRUD.load();
+        CRUD_FORM.load();
         
         state.component.change(function (e) {
 

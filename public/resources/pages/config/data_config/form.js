@@ -3,8 +3,8 @@ var DATA_CONFIG_FORM = (function () {
     var state = {};
 
     function load() {
-        FORM_CRUD.load();
-        state.instanceCrudForm = FORM_CRUD;
+        CRUD_FORM.load();
+        state.instanceCrudForm = CRUD_FORM;
     }
 
     return {load, state};

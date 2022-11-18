@@ -1,4 +1,4 @@
-var FORM_CRUD = (function () {
+var CRUD_FORM = (function () {
 
     var state = {};
 

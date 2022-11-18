@@ -3,7 +3,7 @@ var HISTORIC_FORM = (function () {
     var state;
 
     function load() {
-        FORM_CRUD.load();
+        CRUD_FORM.load();
 
         state = {
             personalizeds_selects: $('select.personalized-select'),
