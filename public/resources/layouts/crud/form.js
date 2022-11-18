@@ -14,12 +14,12 @@ var FORM_CRUD = (function () {
 
         DASHBOARD.load();
 
-        state.formCrud = $('#crud-form');
+        state.crudForm = $('#crud-form');
         state.formResultBox = $('#form-result-box');
         state.id = $('input[type="hidden"][name="id"]');
         state.isUpdate = (state.id.length > 0);
 
-        state.formCrud.submit(function (e) {
+        state.crudForm.submit(function (e) {
             HELPER.behaviorOnSubmit(e, $(this), function (data) {
                 behaviorOnSubmitFinish(data);
             });
