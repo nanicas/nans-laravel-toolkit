@@ -15,5 +15,7 @@
 @endif
 
 @if($hasRows)
-    @yield('crud-content')
+    <div id="crud-list">
+        @yield('crud-content')
+    </div>
 @endif

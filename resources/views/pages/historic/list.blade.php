@@ -14,8 +14,9 @@
     </thead>
     <tbody>
         @foreach($rows as $historic)
-        <tr>
-            <td>{{ $historic->getId() }}</td>
+        @php $id = $historic->getId() @endphp
+        <tr data-id="{{ $id }}">
+            <td>{{ $id }}</td>
             <td>{{ $historic->getDescription() }}</td>
             <td>
                 @if(empty($observation = $historic->getObservation()))
@@ -34,9 +35,10 @@
             <td>{{ $historic->getCreatedAt() }}</td>
             <td>{{ $historic->getUpdatedAt() }}</td>
             <td class="text-center">
-                <a class="btn btn-info" href="{{ route('historic.show', $historic->getId()) }}">
+                <a class="btn btn-info" href="{{ route('historic.show', $id) }}">
                     Editar
                 </a>
+                @include($view_prefix . 'components.buttons.delete-button', ['route' => route('historic.destroy', $id)])
             </td>
         </tr>
         @endforeach

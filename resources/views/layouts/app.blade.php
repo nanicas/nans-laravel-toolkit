@@ -49,6 +49,7 @@
     <script type="text/javascript" src="{{ asset($packaged_assets_prefix . '/vendor/ladda/spin.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset($packaged_assets_prefix . '/vendor/ladda/ladda.min.js') }}" defer></script>
     <script type="text/javascript" src="{{ asset($packaged_assets_prefix . '/js/app.js') }}" defer></script>
+    <script type="text/javascript" src="{{ asset($packaged_assets_prefix . '/js/helper.js') }}" defer></script>
 
     @yield('js')
 

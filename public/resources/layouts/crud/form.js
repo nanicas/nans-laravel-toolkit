@@ -1,48 +1,30 @@
-var CRUD_FORM = (function () {
+var FORM_CRUD = (function () {
 
     var state = {};
+
+    function behaviorOnSubmitFinish(data) {
+        if (data.status == true) {
+            return window.location.href = data.response.url_redir;
+        }
+
+        state.formResultBox.html(data.response.message);
+    }
 
     function load() {
 
         DASHBOARD.load();
 
-        state.crudForm = $('#crud-form');
+        state.formCrud = $('#crud-form');
         state.formResultBox = $('#form-result-box');
+        state.id = $('input[type="hidden"][name="id"]');
+        state.isUpdate = (state.id.length > 0);
 
-        state.crudForm.submit(function (e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            var self = $(this),
-                    button = self.find('button[type="submit"]'),
-                    ladda = Ladda.create(button.get(0));
-
-            ladda.start();
-
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: self.attr('action'),
-                type: self.attr('method'),
-                data: new FormData(self[0]),
-                processData: false,
-                contentType: false,
-                dataType: 'JSON',
-                complete: function () {
-                    ladda.stop();
-                },
-                success: function (data) {
-
-                    if (data.status == true) {
-                        return window.location.href = data.response.url_redir;
-                    }
-
-                    state.formResultBox.html(data.response.message);
-                }
+        state.formCrud.submit(function (e) {
+            HELPER.behaviorOnSubmit(e, $(this), function (data) {
+                behaviorOnSubmitFinish(data);
             });
         });
     }
 
-    return {load, state};
+    return {load, state, behaviorOnSubmitFinish};
 })();
