@@ -82,6 +82,11 @@ abstract class AbstractCrudRepository extends DatabaseRepository
 
         return ($row->count() > 0) ? $row->first() : null;
     }
+    
+    public function destroy(int $id)
+    {
+        return $this->getModel()->destroy($id);
+    }
 
     public function getById(int $id)
     {

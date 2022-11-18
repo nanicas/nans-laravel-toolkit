@@ -14,11 +14,13 @@ class_alias(Helper::readTemplateConfig()['controllers']['dashboard'], __NAMESPAC
 
 abstract class CrudController extends DashboardControllerAlias
 {
+    const INDEX_VIEW = 'index';
     const LIST_VIEW = 'list';
     const SHOW_VIEW = 'show';
     const CREATE_VIEW = 'create';
 
-    private $view;
+    protected $view;
+    protected bool $indexIsList = true;
 
     public function setView(string $view)
     {
@@ -28,6 +30,11 @@ abstract class CrudController extends DashboardControllerAlias
     public function getView()
     {
         return $this->view;
+    }
+
+    public function indexIsList()
+    {
+        return $this->indexIsList;
     }
 
     public function print(array $response)
@@ -109,14 +116,14 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (Throwable $ex) {
             $message = HelperAlias::loadMessage($ex->getMessage(), false);
         }
-        
+
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
         $redirUrl = (method_exists($this, 'getRedirUrl')) 
                 ? $this->getRedirUrl($status, $method, [], $data) 
                 : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
-        
+
         $response = HelperAlias::createDefaultJsonToResponse($status,
             [
                 'status' => $status,
@@ -148,7 +155,13 @@ abstract class CrudController extends DashboardControllerAlias
             $this->getService()->validate($data, __FUNCTION__);
 
             $status = $this->getService()->update($data, $resource);
-            $message = 'As informações foram salvas com sucesso';
+            if ($status == false) {
+                $message = 'Ocorreu um problema no momento de realizar a atualização!';
+            } else {
+                $message = 'As informações foram salvas com sucesso!';
+            }
+            
+            $message = HelperAlias::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
@@ -172,20 +185,25 @@ abstract class CrudController extends DashboardControllerAlias
         return $response;
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, int $id)
     {
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
 
-        $data = $_GET;
         $status = false;
 
         try {
-            $this->getService()->validate($data, __FUNCTION__);
-            $status = $this->getService()->destroy($data['id']);
+            $result = $this->getService()->destroy($id);
+            $status = $result['status'];
 
-            $message = 'Os dados foram excluídos com sucesso!';
+            if ($status == false) {
+                $message = 'Ocorreu um problema no momento de realizar a exclusão!';
+            } else {
+                $message = 'Os dados foram excluídos com sucesso!';
+            }
+            
+            $message = HelperAlias::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
@@ -193,6 +211,7 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
+            'id' => $id,
             'status' => $status,
             'message' => $message,
         ]));
@@ -203,12 +222,26 @@ abstract class CrudController extends DashboardControllerAlias
         return $this->list($request);
     }
 
+    public function list(Request $request)
+    {
+        if (!$this->isAllowed()) {
+            return $this->notAllowedResponse($request);
+        }
+
+        $this->addListAssets();
+        $this->setView(self::LIST_VIEW);
+
+        $data = $this->getService()->getIndexData();
+
+        return self::view($data);
+    }
+
     public function show(Request $request, int $id)
     {
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
-        
+
         $data = [];
         $status = false;
 
@@ -226,20 +259,6 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         return self::view(compact('data', 'message', 'status'));
-    }
-
-    public function list(Request $request)
-    {
-        if (!$this->isAllowed()) {
-            return $this->notAllowedResponse($request);
-        }
-
-        $this->addIndexAssets();
-        $this->setView(self::LIST_VIEW);
-
-        $data = $this->getService()->getIndexData();
-
-        return self::view($data);
     }
 
     public function configlist()
@@ -272,4 +291,5 @@ abstract class CrudController extends DashboardControllerAlias
 
         return self::view(compact('data', 'message', 'status'));
     }
+
 }

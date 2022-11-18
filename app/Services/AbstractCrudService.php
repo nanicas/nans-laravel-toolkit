@@ -46,4 +46,20 @@ class AbstractCrudService extends AbstractService
     {
         return $this->getRepository()->getAll();
     }
+    
+    public function destroy(int $id)
+    {
+        $data = compact('id');
+        $data['row'] = $this->getRepository()->getById($id);
+        
+        parent::handle($data, 'destroy');
+        parent::validate($data, 'destroy');
+        
+        $status = $this->getRepository()->delete($data['row']);
+        
+        return [
+            'status' => $status,
+            'row' => $data['row']
+        ];
+    }
 }
