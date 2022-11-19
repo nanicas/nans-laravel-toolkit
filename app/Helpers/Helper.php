@@ -117,18 +117,23 @@ class Helper
         return self::view('components.messages.' . (($status) ? 'success' : 'danger'), compact('message'), $packaged)->render();
     }
 
-    public static function notAllowedResponse(Request $request)
+    public static function notAllowedResponse(Request $request,  bool $packaged = true)
     {
-        $view = self::view('layouts.error.not_allowed')->render();
+        $isAjax = $request->ajax();
+        $viewName = ($isAjax) ? 'layouts.error.not_allowed_content' : 'layouts.error.not_allowed';
+        
+        $view_prefix = self::getViewPrefix();
+        $packaged_assets_prefix = self::getRootFolderNameOfAssets();
+        
+        $view = self::view($viewName, compact('view_prefix', 'packaged_assets_prefix'), $packaged)->render();
 
-        if (!$request->ajax()) {
+        if (!$isAjax) {
             return response($view);
         }
 
-        return response()->json([
-                    'status' => 'false',
-                    'content' => $view,
-                        ], 405);
+        return response()->json(self::createDefaultJsonToResponse(false, [
+            'message' => $view
+        ]));
     }
     
     public static function view(string $path, array $data = [], bool $packaged = false)

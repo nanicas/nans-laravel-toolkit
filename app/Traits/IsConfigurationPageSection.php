@@ -43,6 +43,7 @@ trait IsConfigurationPageSection
     protected function createView(string $screen, string $view, array $data)
     {
         $screen = 'config.' . $screen;
+        $data['tab_options'] = $this->getTabOptions();
 
         return parent::createView($screen, $view, $data);
     }

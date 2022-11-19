@@ -3,7 +3,6 @@
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
 
 use Zevitagem\LaravelSaasTemplateCore\Services\Config\EntityConfigService;
-use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
 use Illuminate\Http\Request;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
 
@@ -11,8 +10,6 @@ class_alias(Helper::readTemplateConfig()['controllers']['base_config'],  __NAMES
 
 class EntityConfigController extends BaseConfigControllerAlias
 {
-    use IsConfigurationPageSection;
-
     public function __construct(EntityConfigService $service)
     {
         parent::__construct();

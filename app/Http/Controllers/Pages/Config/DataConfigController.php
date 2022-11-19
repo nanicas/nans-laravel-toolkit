@@ -2,7 +2,6 @@
 
 namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
 use Zevitagem\LaravelSaasTemplateCore\Services\Config\DataConfigService;
 use Illuminate\Http\Request;
 use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
@@ -11,8 +10,6 @@ class_alias(Helper::readTemplateConfig()['controllers']['base_config'],  __NAMES
 
 class DataConfigController extends BaseConfigControllerAlias
 {
-    use IsConfigurationPageSection;
-
     public function __construct(DataConfigService $service)
     {
         parent::__construct();
