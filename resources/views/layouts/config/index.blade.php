@@ -23,15 +23,15 @@
                 </li>
                 <li class="list-group-item text-left">
                     <strong>Likes</strong>
-                    <span class="badge badge-primary float-right">125</span>
+                    <span class="badge badge-primary float-right">128</span>
                 </li>
                 <li class="list-group-item text-left">
                     <strong>Posts</strong>
-                    <span class="badge badge-primary float-right">125</span>
+                    <span class="badge badge-primary float-right">132</span>
                 </li>
                 <li class="list-group-item text-left">
                     <strong>Seguidores</strong>
-                    <span class="badge badge-primary float-right">125</span>
+                    <span class="badge badge-primary float-right">141</span>
                 </li>
             </ul>
 
@@ -44,51 +44,21 @@
 
         </div><!--/col-3-->
         <div class="col-sm-9">
-
-            @php
-                $isUserRoute = ($screen  == 'user_config');
-                $isDataRoute = ($screen  == 'data_config');
-                $isCategoryRoute = ($screen  == 'category_config');
-                $isComponentRoute = ($screen  == 'component_config');
-                $isEntityRoute = ($screen  == 'entity_config');
-            @endphp
-
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-link {{ ($isUserRoute) ? 'active' : '' }}" id="nav-user-tab" data-toggle="tab" href="{{ route('user_config.index') }}" role="tab" aria-controls="nav-user" aria-selected="{{ ($isUserRoute) ? 'true' : 'false' }}">Usuário</a>
-                    <a class="nav-link {{ ($isDataRoute) ? 'active' : '' }}" id="nav-data-tab" data-toggle="tab" href="{{ route('data_config.index') }}" role="tab" aria-controls="nav-data" aria-selected="{{ ($isDataRoute) ? 'true' : 'false' }}">Dado pessoal</a>
-                    <a class="nav-link {{ ($isCategoryRoute) ? 'active' : '' }}" id="nav-category-tab" data-toggle="tab" href="{{ route('category_config.index') }}" role="tab" aria-controls="nav-category" aria-selected="{{ ($isCategoryRoute) ? 'true' : 'false' }}">Categoria</a>
-                    <a class="nav-link {{ ($isComponentRoute) ? 'active' : '' }}" id="nav-component-tab" data-toggle="tab" href="{{ route('component_config.index') }}" role="tab" aria-controls="nav-component" aria-selected="{{ ($isComponentRoute) ? 'true' : 'false' }}">Componente</a>
-                    <a class="nav-link {{ ($isEntityRoute) ? 'active' : '' }}" id="nav-entity-tab" data-toggle="tab" href="{{ route('entity_config.index') }}" role="tab" aria-controls="nav-entity" aria-selected="{{ ($isEntityRoute) ? 'true' : 'false' }}">Entidade</a>
+                    @foreach($tab_options as $tab => $tabDescription)
+                        @php
+                            $isCurrent = ($screen  == $tab);
+                        @endphp
+                        <a class="nav-link {{ ($isCurrent) ? 'active' : '' }}" id="nav-{{ $tab }}-tab" data-toggle="tab" href="{{ route($tab . '.index') }}" role="tab" aria-controls="nav-{{ $tab }}" aria-selected="{{ ($isCurrent) ? 'true' : 'false' }}">{{ $tabDescription }}</a>
+                    @endforeach
                 </div>
             </nav>
             <div class="tab-content">
                 <br>
-                @if($isUserRoute)
-                <div class="tab-pane fade show active" id="nav-user-tab" role="tabpanel" aria-labelledby="nav-user-tab">
+                <div class="tab-pane fade show active" id="nav-{{ $screen }}-tab" role="tabpanel" aria-labelledby="nav-{{ $screen }}-tab">
                     @yield('config-content')
                 </div>
-                @endif
-                @if($isDataRoute)
-                <div class="tab-pane fade show active" id="nav-data-tab" role="tabpanel" aria-labelledby="nav-data-tab">
-                    @yield('config-content')
-                </div>
-                @endif
-                @if($isCategoryRoute)
-                <div class="tab-pane fade show active" id="nav-category-tab" role="tabpanel" aria-labelledby="nav-category-tab">
-                    @yield('config-content')
-                </div>
-                @endif
-                @if($isComponentRoute)
-                <div class="tab-pane fade show active" id="nav-component-tab" role="tabpanel" aria-labelledby="nav-component-tab">
-                    @yield('config-content')
-                </div>
-                @endif
-                @if($isEntityRoute)
-                <div class="tab-pane fade show active" id="nav-entity-tab" role="tabpanel" aria-labelledby="nav-entity-tab">
-                    @yield('config-content')
-                </div>
-                @endif
             </div><!--/tab-pane-->
         </div><!--/tab-content-->
 
