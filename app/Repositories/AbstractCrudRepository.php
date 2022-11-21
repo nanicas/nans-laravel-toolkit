@@ -8,6 +8,8 @@ use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
 
 abstract class AbstractCrudRepository extends DatabaseRepository
 {
+    const PAGINATE_MAX_ROWS = 15;
+    
     public function newException($exc)
     {
         throw new CrudException($exc->getMessage());
