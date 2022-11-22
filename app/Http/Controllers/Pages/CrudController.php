@@ -102,14 +102,15 @@ abstract class CrudController extends DashboardControllerAlias
         $status = false;
         $id = null;
         $method = __FUNCTION__;
+        $resource = null;
 
         try {
             $this->getService()->handle($data, $method);
             $this->getService()->validate($data, $method);
 
-            $row = $this->getService()->store($data);
-            $status = (is_object($row));
-            $id = ($status) ? $row->getId() : null;
+            $resource = $this->getService()->store($data);
+            $status = (is_object($resource));
+            $id = ($status) ? $resource->getId() : null;
             $message = 'As informações foram salvas com sucesso';
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
@@ -128,6 +129,7 @@ abstract class CrudController extends DashboardControllerAlias
             [
                 'status' => $status,
                 'message' => $message,
+                'resource' => $resource,
                 'id' => $id,
                 'url_redir' => $redirUrl
             ]
