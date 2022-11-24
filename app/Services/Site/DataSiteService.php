@@ -19,7 +19,7 @@ class DataSiteService extends AbstractService
     
     protected function extractSlugIdFromConfig(array $config)
     {
-        return (is_object($config['slug'])) ? $config['slug']->getPrimaryValue() : null;
+        return (isset($config['slug']) && is_object($config['slug'])) ? $config['slug']->getPrimaryValue() : null;
     }
 
     public function getIndexData(array $data = [])
@@ -30,7 +30,7 @@ class DataSiteService extends AbstractService
         $result['categories'] = $this->getContents($slugId)['categories'];
         $result['slug_data'] = $this->getSlugConfigData($slugId);
 
-        return $data;
+        return $result;
     }
 
     protected function getSlugConfigData(?int $slugId)
