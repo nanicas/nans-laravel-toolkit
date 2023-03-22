@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services;
+namespace Zevitagem\LaravelToolkit\Services;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
+use Zevitagem\LaravelToolkit\Services\AbstractService;
 use Zevitagem\LegoAuth\Helpers\Helper;
 
 class AbstractCrudService extends AbstractService

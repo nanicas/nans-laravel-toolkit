@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\View\Components;
+namespace Zevitagem\LaravelToolkit\View\Components;
 
 use Illuminate\View\Component;
 

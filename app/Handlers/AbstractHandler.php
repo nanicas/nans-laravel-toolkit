@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Handlers;
+namespace Zevitagem\LaravelToolkit\Handlers;
 
 class AbstractHandler
 {

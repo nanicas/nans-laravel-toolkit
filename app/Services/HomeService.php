@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services;
+namespace Zevitagem\LaravelToolkit\Services;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
+use Zevitagem\LaravelToolkit\Services\AbstractService;
 use Zevitagem\LegoAuth\Services\ApplicationService;
 use Zevitagem\LegoAuth\Filters\ApplicationRemoverItself;
 

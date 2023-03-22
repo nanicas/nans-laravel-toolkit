@@ -1,13 +1,13 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
+namespace Zevitagem\LaravelToolkit\Http\Controllers\Pages;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Throwable;
-use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
-use Zevitagem\LaravelSaasTemplateCore\Exceptions\CustomValidatorException;
+use Zevitagem\LaravelToolkit\Exceptions\ValidatorException;
+use Zevitagem\LaravelToolkit\Exceptions\CustomValidatorException;
 
 class_alias(Helper::readTemplateConfig()['helpers']['global'], __NAMESPACE__ . '\HelperAlias');
 class_alias(Helper::readTemplateConfig()['controllers']['dashboard'], __NAMESPACE__ . '\DashboardControllerAlias');

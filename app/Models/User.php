@@ -1,12 +1,12 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Models;
+namespace Zevitagem\LaravelToolkit\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AttributesResourceModel;
+use Zevitagem\LaravelToolkit\Traits\AttributesResourceModel;
 
 class User extends Authenticatable
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services;
+namespace Zevitagem\LaravelToolkit\Services;
 
-use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
-use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
-use Zevitagem\LaravelSaasTemplateCore\Exceptions\ValidatorException;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
-use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
+use Zevitagem\LaravelToolkit\Handlers\AbstractHandler;
+use Zevitagem\LaravelToolkit\Validators\AbstractValidator;
+use Zevitagem\LaravelToolkit\Exceptions\ValidatorException;
+use Zevitagem\LaravelToolkit\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelToolkit\Traits\Configurable;
 
 abstract class AbstractService
 {

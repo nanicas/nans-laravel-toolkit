@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Traits;
+namespace Zevitagem\LaravelToolkit\Traits;
 
 trait AvailabilityWithDependencie
 {

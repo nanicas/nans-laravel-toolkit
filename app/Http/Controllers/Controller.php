@@ -1,16 +1,16 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
+namespace Zevitagem\LaravelToolkit\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\View;
-use Zevitagem\LaravelSaasTemplateCore\Traits\Configurable;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Traits\Configurable;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Illuminate\Routing\Controller as BaseController;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
-use Zevitagem\LaravelSaasTemplateCore\Staters\AppStater;
+use Zevitagem\LaravelToolkit\Traits\AvailabilityWithService;
+use Zevitagem\LaravelToolkit\Staters\AppStater;
 
 class Controller extends BaseController
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Validators;
+namespace Zevitagem\LaravelToolkit\Validators;
 
-use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
+use Zevitagem\LaravelToolkit\Validators\AbstractValidator;
 
 class ConfigUserValidator extends AbstractValidator
 {

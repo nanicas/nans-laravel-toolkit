@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Exceptions;
+namespace Zevitagem\LaravelToolkit\Exceptions;
 
 use App\Helpers\Helper;
 

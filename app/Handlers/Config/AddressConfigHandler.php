@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Handlers\Config;
+namespace Zevitagem\LaravelToolkit\Handlers\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
+use Zevitagem\LaravelToolkit\Handlers\AbstractHandler;
 
 class AddressConfigHandler extends AbstractHandler
 {

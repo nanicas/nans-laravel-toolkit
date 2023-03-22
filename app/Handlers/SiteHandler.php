@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Handlers;
+namespace Zevitagem\LaravelToolkit\Handlers;
 
-use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
-use Zevitagem\LaravelSaasTemplateCore\Hydrators\ContractHydrator;
-use Zevitagem\LaravelSaasTemplateCore\Hydrators\SlugHydrator;
+use Zevitagem\LaravelToolkit\Handlers\AbstractHandler;
+use Zevitagem\LaravelToolkit\Hydrators\ContractHydrator;
+use Zevitagem\LaravelToolkit\Hydrators\SlugHydrator;
 
 class SiteHandler extends AbstractHandler
 {

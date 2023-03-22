@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
+namespace Zevitagem\LaravelToolkit\Http\Controllers\Pages\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\Config\ComponentConfigService;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Services\Config\ComponentConfigService;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 class_alias(Helper::readTemplateConfig()['controllers']['base_config'],  __NAMESPACE__ . '\BaseConfigControllerAlias');
 

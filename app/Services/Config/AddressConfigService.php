@@ -1,12 +1,12 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services\Config;
+namespace Zevitagem\LaravelToolkit\Services\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\AddressConfigRepository;
-use Zevitagem\LaravelSaasTemplateCore\Validators\Config\AddressConfigValidator;
-use Zevitagem\LaravelSaasTemplateCore\Handlers\Config\AddressConfigHandler;
-use Zevitagem\LaravelSaasTemplateCore\Models\Config\DataConfig;
+use Zevitagem\LaravelToolkit\Services\AbstractCrudService;
+use Zevitagem\LaravelToolkit\Repositories\Config\AddressConfigRepository;
+use Zevitagem\LaravelToolkit\Validators\Config\AddressConfigValidator;
+use Zevitagem\LaravelToolkit\Handlers\Config\AddressConfigHandler;
+use Zevitagem\LaravelToolkit\Models\Config\DataConfig;
 
 class AddressConfigService extends AbstractCrudService
 {

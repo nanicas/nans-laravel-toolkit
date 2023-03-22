@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
+namespace Zevitagem\LaravelToolkit\Repositories;
 
-use Zevitagem\LaravelSaasTemplateCore\Repositories\DatabaseRepository;
-use Zevitagem\LaravelSaasTemplateCore\Exceptions\CrudException;
-use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
+use Zevitagem\LaravelToolkit\Repositories\DatabaseRepository;
+use Zevitagem\LaravelToolkit\Exceptions\CrudException;
+use Zevitagem\LaravelToolkit\Models\AbstractModel;
 
 abstract class AbstractCrudRepository extends DatabaseRepository
 {

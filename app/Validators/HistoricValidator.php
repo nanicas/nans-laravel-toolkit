@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Validators;
+namespace Zevitagem\LaravelToolkit\Validators;
 
-use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
-use Zevitagem\LaravelSaasTemplateCore\Traits\Validators\CrudValidator;
+use Zevitagem\LaravelToolkit\Validators\AbstractValidator;
+use Zevitagem\LaravelToolkit\Traits\Validators\CrudValidator;
 
 class HistoricValidator extends AbstractValidator
 {

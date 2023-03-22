@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
+namespace Zevitagem\LaravelToolkit\Http\Controllers\Pages;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\Site\SiteService;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Services\Site\SiteService;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Illuminate\Http\Request;
 
 class_alias(Helper::readTemplateConfig()['controllers']['site'],  __NAMESPACE__ . '\SiteBaseAlias');

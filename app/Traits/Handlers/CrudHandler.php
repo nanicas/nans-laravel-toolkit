@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Traits\Handlers;
+namespace Zevitagem\LaravelToolkit\Traits\Handlers;
 
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 trait CrudHandler
 {

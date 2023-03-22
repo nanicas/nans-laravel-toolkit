@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services\Site;
+namespace Zevitagem\LaravelToolkit\Services\Site;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractService;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\SiteEntityRepository;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\DataConfigRepository;
+use Zevitagem\LaravelToolkit\Services\AbstractService;
+use Zevitagem\LaravelToolkit\Repositories\SiteEntityRepository;
+use Zevitagem\LaravelToolkit\Repositories\Config\DataConfigRepository;
 
 class DataSiteService extends AbstractService
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages\Config;
+namespace Zevitagem\LaravelToolkit\Http\Controllers\Pages\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
-use Zevitagem\LaravelSaasTemplateCore\Traits\IsConfigurationPageSection;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Traits\IsConfigurationPageSection;
 
 class_alias(Helper::readTemplateConfig()['controllers']['crud'], __NAMESPACE__ . '\CrudControllerAlias');
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Helpers;
+namespace Zevitagem\LaravelToolkit\Helpers;
 
 class EntityConfigImageHelper
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Models;
+namespace Zevitagem\LaravelToolkit\Models;
 
-use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
+use Zevitagem\LaravelToolkit\Models\AbstractModel;
 
 class SiteEntity extends AbstractModel
 {

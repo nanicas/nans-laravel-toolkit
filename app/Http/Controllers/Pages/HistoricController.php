@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers\Pages;
+namespace Zevitagem\LaravelToolkit\Http\Controllers\Pages;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\Historic\HistoricService;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Services\Historic\HistoricService;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 class_alias(Helper::readTemplateConfig()['controllers']['crud'],  __NAMESPACE__ . '\CrudControllerAlias');
 

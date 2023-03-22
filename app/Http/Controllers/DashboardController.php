@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
+namespace Zevitagem\LaravelToolkit\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Illuminate\Http\Request;
 
 class_alias(Helper::readTemplateConfig()['controllers']['base'],  __NAMESPACE__ . '\BaseControllerAlias');

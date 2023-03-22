@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Exceptions;
+namespace Zevitagem\LaravelToolkit\Exceptions;
 
-use Zevitagem\LaravelSaasTemplateCore\Exceptions\CrudException;
+use Zevitagem\LaravelToolkit\Exceptions\CrudException;
 
 class InvalidArgumentOnCrudException extends CrudException
 {

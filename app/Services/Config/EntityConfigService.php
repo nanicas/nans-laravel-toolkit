@@ -1,14 +1,14 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services\Config;
+namespace Zevitagem\LaravelToolkit\Services\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\EntityConfigRepository;
+use Zevitagem\LaravelToolkit\Services\AbstractCrudService;
+use Zevitagem\LaravelToolkit\Repositories\Config\EntityConfigRepository;
 use Zevitagem\LegoAuth\Helpers\Helper;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\Config\ComponentConfigRepository;
-use Zevitagem\LaravelSaasTemplateCore\Validators\Config\EntityConfigValidator;
-use Zevitagem\LaravelSaasTemplateCore\Handlers\Config\EntityConfigHandler;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\EntityConfigImageHelper;
+use Zevitagem\LaravelToolkit\Repositories\Config\ComponentConfigRepository;
+use Zevitagem\LaravelToolkit\Validators\Config\EntityConfigValidator;
+use Zevitagem\LaravelToolkit\Handlers\Config\EntityConfigHandler;
+use Zevitagem\LaravelToolkit\Helpers\EntityConfigImageHelper;
 
 class EntityConfigService extends AbstractCrudService
 {

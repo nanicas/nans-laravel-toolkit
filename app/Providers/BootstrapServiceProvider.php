@@ -1,11 +1,11 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Providers;
+namespace Zevitagem\LaravelToolkit\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Blade;
-use Zevitagem\LaravelSaasTemplateCore\View\Components\DynamicEntityComponent;
+use Zevitagem\LaravelToolkit\View\Components\DynamicEntityComponent;
 
 class BootstrapServiceProvider extends ServiceProvider
 {

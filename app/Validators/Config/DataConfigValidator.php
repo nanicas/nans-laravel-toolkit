@@ -1,8 +1,8 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Validators\Config;
+namespace Zevitagem\LaravelToolkit\Validators\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
+use Zevitagem\LaravelToolkit\Validators\AbstractValidator;
 
 class DataConfigValidator extends AbstractValidator
 {

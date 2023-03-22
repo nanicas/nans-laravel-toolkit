@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Traits\Validators;
+namespace Zevitagem\LaravelToolkit\Traits\Validators;
 
-use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Models\AbstractModel;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 trait CrudValidator
 {

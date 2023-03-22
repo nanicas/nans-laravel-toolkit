@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services\Historic;
+namespace Zevitagem\LaravelToolkit\Services\Historic;
 
-use Zevitagem\LaravelSaasTemplateCore\Repositories\HistoricEntitiesRepository;
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithDependencie;
-use Zevitagem\LaravelSaasTemplateCore\Models\Historic;
+use Zevitagem\LaravelToolkit\Repositories\HistoricEntitiesRepository;
+use Zevitagem\LaravelToolkit\Traits\AvailabilityWithDependencie;
+use Zevitagem\LaravelToolkit\Models\Historic;
 
 class CoreRelationEntitiesService
 {

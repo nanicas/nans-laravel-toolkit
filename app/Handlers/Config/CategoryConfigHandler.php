@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Handlers\Config;
+namespace Zevitagem\LaravelToolkit\Handlers\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Handlers\AbstractHandler;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
-use Zevitagem\LaravelSaasTemplateCore\Traits\Handlers\CrudHandler;
+use Zevitagem\LaravelToolkit\Handlers\AbstractHandler;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Traits\Handlers\CrudHandler;
 
 class CategoryConfigHandler extends AbstractHandler
 {

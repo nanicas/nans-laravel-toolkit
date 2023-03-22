@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Models;
+namespace Zevitagem\LaravelToolkit\Models;
 
-use Zevitagem\LaravelSaasTemplateCore\Models\AbstractModel;
+use Zevitagem\LaravelToolkit\Models\AbstractModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Zevitagem\LaravelSaasTemplateCore\Models\HistoricEntities;
+use Zevitagem\LaravelToolkit\Models\HistoricEntities;
 
 class Historic extends AbstractModel
 {

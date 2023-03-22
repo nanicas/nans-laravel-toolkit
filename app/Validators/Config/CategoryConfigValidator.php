@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Validators\Config;
+namespace Zevitagem\LaravelToolkit\Validators\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Validators\AbstractValidator;
-use Zevitagem\LaravelSaasTemplateCore\Traits\Validators\CrudValidator;
+use Zevitagem\LaravelToolkit\Validators\AbstractValidator;
+use Zevitagem\LaravelToolkit\Traits\Validators\CrudValidator;
 
 class CategoryConfigValidator extends AbstractValidator
 {

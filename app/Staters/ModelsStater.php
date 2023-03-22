@@ -1,9 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Staters;
+namespace Zevitagem\LaravelToolkit\Staters;
 
-use Zevitagem\LegoAuth\Staters\BaseStater as BaseStaterVendor;
+use Zevitagem\LaravelToolkit\Staters\BaseStater;
 
-class ModelsStater extends BaseStaterVendor
+class ModelsStater extends BaseStater
 {
+    
 }

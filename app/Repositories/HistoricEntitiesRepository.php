@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Repositories;
+namespace Zevitagem\LaravelToolkit\Repositories;
 
-use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractCrudRepository;
-use Zevitagem\LaravelSaasTemplateCore\Models\HistoricEntities;
-use Zevitagem\LaravelSaasTemplateCore\Models\Historic;
+use Zevitagem\LaravelToolkit\Repositories\AbstractCrudRepository;
+use Zevitagem\LaravelToolkit\Models\HistoricEntities;
+use Zevitagem\LaravelToolkit\Models\Historic;
 
 class HistoricEntitiesRepository extends AbstractCrudRepository
 {

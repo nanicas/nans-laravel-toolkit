@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Validators;
+namespace Zevitagem\LaravelToolkit\Validators;
 
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
-//use Zevitagem\LaravelSaasTemplateCore\Staters\AppStater;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
+//use Zevitagem\LaravelToolkit\Staters\AppStater;
 
 class AbstractValidator
 {

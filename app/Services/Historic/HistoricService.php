@@ -1,13 +1,13 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Services\Historic;
+namespace Zevitagem\LaravelToolkit\Services\Historic;
 
-use Zevitagem\LaravelSaasTemplateCore\Services\AbstractCrudService;
-use Zevitagem\LaravelSaasTemplateCore\Repositories\HistoricRepository;
+use Zevitagem\LaravelToolkit\Services\AbstractCrudService;
+use Zevitagem\LaravelToolkit\Repositories\HistoricRepository;
 use Zevitagem\LegoAuth\Helpers\Helper;
-use Zevitagem\LaravelSaasTemplateCore\Validators\HistoricValidator;
-use Zevitagem\LaravelSaasTemplateCore\Handlers\HistoricHandler;
-use Zevitagem\LaravelSaasTemplateCore\Services\Historic\ContainerRelationEntitiesService;
+use Zevitagem\LaravelToolkit\Validators\HistoricValidator;
+use Zevitagem\LaravelToolkit\Handlers\HistoricHandler;
+use Zevitagem\LaravelToolkit\Services\Historic\ContainerRelationEntitiesService;
 
 class HistoricService extends AbstractCrudService
 {

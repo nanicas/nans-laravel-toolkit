@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Controllers;
+namespace Zevitagem\LaravelToolkit\Http\Controllers;
 
-use Zevitagem\LaravelSaasTemplateCore\Traits\AvailabilityWithService;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Traits\AvailabilityWithService;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 class_alias(Helper::readTemplateConfig()['controllers']['base'],  __NAMESPACE__ . '\BaseControllerAlias');
 

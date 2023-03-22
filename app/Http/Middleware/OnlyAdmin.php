@@ -1,10 +1,10 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Http\Middleware;
+namespace Zevitagem\LaravelToolkit\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Zevitagem\LaravelSaasTemplateCore\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 class OnlyAdmin
 {

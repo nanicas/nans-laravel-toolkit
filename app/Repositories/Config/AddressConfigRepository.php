@@ -1,9 +1,9 @@
 <?php
 
-namespace Zevitagem\LaravelSaasTemplateCore\Repositories\Config;
+namespace Zevitagem\LaravelToolkit\Repositories\Config;
 
-use Zevitagem\LaravelSaasTemplateCore\Repositories\AbstractCrudRepository;
-use Zevitagem\LaravelSaasTemplateCore\Models\Config\DataAddressConfig;
+use Zevitagem\LaravelToolkit\Repositories\AbstractCrudRepository;
+use Zevitagem\LaravelToolkit\Models\Config\DataAddressConfig;
 
 class AddressConfigRepository extends AbstractCrudRepository
 {
