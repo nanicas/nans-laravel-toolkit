@@ -30,6 +30,6 @@ class BootstrapServiceProvider extends ServiceProvider
 
         $this->publishes([
             $src.'/config' => config_path(),
-        ], 'template_core:config');
+        ], 'core_template:config');
     }
 }

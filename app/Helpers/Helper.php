@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class Helper
 {
-    const VIEW_PREFIX = 'apresentation_template::';
+    const VIEW_PREFIX = 'presentation_template::';
     
     public static function getViewPrefix()
     {
@@ -18,7 +18,7 @@ class Helper
     
     public static function getRootFolderNameOfAssets()
     {
-        return 'template';
+        return 'presentation_template';
     }
 
     public static function getAppId()
