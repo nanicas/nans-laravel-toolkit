@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class Helper
 {
-    const VIEW_PREFIX = 'template_core::';
+    const VIEW_PREFIX = 'apresentation_template::';
     
     public static function getViewPrefix()
     {
