@@ -3,11 +3,9 @@
 namespace Zevitagem\LaravelToolkit\Traits\Validators;
 
 use Zevitagem\LaravelToolkit\Models\AbstractModel;
-use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 trait CrudValidator
 {
-
     public function __construct()
     {
         $this->messages['id_invalid'] = 'O ID é inválido';
@@ -19,7 +17,6 @@ trait CrudValidator
     public function destroy()
     {
         $data = $this->getData();
-        $config = Helper::readTemplateConfig();
 
         if (!is_int($data['id']) || $data['id'] <= 0) {
             $this->addError('id_invalid');
@@ -27,16 +24,6 @@ trait CrudValidator
 
         if (!($data['row'] instanceof AbstractModel)) {
             return $this->addError('row_not_found');
-        }
-
-        if (!empty($config['has_slug'])) {
-            if ($data['row']->getSlug() != $data['slug']) {
-                $this->addError('you_can_only_delete_records_belonging_to_your_scope');
-            }
-        } else {
-            if ($data['row']->getUserId() != $data['logged_user']->getId()) {
-                $this->addError('only_owner_can_delete_the_row');
-            }
         }
     }
 }

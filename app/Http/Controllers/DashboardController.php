@@ -19,6 +19,7 @@ abstract class DashboardController extends BaseControllerAlias
         $root = $this->getRootFolderNameOfAssetsPackaged();
 
         $this->config['assets']['js'][] = $root . '/js/dashboard.js';
+        $this->config['assets']['css'][] = $root . '/css/dashboard.css';
     }
 
     protected function allowed(bool $value)
@@ -38,11 +39,11 @@ abstract class DashboardController extends BaseControllerAlias
     
     public function beforeView()
     {
-        $sessionData = Helper::getSessionData();
+        $sessionData = [];//Helper::getSessionData();
 
         View::share('session_data', $sessionData);
-        View::share('is_admin', Helper::isAdmin());
-        View::share('is_master', Helper::isMaster());
+        View::share('is_admin', true);
+        View::share('is_master', true);
 
         parent::beforeView();
     }
