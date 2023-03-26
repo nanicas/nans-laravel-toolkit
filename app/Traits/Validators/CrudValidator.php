@@ -25,5 +25,9 @@ trait CrudValidator
         if (!($data['row'] instanceof AbstractModel)) {
             return $this->addError('row_not_found');
         }
+        
+        if ($data['row']->getUserId() != $data['logged_user']->getId()) {
+            $this->addError('only_owner_can_delete_the_row');
+        }
     }
 }

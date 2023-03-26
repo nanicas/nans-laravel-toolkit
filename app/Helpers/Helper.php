@@ -120,7 +120,7 @@ class Helper
     public static function notAllowedResponse(Request $request,  bool $packaged = true)
     {
         $isAjax = $request->ajax();
-        $viewName = ($isAjax) ? 'layouts.error.not_allowed_content' : 'layouts.error.not_allowed';
+        $viewName = ($isAjax) ? 'pages.allowance.not_allowed_content' : 'pages.allowance.not_allowed';
         
         $view_prefix = self::getViewPrefix();
         $packaged_assets_prefix = self::getRootFolderNameOfAssets();
@@ -132,7 +132,8 @@ class Helper
         }
 
         return response()->json(self::createDefaultJsonToResponse(false, [
-            'message' => $view
+            'message' => $view,
+            'wrapped' => false
         ]));
     }
     

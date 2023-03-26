@@ -35,7 +35,7 @@ class Controller extends BaseController
 
     public function beforeView()
     {
-        View::share('assets', $this->getConfig()['assets']);
+        View::share('assets', $this->getConfig()['assets'] ?? []);
         View::share('view_prefix', Helper::getViewPrefix());
         View::share('assets_prefix', $this->getRootFolderNameOfAssets());
         View::share('packaged_assets_prefix', $this->getRootFolderNameOfAssetsPackaged());

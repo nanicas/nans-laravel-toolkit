@@ -209,7 +209,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . $ex->getFile(), $status);
         }
 
         echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
