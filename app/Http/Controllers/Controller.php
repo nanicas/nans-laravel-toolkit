@@ -11,6 +11,7 @@ use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Illuminate\Routing\Controller as BaseController;
 use Zevitagem\LaravelToolkit\Traits\AvailabilityWithService;
 use Zevitagem\LaravelToolkit\Staters\AppStater;
+use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
@@ -33,13 +34,14 @@ class Controller extends BaseController
         AppStater::setItem('packaged', $this->getConfigIndex('packaged'));
     }
 
-    public function beforeView()
+    public function beforeView(Request $request)
     {
         View::share('assets', $this->getConfig()['assets'] ?? []);
         View::share('view_prefix', Helper::getViewPrefix());
         View::share('assets_prefix', $this->getRootFolderNameOfAssets());
         View::share('packaged_assets_prefix', $this->getRootFolderNameOfAssetsPackaged());
         View::share('screen', $this->getScreen());
+        View::share('section_screen', $this->getSectionScreen());
     }
 
     public function getScreen(): string
@@ -50,8 +52,14 @@ class Controller extends BaseController
     
     public function getSectionScreen(): string
     {
-        list(, $main) = explode('.', \Request::route()->getName());
-        return $main;
+        $list = explode('.', \Request::route()->getName());
+        $count = count($list);
+        
+        if ($count == 1) {
+            return '';
+        }
+        
+        return $list[1];
     }
 
     public function addJsAssets(string $path)

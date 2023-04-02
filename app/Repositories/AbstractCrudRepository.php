@@ -25,6 +25,11 @@ abstract class AbstractCrudRepository extends DatabaseRepository
         return $this->getModel()->create($data);
     }
     
+    public function updateOrCreate(array $condition, array $data)
+    {
+        return $this->getModel()->updateOrCreate($condition, $data);
+    }
+    
     public function deleteByCondition(array $condition)
     {
         return $this->getModel()->where($condition)->delete();

@@ -3,7 +3,7 @@
 namespace Zevitagem\LaravelToolkit\Services;
 
 use Zevitagem\LaravelToolkit\Services\AbstractService;
-use Zevitagem\LegoAuth\Helpers\Helper;
+use Zevitagem\LaravelToolkit\Helpers\Helper;
 
 class AbstractCrudService extends AbstractService
 {
@@ -49,11 +49,15 @@ class AbstractCrudService extends AbstractService
     
     public function destroy(int $id)
     {
+        $loggedUser = Helper::getUser();
+        
         $data = compact('id');
         $data['row'] = $this->getRepository()->getById($id);
+        $data['logged_user'] = $loggedUser;
         
         parent::handle($data, 'destroy');
         parent::validate($data, 'destroy');
+        parent::validate($data, 'beforeDestroyPersistence');
         
         $status = $this->getRepository()->delete($data['row']);
         

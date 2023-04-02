@@ -6,12 +6,20 @@ use Zevitagem\LaravelToolkit\Models\AbstractModel;
 
 trait CrudValidator
 {
-    public function __construct()
+    /**
+     * Implement in child classes
+     * 
+     * public function form();
+     */
+    
+    public function store()
     {
-        $this->messages['id_invalid'] = 'O ID é inválido';
-        $this->messages['row_not_found'] = 'O registro não foi encontrado';
-        $this->messages['only_owner_can_delete_the_row'] = 'Somente o proprietário pode excluir o registro';
-        $this->messages['you_can_only_delete_records_belonging_to_your_scope'] = 'Você só pode excluir registros pertencentes ao seu escopo';
+        $this->form();
+    }
+
+    public function update()
+    {
+        $this->form();
     }
 
     public function destroy()
@@ -21,13 +29,65 @@ trait CrudValidator
         if (!is_int($data['id']) || $data['id'] <= 0) {
             $this->addError('id_invalid');
         }
+    }
+
+    public function show()
+    {
+        $data = $this->getData();
 
         if (!($data['row'] instanceof AbstractModel)) {
             return $this->addError('row_not_found');
         }
         
-        if ($data['row']->getUserId() != $data['logged_user']->getId()) {
-            $this->addError('only_owner_can_delete_the_row');
+        $this->validateOwnership();
+    }
+
+    public function beforeStorePersistence()
+    {
+        $this->beforePersist();
+    }
+
+    public function beforeDestroyPersistence()
+    {
+        $this->beforeUpdatePersistence();
+    }
+
+    public function beforeUpdatePersistence()
+    {
+        $data = $this->getData();
+        if (!($data['row'] instanceof AbstractModel)) {
+            $this->addError('row_not_found');
         }
+
+        $this->beforePersist();
+
+        if ($this->hasErrors()) {
+            return;
+        }
+
+        $this->validateOwnership();
+    }
+
+    protected function validateOwnership()
+    {
+        $belongs = true;
+        if (defined(static::class . '::BELONGS_TO_LOGGED_USER')) {
+            $belongs = static::BELONGS_TO_LOGGED_USER;
+        }
+
+        if (!$belongs) {
+            return;
+        }
+
+        $data = $this->getData();
+
+        if ($data['row']->getUserId() != $data['logged_user']->getId()) {
+            $this->addError('only_owner_can_manipulate');
+        }
+    }
+
+    public function beforePersist()
+    {
+        //
     }
 }

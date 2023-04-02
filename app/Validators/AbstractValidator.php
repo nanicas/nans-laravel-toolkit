@@ -12,7 +12,16 @@ class AbstractValidator
     private $withHTML = true;
     private $textSeparator = PHP_EOL;
     protected $errors = [];
-    protected $messages = [];
+    protected $messages = [
+        'id_invalid' => 'O ID é inválido',
+        'logged_user_type_is_invalid_for_the_operation' => 'O tipo do usuário logado é inválido para a operação',
+        'user_type_is_invalid_for_the_operation' => 'O tipo do usuário é inválido para a operação',
+        'row_not_found' => 'O registro não foi encontrado',
+        'user_must_exists' => 'O usuário deve existir',
+        'register_must_exists' => 'O registro em questão deve existir',
+        'logged_user_must_exists' => 'O usuário logado deve existir',
+        'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
+    ];
 
     public function setData(array $data)
     {

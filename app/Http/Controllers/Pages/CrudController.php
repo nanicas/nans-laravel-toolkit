@@ -20,6 +20,7 @@ abstract class CrudController extends DashboardControllerAlias
     const CREATE_VIEW = 'create';
 
     protected $view;
+    protected $request;
     protected bool $indexIsList = true;
 
     public function setView(string $view)
@@ -69,13 +70,11 @@ abstract class CrudController extends DashboardControllerAlias
         return HelperAlias::view("pages.$screen.$view", $data, $packaged)->render();
     }
 
-    public function beforeView()
+    public function beforeView(Request $request)
     {
-        $request = request();
-
         View::share('state', $request->query('state'));
 
-        parent::beforeView();
+        parent::beforeView($request);
     }
 
     protected function view(array $data = [])
@@ -87,13 +86,16 @@ abstract class CrudController extends DashboardControllerAlias
 
         $data['config'] = $config;
 
-        $this->beforeView();
+        $this->beforeView($this->request);
 
         return $this->createView($screen, $view, $data);
     }
 
     public function store(Request $request)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+        
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -144,6 +146,9 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function update(Request $request)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+        
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -189,6 +194,9 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function destroy(Request $request, int $id)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+        
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -226,6 +234,9 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function list(Request $request)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+        
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -240,6 +251,9 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function show(Request $request, int $id)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+        
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -272,6 +286,9 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function create(Request $request)
     {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }

@@ -3,8 +3,8 @@
 namespace Zevitagem\LaravelToolkit\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
-use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 
 class_alias(Helper::readTemplateConfig()['controllers']['base'],  __NAMESPACE__ . '\BaseControllerAlias');
 
@@ -37,14 +37,14 @@ abstract class DashboardController extends BaseControllerAlias
         return Helper::notAllowedResponse($request);
     }
     
-    public function beforeView()
+    public function beforeView(Request $request)
     {
         $sessionData = [];//Helper::getSessionData();
 
         View::share('session_data', $sessionData);
-        View::share('is_admin', true);
-        View::share('is_master', true);
+        View::share('is_admin', Helper::isAdmin());
+        View::share('is_master', Helper::isMaster());
 
-        parent::beforeView();
+        parent::beforeView($request);
     }
 }
