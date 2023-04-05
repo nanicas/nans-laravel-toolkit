@@ -9,9 +9,14 @@ class AbstractCrudService extends AbstractService
 {
     public function getIndexData(array $data = [])
     {
-        $rows = $this->getRepository()->getAllBySlug(Helper::getSlug());
+        $rows = $this->getRepository()->getAll();
 
         return compact('rows');
+    }
+
+    public function getDataToCreate()
+    {
+        return $this->getDataToForm();
     }
     
     public function getByIdAndSlug(int $id, int $slug = 0)
@@ -65,5 +70,21 @@ class AbstractCrudService extends AbstractService
             'status' => $status,
             'row' => $data['row']
         ];
+    }
+    
+    public function getDataToShow(int $id)
+    {
+        $loggedUser = Helper::getUser();
+        
+        $data = compact('id');
+        $data['row'] = $this->getRepository()->getById($id);
+        $data['logged_user'] = $loggedUser;
+        
+        parent::handle($data, 'show');
+        parent::validate($data, 'show');
+     
+        $dataForm = $this->getDataToForm();
+
+        return array_merge($data, $dataForm);
     }
 }

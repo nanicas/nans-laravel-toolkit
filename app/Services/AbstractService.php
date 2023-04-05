@@ -45,6 +45,7 @@ abstract class AbstractService
     {
         $handler = $this->getHandler();
 
+        $handler->setRequest($this->getConfigIndex('request'));
         $handler->setData($data);
         $handler->run($method);
     }

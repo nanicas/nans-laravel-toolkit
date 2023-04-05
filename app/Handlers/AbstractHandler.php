@@ -5,6 +5,12 @@ namespace Zevitagem\LaravelToolkit\Handlers;
 class AbstractHandler
 {
     protected $data;
+    protected $request;
+    
+    public function setRequest(object $request)
+    {
+        $this->request = $request;
+    }
 
     public function setData(mixed &$data)
     {
