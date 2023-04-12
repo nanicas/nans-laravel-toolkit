@@ -66,20 +66,21 @@ trait CrudValidator
 
     protected function validateOwnership()
     {
-        $belongs = true;
-        if (defined(static::class . '::BELONGS_TO_LOGGED_USER')) {
-            $belongs = static::BELONGS_TO_LOGGED_USER;
-        }
-
-        if (!$belongs) {
-            return;
-        }
-
         $data = $this->getData();
         
         $this->validateOwnershipByAttributes($data);
     }
     
+    protected function ownedByLoggedUser() 
+    {
+        $belongs = true;
+        if (defined(static::class . '::BELONGS_TO_LOGGED_USER')) {
+            $belongs = static::BELONGS_TO_LOGGED_USER;
+        }
+
+        return $belongs;
+    }
+
     protected function validateOwnershipByAttributes(array $data) 
     {
         if (isset($data['row'])) { //is update
@@ -92,6 +93,10 @@ trait CrudValidator
 
     protected function validateOwnershipCaseUpdate(array $data)
     {
+        if (!$this->ownedByLoggedUser()) {
+            return;
+        }
+        
         if ($data['row']->getUserId() != $data['logged_user']->getId()) {
             $this->addError('only_owner_can_manipulate');
         }
@@ -99,6 +104,10 @@ trait CrudValidator
     
     protected function validateOwnershipCaseStore(array $data)
     {
+        if (!$this->ownedByLoggedUser()) {
+            return;
+        }
+        
         if ($data['user_id'] != $data['logged_user']->getId()) {
             $this->addError('only_owner_can_manipulate');
         }

@@ -19,6 +19,11 @@ class AbstractCrudService extends AbstractService
         return $this->getDataToForm();
     }
     
+    public function getDataToForm()
+    {
+        return [];
+    }
+    
     public function getByIdAndSlug(int $id, int $slug = 0)
     {
         if (empty($slug)) {

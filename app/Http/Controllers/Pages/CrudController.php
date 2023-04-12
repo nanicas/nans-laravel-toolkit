@@ -237,6 +237,7 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         $this->addIndexAssets();
+        $this->addListAssets();
         $this->setView(self::INDEX_VIEW);
 
         $data = $this->getService()->getIndexData();
