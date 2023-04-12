@@ -229,11 +229,6 @@ abstract class CrudController extends DashboardControllerAlias
 
     public function index(Request $request)
     {
-        return $this->list($request);
-    }
-
-    public function list(Request $request)
-    {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
         
@@ -241,8 +236,8 @@ abstract class CrudController extends DashboardControllerAlias
             return $this->notAllowedResponse($request);
         }
 
-        $this->addListAssets();
-        $this->setView(self::LIST_VIEW);
+        $this->addIndexAssets();
+        $this->setView(self::INDEX_VIEW);
 
         $data = $this->getService()->getIndexData();
 

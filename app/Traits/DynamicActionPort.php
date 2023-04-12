@@ -39,17 +39,15 @@ trait DynamicActionPort
             $message = Helper::loadMessage($ex->getMessage(), $status);
         }
 
-        return $this->responseDynamicAction($action, $status, $message, $data, $result);
+        return $this->responseDynamicAction(compact(
+            'action', 'status', 'message', 'data', 'result', 'request', 'id'
+        ));
     }
 
-    protected function responseDynamicAction(
-        string $action,
-        bool $status,
-        string $message,
-        array $data = [],
-        $result
-    )
+    protected function responseDynamicAction(array $data)
     {
+        extract($data);
+        
         echo json_encode(Helper::createDefaultJsonToResponse($status,
             [
                 'message' => $message,

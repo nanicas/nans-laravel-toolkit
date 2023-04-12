@@ -60,6 +60,10 @@ class AbstractCrudService extends AbstractService
         $data['row'] = $this->getRepository()->getById($id);
         $data['logged_user'] = $loggedUser;
         
+        if (method_exists($this, 'complementDataOnDestroy')) {
+            $this->complementDataOnDestroy($data);
+        }
+        
         parent::handle($data, 'destroy');
         parent::validate($data, 'destroy');
         parent::validate($data, 'beforeDestroyPersistence');
@@ -79,6 +83,10 @@ class AbstractCrudService extends AbstractService
         $data = compact('id');
         $data['row'] = $this->getRepository()->getById($id);
         $data['logged_user'] = $loggedUser;
+        
+        if (method_exists($this, 'complementDataOnShow')) {
+            $this->complementDataOnShow($data);
+        }
         
         parent::handle($data, 'show');
         parent::validate($data, 'show');

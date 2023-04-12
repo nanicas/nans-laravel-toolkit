@@ -6,12 +6,6 @@ use Zevitagem\LaravelToolkit\Models\AbstractModel;
 
 trait CrudValidator
 {
-    /**
-     * Implement in child classes
-     * 
-     * public function form();
-     */
-    
     public function store()
     {
         $this->form();
@@ -33,32 +27,34 @@ trait CrudValidator
 
     public function show()
     {
-        $data = $this->getData();
-
-        if (!($data['row'] instanceof AbstractModel)) {
-            return $this->addError('row_not_found');
-        }
-        
+        $this->validateRow();
         $this->validateOwnership();
     }
 
     public function beforeStorePersistence()
     {
         $this->beforePersist();
+
+        if ($this->hasErrors()) {
+            return;
+        }
+
+        $this->validateOwnership();
     }
 
     public function beforeDestroyPersistence()
     {
-        $this->beforeUpdatePersistence();
+        $this->validateRow();
+        if ($this->hasErrors()) {
+            return;
+        }
+
+        $this->validateOwnership();
     }
 
     public function beforeUpdatePersistence()
     {
-        $data = $this->getData();
-        if (!($data['row'] instanceof AbstractModel)) {
-            $this->addError('row_not_found');
-        }
-
+        $this->validateRow();
         $this->beforePersist();
 
         if ($this->hasErrors()) {
@@ -80,9 +76,39 @@ trait CrudValidator
         }
 
         $data = $this->getData();
+        
+        $this->validateOwnershipByAttributes($data);
+    }
+    
+    protected function validateOwnershipByAttributes(array $data) 
+    {
+        if (isset($data['row'])) { //is update
+            $this->validateOwnershipCaseUpdate($data);
+        }
+        if (isset($data['user_id'])) { //is store
+            $this->validateOwnershipCaseStore($data);
+        }
+    }
 
+    protected function validateOwnershipCaseUpdate(array $data)
+    {
         if ($data['row']->getUserId() != $data['logged_user']->getId()) {
             $this->addError('only_owner_can_manipulate');
+        }
+    }
+    
+    protected function validateOwnershipCaseStore(array $data)
+    {
+        if ($data['user_id'] != $data['logged_user']->getId()) {
+            $this->addError('only_owner_can_manipulate');
+        }
+    }
+    
+    protected function validateRow()
+    {
+        $data = $this->getData();
+        if (!($data['row'] instanceof AbstractModel)) {
+            $this->addError('row_not_found');
         }
     }
 

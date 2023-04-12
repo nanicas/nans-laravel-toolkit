@@ -11,6 +11,7 @@ class AbstractValidator
     private $method;
     private $withHTML = true;
     private $textSeparator = PHP_EOL;
+    protected $request;
     protected $errors = [];
     protected $messages = [
         'id_invalid' => 'O ID é inválido',
@@ -22,6 +23,11 @@ class AbstractValidator
         'logged_user_must_exists' => 'O usuário logado deve existir',
         'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
     ];
+    
+    public function setRequest(object $request)
+    {
+        $this->request = $request;
+    }
 
     public function setData(array $data)
     {

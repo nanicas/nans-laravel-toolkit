@@ -54,6 +54,7 @@ abstract class AbstractService
     {
         $validator = $this->validator;
         $validator->setData($data);
+        $validator->setRequest($this->getConfigIndex('request'));
 
         if ($validator->run($method) === false) {
             throw new ValidatorException($validator->translate());
