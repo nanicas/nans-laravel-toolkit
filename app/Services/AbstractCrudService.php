@@ -16,7 +16,7 @@ class AbstractCrudService extends AbstractService
 
     public function getDataToCreate()
     {
-        return $this->getDataToForm();
+        return $this->getDataToForm(__FUNCTION__);
     }
     
     public function getDataToForm()
@@ -65,8 +65,8 @@ class AbstractCrudService extends AbstractService
         $data['row'] = $this->getRepository()->getById($id);
         $data['logged_user'] = $loggedUser;
         
-        if (method_exists($this, 'complementDataOnDestroy')) {
-            $this->complementDataOnDestroy($data);
+        if (method_exists($this, 'previousComplementDataOnDestroy')) {
+            $this->previousComplementDataOnDestroy($data);
         }
         
         parent::handle($data, 'destroy');
@@ -89,15 +89,16 @@ class AbstractCrudService extends AbstractService
         $data['row'] = $this->getRepository()->getById($id);
         $data['logged_user'] = $loggedUser;
         
-        if (method_exists($this, 'complementDataOnShow')) {
-            $this->complementDataOnShow($data);
-        }
-        
         parent::handle($data, 'show');
         parent::validate($data, 'show');
      
-        $dataForm = $this->getDataToForm();
-
-        return array_merge($data, $dataForm);
+        $dataForm = $this->getDataToForm(__FUNCTION__);
+        $dataForm = array_merge($data, $dataForm);
+        
+        if (method_exists($this, 'posteriorComplementDataOnShow')) {
+            $this->posteriorComplementDataOnShow($dataForm);
+        }
+        
+        return $dataForm;
     }
 }

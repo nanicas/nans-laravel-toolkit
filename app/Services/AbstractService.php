@@ -43,7 +43,9 @@ abstract class AbstractService
 
     public function handle(array &$data, string $method)
     {
-        $handler = $this->getHandler();
+        if (empty($handler = $this->getHandler())) {
+            return;
+        }
 
         $handler->setRequest($this->getConfigIndex('request'));
         $handler->setData($data);
@@ -52,7 +54,10 @@ abstract class AbstractService
 
     public function validate(array $data, string $method)
     {
-        $validator = $this->validator;
+        if (empty($validator = $this->getValidator())) {
+            return;
+        }
+        
         $validator->setData($data);
         $validator->setRequest($this->getConfigIndex('request'));
 

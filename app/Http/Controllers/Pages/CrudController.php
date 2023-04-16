@@ -113,10 +113,17 @@ abstract class CrudController extends DashboardControllerAlias
             $resource = $this->getService()->store($data);
             $status = (is_object($resource));
             $id = ($status) ? $resource->getId() : null;
-            $message = 'As informações foram salvas com sucesso';
+
+            if ($status == false) {
+                $message = 'Ocorreu um problema no momento de realizar a inserção!';
+            } else {
+                $message = 'As informações foram salvas com sucesso!';
+            }
+            $message = HelperAlias::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
+            //$message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
             $message = HelperAlias::loadMessage($ex->getMessage(), false);
         }
 
