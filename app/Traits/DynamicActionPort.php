@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 
 trait DynamicActionPort
 {
-    public function dynamicAction(Request $request, int $id = 0, string $action = '')
+    public function dynamicAction(Request $request, string $action = '', int $id = 0)
     {
+        if (method_exists($this, $action)) {
+            return $this->$action($request, $action, $id);
+        }
+
         $message = '';
         $status = false;
         $data = $request->all();
@@ -28,9 +32,7 @@ trait DynamicActionPort
             $result = $service->{$action}($id, $data);
             $status = (!empty($result));
 
-            $message = (empty($result)) 
-                ? 'Ocorreu um problema durante o processamento dessa ação de "' . $action . '"' 
-                : 'Ação executada com sucesso!';
+            $message = (empty($result)) ? 'Ocorreu um problema durante o processamento dessa ação de "' . $action . '"' : 'Ação executada com sucesso!';
 
             $message = Helper::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
@@ -47,9 +49,10 @@ trait DynamicActionPort
     protected function responseDynamicAction(array $data)
     {
         extract($data);
-        
+
         echo json_encode(Helper::createDefaultJsonToResponse($status,
             [
+                'result' => $result,
                 'message' => $message,
             ]
         ));
