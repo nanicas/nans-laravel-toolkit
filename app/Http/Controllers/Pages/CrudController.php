@@ -123,8 +123,8 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            //$message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
-            $message = HelperAlias::loadMessage($ex->getMessage(), false);
+            $message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
+            //$message = HelperAlias::loadMessage($ex->getMessage(), false);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
@@ -179,7 +179,8 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
+            //$message = HelperAlias::loadMessage($ex->getMessage(), $status);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
