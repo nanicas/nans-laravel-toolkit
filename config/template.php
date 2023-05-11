@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'datetime_format' => 'd/m/Y H:i:s',
     'has_slug' => true,
     'helpers' => [
         'global' => App\Helpers\Helper::class,

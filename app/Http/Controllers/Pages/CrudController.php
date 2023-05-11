@@ -123,8 +123,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
-            //$message = HelperAlias::loadMessage($ex->getMessage(), false);
+            $message = HelperAlias::loadMessage($ex->getMessage(). ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
@@ -179,8 +178,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage().$ex->getFile().$ex->getLine(), false);
-            //$message = HelperAlias::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
@@ -225,7 +223,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage() . $ex->getFile(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
@@ -247,10 +245,22 @@ abstract class CrudController extends DashboardControllerAlias
         $this->addIndexAssets();
         $this->addListAssets();
         $this->setView(self::INDEX_VIEW);
+        
+        $data = [];
+        $status = false;
+        $query_params = $request->query();
 
-        $data = $this->getService()->getIndexData();
+        try {
+            $data = $this->getService()->getIndexData();
+            $status = true;
+            $message = '';
+        } catch (ValidatorException | CustomValidatorException $ex) {
+            $message = $ex->getMessage();
+        } catch (Throwable $ex) {
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
+        }
 
-        return self::view($data);
+        return self::view(compact('data', 'message', 'status', 'query_params'));
     }
 
     public function show(Request $request, int $id)
@@ -275,7 +285,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         return self::view(compact('data', 'message', 'status'));
@@ -309,7 +319,7 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage(), $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         return self::view(compact('data', 'message', 'status'));

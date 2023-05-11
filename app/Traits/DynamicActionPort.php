@@ -19,10 +19,15 @@ trait DynamicActionPort
         $status = false;
         $data = $request->all();
         $result = null;
-
+        
         if (empty($id) && empty($action)) {
             $id = $request->input('id');
             $action = $request->input('action');
+        }
+        
+        if (method_exists($this, 'defineDynamicActionParams')) {
+            $definedParams = $this->defineDynamicActionParams($request, $action, $id);
+            extract($definedParams);
         }
 
         try {
