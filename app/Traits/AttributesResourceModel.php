@@ -35,6 +35,8 @@ trait AttributesResourceModel
             $format = config('template.datetime_format');
         }
 
-        return $this->getAttribute($attr)->format($format);
+        $datetime = $this->getAttribute($attr);
+        
+        return ($datetime) ? $datetime->format($format) : null;
     }
 }

@@ -9,7 +9,7 @@ class AbstractCrudService extends AbstractService
 {
     public function getIndexData(array $data = [])
     {
-        $rows = $this->getRepository()->getAll();
+        $rows = $this->getRepository()->getAllPaginate();
 
         return compact('rows');
     }
