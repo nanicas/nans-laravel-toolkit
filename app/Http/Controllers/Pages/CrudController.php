@@ -22,6 +22,11 @@ abstract class CrudController extends DashboardControllerAlias
     protected $view;
     protected $request;
     protected bool $indexIsList = true;
+    
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function setView(string $view)
     {
