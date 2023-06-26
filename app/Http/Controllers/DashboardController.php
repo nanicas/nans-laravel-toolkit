@@ -18,8 +18,8 @@ abstract class DashboardController extends BaseControllerAlias
 
         $root = $this->getRootFolderNameOfAssetsPackaged();
 
-        $this->config['assets']['js'][] = $root . '/js/dashboard.js';
-        $this->config['assets']['css'][] = $root . '/css/dashboard.css';
+        $this->config['assets']['js'][] = $root . '/js/layouts/dashboard.js';
+        $this->config['assets']['css'][] = $root . '/css/layouts/dashboard.css';
     }
 
     protected function allowed(bool $value)

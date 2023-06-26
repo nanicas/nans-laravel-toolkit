@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Zevitagem\LaravelToolkit\Helpers\Helper;
 use Throwable;
+use DataTables;
 use Zevitagem\LaravelToolkit\Exceptions\ValidatorException;
 use Zevitagem\LaravelToolkit\Exceptions\CustomValidatorException;
 
@@ -22,7 +23,7 @@ abstract class CrudController extends DashboardControllerAlias
     protected $view;
     protected $request;
     protected bool $indexIsList = true;
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -54,8 +55,8 @@ abstract class CrudController extends DashboardControllerAlias
         $root = $this->getRootFolderNameOfAssets();
         $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
 
-        $this->config['assets']['js'][] = $packagedRoot . '/resources/layouts/crud/form.js';
-        $this->config['assets']['css'][] = $packagedRoot . '/resources/layouts/crud/form.css';
+        $this->config['assets']['js'][] = $packagedRoot . '/js/layouts/crud/form.js';
+        $this->config['assets']['css'][] = $packagedRoot . '/js/layouts/crud/form.css';
         $this->config['assets']['js'][] = $root . 'resources/pages/' . $path . '/form.js';
         $this->config['assets']['css'][] = $root . 'resources/pages/' . $path . '/form.css';
     }
@@ -64,7 +65,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
 
-        parent::addJsAssets($packagedRoot . '/resources/layouts/crud/list.js');
+        parent::addJsAssets($packagedRoot . '/js/layouts/crud/list.js');
         parent::addListAssets();
     }
 
@@ -100,7 +101,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
-        
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -128,24 +129,22 @@ abstract class CrudController extends DashboardControllerAlias
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
         } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage(). ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
+            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
-        $redirUrl = (method_exists($this, 'getRedirUrl')) 
-                ? $this->getRedirUrl($status, $method, [], $data) 
-                : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
+        $redirUrl = (method_exists($this, 'getRedirUrl')) ? $this->getRedirUrl($status, $method, [], $data) : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
 
         $response = HelperAlias::createDefaultJsonToResponse($status,
-            [
-                'status' => $status,
-                'message' => $message,
-                'resource' => $resource,
-                'id' => $id,
-                'url_redir' => $redirUrl
-            ]
+                [
+                    'status' => $status,
+                    'message' => $message,
+                    'resource' => $resource,
+                    'id' => $id,
+                    'url_redir' => $redirUrl
+                ]
         );
 
         if ($canResponseOnEnd) {
@@ -159,7 +158,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
-        
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -178,7 +177,7 @@ abstract class CrudController extends DashboardControllerAlias
             } else {
                 $message = 'As informações foram salvas com sucesso!';
             }
-            
+
             $message = HelperAlias::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
@@ -190,10 +189,10 @@ abstract class CrudController extends DashboardControllerAlias
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
         $response = HelperAlias::createDefaultJsonToResponse($status, [
-            'status' => $status,
-            'resource' => $resource,
-            'message' => $message,
-            'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_update']) : ''
+                'status' => $status,
+                'resource' => $resource,
+                'message' => $message,
+                'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_update']) : ''
         ]);
 
         if ($canResponseOnEnd) {
@@ -207,7 +206,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
-        
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -223,7 +222,7 @@ abstract class CrudController extends DashboardControllerAlias
             } else {
                 $message = 'Os dados foram excluídos com sucesso!';
             }
-            
+
             $message = HelperAlias::loadMessage($message, $status);
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
@@ -232,9 +231,9 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
-            'id' => $id,
-            'status' => $status,
-            'message' => $message,
+                'id' => $id,
+                'status' => $status,
+                'message' => $message,
         ]));
     }
 
@@ -242,7 +241,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
-        
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -250,7 +249,7 @@ abstract class CrudController extends DashboardControllerAlias
         $this->addIndexAssets();
         $this->addListAssets();
         $this->setView(self::INDEX_VIEW);
-        
+
         $data = [];
         $status = false;
         $query_params = $request->query();
@@ -272,7 +271,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $this->request = $request;
         $this->getService()->configureIndex('request', $request);
-        
+
         if (!$this->isAllowed()) {
             return $this->notAllowedResponse($request);
         }
@@ -303,6 +302,28 @@ abstract class CrudController extends DashboardControllerAlias
         ];
     }
 
+    public function list(Request $request)
+    {
+        $this->request = $request;
+        $this->getService()->configureIndex('request', $request);
+
+        if (!$this->isAllowed()) {
+            return $this->notAllowedResponse($request);
+        }
+
+        parent::beforeView($request);
+
+        $data = $this->getService()->getDataToList();
+
+        return DataTables::of($data['rows'])
+                ->addColumn('action', function ($row) {
+                    $screen = $this->getScreen();
+                    return view('pages.' . $screen . '.list-buttons', ['row' => $row])->render();
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+    }
+
     public function create(Request $request)
     {
         $this->request = $request;
@@ -329,5 +350,4 @@ abstract class CrudController extends DashboardControllerAlias
 
         return self::view(compact('data', 'message', 'status'));
     }
-
 }
