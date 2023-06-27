@@ -65,6 +65,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         $packagedRoot = $this->getRootFolderNameOfAssetsPackaged();
 
+        parent::addCssAssets($packagedRoot . '/css/layouts/crud/list.css');
         parent::addJsAssets($packagedRoot . '/js/layouts/crud/list.js');
         parent::addListAssets();
     }
@@ -315,7 +316,12 @@ abstract class CrudController extends DashboardControllerAlias
 
         $data = $this->getService()->getDataToList();
 
-        return DataTables::of($data['rows'])
+        return $this->createListTable($data['rows']);
+    }
+    
+    protected function createListTable($rows) 
+    {
+        return DataTables::of($rows)
                 ->addColumn('action', function ($row) {
                     $screen = $this->getScreen();
                     return view('pages.' . $screen . '.list-buttons', ['row' => $row])->render();
