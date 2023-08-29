@@ -29,7 +29,7 @@ trait DynamicActionPort
             $definedParams = $this->defineDynamicActionParams($request, $action, $id);
             extract($definedParams);
         }
-
+        
         try {
             $service = $this->getService();
             $service->configureIndex('request', $request);
@@ -48,10 +48,10 @@ trait DynamicActionPort
 
         return $this->responseDynamicAction(compact(
             'action', 'status', 'message', 'data', 'result', 'request', 'id'
-        ));
+        ), $action);
     }
 
-    protected function responseDynamicAction(array $data)
+    protected function responseDynamicAction(array $data, string $action)
     {
         extract($data);
 
