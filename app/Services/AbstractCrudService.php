@@ -16,7 +16,10 @@ class AbstractCrudService extends AbstractService
     
     public function getDataToList()
     {
-        $rows = $this->getRepository()->getAllQuery();
+        $data = [];
+        $this->handle($data, 'list');
+
+        $rows = $this->getRepository()->getAllQuery($data);
 
         return compact('rows');
     }

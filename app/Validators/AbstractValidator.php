@@ -22,6 +22,7 @@ class AbstractValidator
         'register_must_exists' => 'O registro em questão deve existir',
         'logged_user_must_exists' => 'O usuário logado deve existir',
         'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
+        'only_admin_can' => 'Somente usuários administradores podem manipular o registro',
     ];
     
     public function setRequest(object $request)
