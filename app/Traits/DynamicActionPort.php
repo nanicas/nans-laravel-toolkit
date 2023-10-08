@@ -9,8 +9,16 @@ use Illuminate\Http\Request;
 
 trait DynamicActionPort
 {
-    public function dynamicAction(Request $request, string $action = '', int $id = 0)
+    public function dynamicAction(Request $request)
     {
+        $action = $request->route('action', '');
+        $id = $request->route('id', 0);
+
+        if (empty($id) && empty($action)) {
+            $id = $request->input('id');
+            $action = $request->input('action');
+        }
+
         if (method_exists($this, $action)) {
             return $this->$action($request, $action, $id);
         }
@@ -19,17 +27,12 @@ trait DynamicActionPort
         $status = false;
         $data = $request->all();
         $result = null;
-        
-        if (empty($id) && empty($action)) {
-            $id = $request->input('id');
-            $action = $request->input('action');
-        }
-        
+
         if (method_exists($this, 'defineDynamicActionParams')) {
             $definedParams = $this->defineDynamicActionParams($request, $action, $id);
             extract($definedParams);
         }
-        
+
         try {
             $service = $this->getService();
             $service->configureIndex('request', $request);

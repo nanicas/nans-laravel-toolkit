@@ -29,6 +29,7 @@ trait CrudValidator
     {
         $this->validateRow();
         $this->validateOwnership();
+        $this->validateUserType('show');
     }
 
     public function beforeStorePersistence()
@@ -40,6 +41,7 @@ trait CrudValidator
         }
 
         $this->validateOwnership();
+        $this->validateUserType('store');
     }
 
     public function beforeDestroyPersistence()
@@ -50,6 +52,7 @@ trait CrudValidator
         }
 
         $this->validateOwnership();
+        $this->validateUserType('destroy');
     }
 
     public function beforeUpdatePersistence()
@@ -62,16 +65,27 @@ trait CrudValidator
         }
 
         $this->validateOwnership();
+        $this->validateUserType('update');
+    }
+
+    public function beforePersist()
+    {
+        //
+    }
+    
+    protected function validateUserType(string $fun)
+    {
+        //
     }
 
     protected function validateOwnership()
     {
         $data = $this->getData();
-        
+
         $this->validateOwnershipByAttributes($data);
     }
-    
-    protected function ownedByLoggedUser() 
+
+    protected function ownedByLoggedUser()
     {
         $belongs = true;
         if (defined(static::class . '::BELONGS_TO_LOGGED_USER')) {
@@ -81,7 +95,7 @@ trait CrudValidator
         return $belongs;
     }
 
-    protected function validateOwnershipByAttributes(array $data) 
+    protected function validateOwnershipByAttributes(array $data)
     {
         if (isset($data['row'])) { //is update
             $this->validateOwnershipCaseUpdate($data);
@@ -96,23 +110,23 @@ trait CrudValidator
         if (!$this->ownedByLoggedUser()) {
             return;
         }
-        
+
         if ($data['row']->getUserId() != $data['logged_user']->getId()) {
             $this->addError('only_owner_can_manipulate');
         }
     }
-    
+
     protected function validateOwnershipCaseStore(array $data)
     {
         if (!$this->ownedByLoggedUser()) {
             return;
         }
-        
+
         if ($data['user_id'] != $data['logged_user']->getId()) {
             $this->addError('only_owner_can_manipulate');
         }
     }
-    
+
     protected function validateRow()
     {
         $data = $this->getData();
@@ -121,8 +135,5 @@ trait CrudValidator
         }
     }
 
-    public function beforePersist()
-    {
-        //
-    }
+    
 }
