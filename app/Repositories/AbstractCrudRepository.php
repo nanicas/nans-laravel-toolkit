@@ -63,6 +63,13 @@ abstract class AbstractCrudRepository extends DatabaseRepository
 
         return $rows->get();
     }
+    
+    public function getByCondition(array $condition)
+    {
+        $rows = $this->getModel()->where($condition);
+
+        return $rows->get();
+    }
 
     public function getBySlug(int $slug)
     {

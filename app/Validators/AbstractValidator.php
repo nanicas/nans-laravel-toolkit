@@ -19,6 +19,7 @@ class AbstractValidator
         'user_type_is_invalid_for_the_operation' => 'O tipo do usuário é inválido para a operação',
         'row_not_found' => 'O registro não foi encontrado',
         'user_must_exists' => 'O usuário deve existir',
+        'logged_user_does_not_have_authorization_due_to_the_registration_being_outside_of_their_permitted_group' => 'O usuário logado não possui autorização devido o registro estar fora do seu grupo permitido',
         'register_must_exists' => 'O registro em questão deve existir',
         'logged_user_must_exists' => 'O usuário logado deve existir',
         'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
@@ -95,7 +96,8 @@ class AbstractValidator
     public function translate()
     {
         if (!$this->isWithHTML()) {
-            return implode($this->getTextSeparator(), $this->errors);
+            //return implode($this->getTextSeparator(), $this->errors);
+            return json_encode($this->errors);
         }
         
         $packaged = true;//(bool) AppStater::getItem('packaged');

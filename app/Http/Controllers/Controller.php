@@ -15,9 +15,14 @@ use Illuminate\Http\Request;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    use Configurable, AvailabilityWithService;
-    
+    use AuthorizesRequests,
+        DispatchesJobs,
+        ValidatesRequests;
+    use Configurable,
+        AvailabilityWithService;
+
+    protected bool $isAPI = false;
+
     public function __construct()
     {
         $this->mergeConfig([
@@ -30,8 +35,13 @@ class Controller extends BaseController
         if (!$this->existsConfigIndex('packaged')) {
             $this->configureIndex('packaged', true);
         }
-        
+
         AppStater::setItem('packaged', $this->getConfigIndex('packaged'));
+    }
+
+    public function getIsAPI()
+    {
+        return $this->isAPI;
     }
 
     public function beforeView(Request $request)
@@ -49,16 +59,16 @@ class Controller extends BaseController
         list($main) = explode('.', \Request::route()->getName());
         return $main;
     }
-    
+
     public function getSectionScreen(): string
     {
         $list = explode('.', \Request::route()->getName());
         $count = count($list);
-        
+
         if ($count == 1) {
             return '';
         }
-        
+
         return $list[1];
     }
 
@@ -71,7 +81,7 @@ class Controller extends BaseController
     {
         $this->config['assets']['css'][] = $path;
     }
-    
+
     public function definePathAssets()
     {
         return (method_exists($this, 'getAssetsPath')) ? $this->getAssetsPath() : $this->getScreen();
@@ -84,25 +94,25 @@ class Controller extends BaseController
 
         return strtolower(str_replace('Controller', '', current($list)));
     }
-    
+
     public function isPackagedView()
     {
         return ($this->getConfigIndex('packaged') === true);
     }
-    
+
     public function getRootFolderNameOfAssetsPackaged()
     {
         return Helper::getRootFolderNameOfAssets();
     }
-    
+
     public function getRootFolderNameOfAssets()
     {
         $root = Helper::getRootFolderNameOfAssets();
         $packaged = $this->isPackagedView();
-        
+
         return ($packaged) ? $root . '/' : '';
     }
-    
+
     public function addIndexAssets()
     {
         $path = $this->definePathAssets();
@@ -117,7 +127,7 @@ class Controller extends BaseController
         if (method_exists($this, 'addFormAssets')) {
             $this->addFormAssets();
         }
-        
+
         $path = $this->definePathAssets();
         $root = $this->getRootFolderNameOfAssets();
 
@@ -130,7 +140,7 @@ class Controller extends BaseController
         if (method_exists($this, 'addFormAssets')) {
             $this->addFormAssets();
         }
-        
+
         $path = $this->definePathAssets();
         $root = $this->getRootFolderNameOfAssets();
 
@@ -142,8 +152,13 @@ class Controller extends BaseController
     {
         $path = $this->definePathAssets();
         $root = $this->getRootFolderNameOfAssets();
-        
+
         $this->config['assets']['js'][] = $root . 'resources/pages/' . $path . '/list.js';
         $this->config['assets']['css'][] = $root . 'resources/pages/' . $path . '/list.css';
+    }
+
+    protected function setIsAPI(bool $value)
+    {
+        $this->isAPI = $value;
     }
 }

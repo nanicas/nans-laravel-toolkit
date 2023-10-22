@@ -6,6 +6,7 @@ use Zevitagem\LaravelToolkit\Exceptions\ValidatorException;
 use Zevitagem\LaravelToolkit\Exceptions\CustomValidatorException;
 use App\Helpers\Helper;
 use Illuminate\Http\Request;
+use Throwable;
 
 trait DynamicActionPort
 {
@@ -42,11 +43,17 @@ trait DynamicActionPort
 
             $message = (empty($result)) ? 'Ocorreu um problema durante o processamento dessa ação de "' . $action . '"' : 'Ação executada com sucesso!';
 
-            $message = Helper::loadMessage($message, $status);
+            if (!$this->getIsAPI()) {
+                $message = Helper::loadMessage($message, $status);
+            }
         } catch (ValidatorException | CustomValidatorException $ex) {
             $message = $ex->getMessage();
-        } catch (Throwable $ex) {
-            $message = Helper::loadMessage($ex->getMessage(), $status);
+        } catch (Throwable $th) {
+            $message = $th->getMessage();
+
+            if (!$this->getIsAPI()) {
+                $message = Helper::loadMessage($message, $status);
+            }
         }
 
         return $this->responseDynamicAction(compact(
@@ -58,7 +65,7 @@ trait DynamicActionPort
     {
         extract($data);
 
-        echo json_encode(Helper::createDefaultJsonToResponse($status,
+        return response()->json(Helper::createDefaultJsonToResponse($status,
             [
                 'result' => $result,
                 'message' => $message,
