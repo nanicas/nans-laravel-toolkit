@@ -62,7 +62,10 @@ abstract class AbstractService
         $validator->setRequest($this->getConfigIndex('request'));
 
         if ($validator->run($method) === false) {
-            throw new ValidatorException($validator->translate());
+            $exception = new ValidatorException($validator->translate());
+            $exception->setErrors($validator->getErrors());
+            
+            throw $exception;
         }
 
         return true;

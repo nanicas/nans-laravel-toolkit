@@ -118,9 +118,14 @@ abstract class CrudController extends DashboardControllerAlias
             $this->getService()->validate($data, $method);
 
             $resource = $this->getService()->store($data);
-            $status = (is_object($resource));
-            $id = ($status) ? $resource->getId() : null;
 
+            if (is_object($resource)) {
+                $status = true;
+                $id = $resource->getId();
+            } elseif (!empty($resource)) {
+                $status = true;
+            }
+            
             if ($status == false) {
                 $message = 'Ocorreu um problema no momento de realizar a inserção!';
             } else {
