@@ -118,4 +118,9 @@ abstract class AbstractCrudRepository extends DatabaseRepository
     {
         return $this->getModel()->find($id);
     }
+    
+    public function getByIds(array $ids)
+    {
+        return $this->getModel()->whereIn('id', $ids)->get();
+    }
 }

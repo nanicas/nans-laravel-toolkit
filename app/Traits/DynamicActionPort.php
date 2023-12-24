@@ -30,7 +30,7 @@ trait DynamicActionPort
         $result = null;
 
         if (method_exists($this, 'defineDynamicActionParams')) {
-            $definedParams = $this->defineDynamicActionParams($request, $action, $id);
+            $definedParams = $this->defineDynamicActionParams($request, $action, $id, $data);
             extract($definedParams);
         }
 

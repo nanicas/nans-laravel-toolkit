@@ -24,6 +24,7 @@ class AbstractValidator
         'logged_user_must_exists' => 'O usuário logado deve existir',
         'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
         'only_admin_can' => 'Somente usuários administradores podem manipular o registro',
+        'authenticated_users_cannot_perform_this_operation' => 'Usuarios autenticados não podem realizar essa operação',
     ];
     
     public function setRequest(object $request)
