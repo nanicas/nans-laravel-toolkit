@@ -69,7 +69,10 @@ class Controller extends BaseController
             return '';
         }
 
-        return $list[1];
+        array_pop($list);
+        array_shift($list);
+        
+        return implode('.', $list);
     }
 
     public function addJsAssets(string $path)
