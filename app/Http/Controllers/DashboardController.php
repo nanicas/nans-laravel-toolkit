@@ -45,6 +45,7 @@ abstract class DashboardController extends BaseControllerAlias
         View::share('is_admin', Helper::isAdmin());
         View::share('is_master', Helper::isMaster());
         View::share('is_worker', Helper::isWorker());
+        View::share('dashboard_flash_data', $request->session()->get('dashboard_flash_data', null));
 
         parent::beforeView($request);
     }

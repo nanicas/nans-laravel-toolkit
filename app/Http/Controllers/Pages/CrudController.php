@@ -87,7 +87,7 @@ abstract class CrudController extends DashboardControllerAlias
     protected function view(array $data = [])
     {
         $view = $this->getView();
-        $screen = $this->getScreen();
+        $screen = $this->getFullScreen();
         $methodConfig = 'config' . ucfirst($view);
         $config = (method_exists($this, $methodConfig)) ? $this->{$methodConfig}() : [];
 
@@ -141,7 +141,7 @@ abstract class CrudController extends DashboardControllerAlias
         $existsDifferentResponseOnEnd = ($this->existsConfigIndex('response_on_end'));
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
-        $redirUrl = (method_exists($this, 'getRedirUrl')) ? $this->getRedirUrl($status, $method, [], $data) : (($status) ? route($this->getScreen() . '.index', ['state' => 'success_store']) : '');
+        $redirUrl = (method_exists($this, 'getRedirUrl')) ? $this->getRedirUrl($status, $method, [], $data) : (($status) ? route($this->getFullScreen() . '.index', ['state' => 'success_store']) : '');
 
         $response = HelperAlias::createDefaultJsonToResponse($status,
                 [
@@ -198,7 +198,7 @@ abstract class CrudController extends DashboardControllerAlias
                 'status' => $status,
                 'resource' => $resource,
                 'message' => $message,
-                'url_redir' => ($status) ? route($this->getScreen() . '.index', ['state' => 'success_update']) : ''
+                'url_redir' => ($status) ? route($this->getFullScreen() . '.index', ['state' => 'success_update']) : ''
         ]);
 
         if ($canResponseOnEnd) {
@@ -328,7 +328,7 @@ abstract class CrudController extends DashboardControllerAlias
     {
         return DataTables::of($rows)
                 ->addColumn('action', function ($row) {
-                    $screen = $this->getScreen();
+                    $screen = $this->getFullScreen();
                     return view('pages.' . $screen . '.list-buttons', ['row' => $row])->render();
                 })
                 ->rawColumns(['action'])

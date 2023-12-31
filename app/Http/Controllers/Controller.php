@@ -51,7 +51,21 @@ class Controller extends BaseController
         View::share('assets_prefix', $this->getRootFolderNameOfAssets());
         View::share('packaged_assets_prefix', $this->getRootFolderNameOfAssetsPackaged());
         View::share('screen', $this->getScreen());
+        View::share('full_screen', $this->getFullScreen());
         View::share('section_screen', $this->getSectionScreen());
+        View::share('app_flash_data', $request->session()->get('app_flash_data', null));
+    }
+
+    public function getFullScreen(): string
+    {
+        $screen = $this->getScreen();
+        $sectionScreen = $this->getSectionScreen();
+        
+        if (!empty($sectionScreen)) {
+            $screen .= '.' . $sectionScreen;
+        }
+
+        return $screen;
     }
 
     public function getScreen(): string
