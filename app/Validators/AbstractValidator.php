@@ -25,6 +25,7 @@ class AbstractValidator
         'only_owner_can_manipulate' => 'Somente o proprietário pode manipular o registro',
         'only_admin_can' => 'Somente usuários administradores podem manipular o registro',
         'authenticated_users_cannot_perform_this_operation' => 'Usuarios autenticados não podem realizar essa operação',
+        'not_allowed_on_same_logged_scope' => 'Não permitido no mesmo escopo logado'
     ];
     
     public function setRequest(object $request)
