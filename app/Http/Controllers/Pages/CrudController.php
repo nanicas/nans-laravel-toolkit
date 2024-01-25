@@ -23,6 +23,7 @@ abstract class CrudController extends DashboardControllerAlias
     protected $view;
     protected $request;
     protected bool $indexIsList = true;
+    protected bool $safe = true;
 
     public function __construct()
     {
@@ -125,7 +126,7 @@ abstract class CrudController extends DashboardControllerAlias
             } elseif (!empty($resource)) {
                 $status = true;
             }
-            
+
             if ($status == false) {
                 $message = 'Ocorreu um problema no momento de realizar a inserção!';
             } else {
@@ -144,13 +145,13 @@ abstract class CrudController extends DashboardControllerAlias
         $redirUrl = (method_exists($this, 'getRedirUrl')) ? $this->getRedirUrl($status, $method, [], $data) : (($status) ? route($this->getFullScreen() . '.index', ['state' => 'success_store']) : '');
 
         $response = HelperAlias::createDefaultJsonToResponse($status,
-                [
-                    'status' => $status,
-                    'message' => $message,
-                    'resource' => $resource,
-                    'id' => $id,
-                    'url_redir' => $redirUrl
-                ]
+            [
+                'status' => $status,
+                'message' => $message,
+                'resource' => $resource,
+                'id' => $id,
+                'url_redir' => $redirUrl
+            ]
         );
 
         if ($canResponseOnEnd) {
@@ -195,10 +196,10 @@ abstract class CrudController extends DashboardControllerAlias
         $canResponseOnEnd = (!$existsDifferentResponseOnEnd || $this->isValidConfig('response_on_end'));
 
         $response = HelperAlias::createDefaultJsonToResponse($status, [
-                'status' => $status,
-                'resource' => $resource,
-                'message' => $message,
-                'url_redir' => ($status) ? route($this->getFullScreen() . '.index', ['state' => 'success_update']) : ''
+            'status' => $status,
+            'resource' => $resource,
+            'message' => $message,
+            'url_redir' => ($status) ? route($this->getFullScreen() . '.index', ['state' => 'success_update']) : ''
         ]);
 
         if ($canResponseOnEnd) {
@@ -237,9 +238,9 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         echo json_encode(HelperAlias::createDefaultJsonToResponse($status, [
-                'id' => $id,
-                'status' => $status,
-                'message' => $message,
+            'id' => $id,
+            'status' => $status,
+            'message' => $message,
         ]));
     }
 
@@ -258,16 +259,25 @@ abstract class CrudController extends DashboardControllerAlias
 
         $data = [];
         $status = false;
+        $message = '';
         $query_params = $request->query();
 
-        try {
-            $data = $this->getService()->getIndexData();
+        $executorData = function() {
+            return $this->getService()->getIndexData();
+        };
+
+        if ($this->isSafe()) {
+            try {
+                $data = $executorData();
+                $status = true;
+            } catch (ValidatorException | CustomValidatorException $ex) {
+                $message = $ex->getMessage();
+            } catch (Throwable $ex) {
+                $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
+            }
+        } else {
+            $data = $executorData();
             $status = true;
-            $message = '';
-        } catch (ValidatorException | CustomValidatorException $ex) {
-            $message = $ex->getMessage();
-        } catch (Throwable $ex) {
-            $message = HelperAlias::loadMessage($ex->getMessage() . ' [' . $ex->getFile() . ':' . $ex->getLine() . ']', $status);
         }
 
         return self::view(compact('data', 'message', 'status', 'query_params'));
@@ -323,8 +333,8 @@ abstract class CrudController extends DashboardControllerAlias
 
         return $this->createListTable($data['rows']);
     }
-    
-    protected function createListTable($rows) 
+
+    protected function createListTable($rows)
     {
         return DataTables::of($rows)
                 ->addColumn('action', function ($row) {
@@ -360,5 +370,15 @@ abstract class CrudController extends DashboardControllerAlias
         }
 
         return self::view(compact('data', 'message', 'status'));
+    }
+
+    protected function setSafe(bool $value)
+    {
+        $this->safe = $value;
+    }
+
+    protected function isSafe()
+    {
+        return (!empty($this->safe));
     }
 }
