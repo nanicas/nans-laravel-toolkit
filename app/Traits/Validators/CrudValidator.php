@@ -34,7 +34,7 @@ trait CrudValidator
 
     public function beforeStorePersistence()
     {
-        $this->beforePersist();
+        $this->beforePersist('store');
 
         if ($this->hasErrors()) {
             return;
@@ -58,7 +58,7 @@ trait CrudValidator
     public function beforeUpdatePersistence()
     {
         $this->validateRow();
-        $this->beforePersist();
+        $this->beforePersist('update');
 
         if ($this->hasErrors()) {
             return;
@@ -68,7 +68,7 @@ trait CrudValidator
         $this->validateUserType('update');
     }
 
-    public function beforePersist()
+    public function beforePersist(string $fun)
     {
         //
     }
