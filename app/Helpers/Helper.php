@@ -92,6 +92,16 @@ class Helper
         return Auth::user();
     }
 
+    public static function getUserName(bool $full = true)
+    {
+        $name = Auth::user()->name;
+        if ($full) {
+            return $name;
+        }
+
+        return (strlen($name) > 25) ? substr($name, 0, 25) . '...' : $name;
+    }
+
     public static function readConfig()
     {
         return HelperVendor::readConfig();
